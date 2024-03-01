@@ -44,10 +44,10 @@
     path: bat.config
   ~/.oh-my-zsh/custom/plugins/:
     glob: true
-    path: oh-my-zsh/custom/plugins/*    
+    path: zsh/plugins/*    
   ~/.oh-my-zsh/custom/themes/*:
     glob: true
-    path: oh-my-zsh/custom/themes/*
+    path: zsh/themes/*
   ~/Library/Application Support/Code/User/settings.json: config/vscode/settings.json
   ~/Library/Application Support/Code/User/keybindings.json: config/vscode/keybindings.json
 

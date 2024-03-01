@@ -8,45 +8,45 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url =  https://github.com/robbyrussell/oh-my-zsh
-[submodule "oh-my-zsh/custom/plugins/zsh-completions"]
-	path = oh-my-zsh/custom/plugins/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions
-[submodule "oh-my-zsh/custom/plugins/zsh-you-should-use"]
-	path = oh-my-zsh/custom/plugins/zsh-you-should-use
-	url = https://github.com/MichaelAquilina/zsh-you-should-use
-[submodule "oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
-	path = oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule "oh-my-zsh/custom/plugins/zsh-autocomplete"]
-	path = oh-my-zsh/custom/plugins/zsh-autocomplete
-	url = https://github.com/marlonrichert/zsh-autocomplete
-[submodule "oh-my-zsh/custom/plugins/almostontop"]
-	path = oh-my-zsh/custom/plugins/almostontop
-	url = https://github.com/Valiev/almostontop
-[submodule "oh-my-zsh/custom/plugins/zsh-lsd"]
-	path = oh-my-zsh/custom/plugins/zsh-lsd
-	url = https://github.com/z-shell/zsh-lsd
-[submodule "oh-my-zsh/custom/plugins/autoenv"]
-	path = oh-my-zsh/custom/plugins/autoenv
-	url = https://github.com/zpm-zsh/autoenv
-[submodule "oh-my-zsh/custom/plugins/k"]
-	path = oh-my-zsh/custom/plugins/k
-	url = https://github.com/supercrabtree/k
-[submodule "oh-my-zsh/custom/plugins/zsh-dircolors-solarized"]
-	path = oh-my-zsh/custom/plugins/zsh-dircolors-solarized
-	url = https://github.com/joel-porquet/zsh-dircolors-solarized
-[submodule "oh-my-zsh/custom/plugins/git-trim"]
-	path = oh-my-zsh/custom/plugins/git-trim
-	url = https://github.com/jasonmccreary/git-trim
-[submodule "oh-my-zsh/custom/plugins/alias-tips"]
-	path = oh-my-zsh/custom/plugins/alias-tips
-	url = https://github.com/djui/alias-tips
-[submodule "oh-my-zsh/custom/plugins/zsh-colored-man-pages"]
-	path = oh-my-zsh/custom/plugins/zsh-colored-man-pages
-	url = https://github.com/ael-code/zsh-colored-man-pages.git	
-[submodule "oh-my-zsh/custom/themes/powerlevel10k"]
-	path = oh-my-zsh/custom/themes/powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k.git
 [submodule "fonts/monaco-nerd-fonts"]
 	path = fonts/monaco-nerd-fonts
 	url = https://github.com/Karmenzind/monaco-nerd-fonts
+[submodule "zsh/plugins/zsh-completions"]
+	path = zsh/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
+[submodule "zsh/plugins/zsh-you-should-use"]
+	path = zsh/plugins/zsh-you-should-use
+	url = https://github.com/MichaelAquilina/zsh-you-should-use
+[submodule "zsh/plugins/zsh-syntax-highlighting"]
+	path = zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "zsh/plugins/zsh-autocomplete"]
+	path = zsh/plugins/zsh-autocomplete
+	url = https://github.com/marlonrichert/zsh-autocomplete
+[submodule "zsh/plugins/almostontop"]
+	path = zsh/plugins/almostontop
+	url = https://github.com/Valiev/almostontop
+[submodule "zsh/plugins/zsh-lsd"]
+	path = zsh/plugins/zsh-lsd
+	url = https://github.com/z-shell/zsh-lsd
+[submodule "zsh/plugins/autoenv"]
+	path = zsh/plugins/autoenv
+	url = https://github.com/zpm-zsh/autoenv
+[submodule "zsh/plugins/k"]
+	path = zsh/plugins/k
+	url = https://github.com/supercrabtree/k
+[submodule "zsh/plugins/zsh-dircolors-solarized"]
+	path = zsh/plugins/zsh-dircolors-solarized
+	url = https://github.com/joel-porquet/zsh-dircolors-solarized
+[submodule "zsh/plugins/git-trim"]
+	path = zsh/plugins/git-trim
+	url = https://github.com/jasonmccreary/git-trim
+[submodule "zsh/plugins/alias-tips"]
+	path = zsh/plugins/alias-tips
+	url = https://github.com/djui/alias-tips
+[submodule "zsh/plugins/zsh-colored-man-pages"]
+	path = zsh/plugins/zsh-colored-man-pages
+	url = https://github.com/ael-code/zsh-colored-man-pages
+[submodule "zsh/themes/powerlevel10k"]
+	path = zsh/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k
