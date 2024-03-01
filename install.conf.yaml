@@ -1,0 +1,82 @@
+- defaults:
+  shell:
+    stdin: true
+    stdout: true
+    stderr: true
+  link:
+    relink: true
+    create: true
+
+- clean: ['~']
+
+- shell:
+  - [brew cleanup && brew upgrade, Upgrade brew]
+
+- brew:
+  - font-hack-nerd-font
+  - htop
+  - git
+  - git-lfs
+  - jq
+  - meetingbar
+  - lsd
+  - node
+  - thefuck
+  - tree
+
+- cask:
+  - iterm2
+  - jetbrains-toolbox
+  - rectangle
+  - slack
+  - visual-studio-code
+  - homebrew/cask-fonts
+
+- link:
+  ~/.zshrc: zshrc
+  ~/.utils.zsh: utils.zsh
+  ~/.vimrc: vimrc
+  ~/.gitconfig: gitconfig
+  ~/.gitignore: gitignore
+  ~/.githelpers: githelpers
+  ~/.p10k.zsh: p10k.zsh
+  ~/.config/bat:
+    path: bat.config
+  ~/.oh-my-zsh/custom/plugins/:
+    glob: true
+    path: oh-my-zsh/custom/plugins/*    
+  ~/.oh-my-zsh/custom/themes/*:
+    glob: true
+    path: oh-my-zsh/custom/themes/*
+  ~/Library/Application Support/Code/User/settings.json: config/vscode/settings.json
+  ~/Library/Application Support/Code/User/keybindings.json: config/vscode/keybindings.json
+
+- create:
+    ~/.ssh:
+      mode: 0700
+- shell:
+    - touch ~/.ssh/known_hosts
+    - [
+        ssh-keyscan -H github.com >> ~/.ssh/known_hosts,
+        Adding github to known hosts,
+      ]
+    - description: generate ssh key if not exists
+      command: >
+        [ -f "$HOME/.ssh/id_ed25519" ] ||
+        ssh-keygen -t ed25519 -N "" -f $HOME/.ssh/id_ed25519 -C $(git config --global --get user.email)
+- link:
+    ~/.ssh/config: ssh/config
+
+- shell:
+  - [git submodule update --init --recursive, Updating submodules]
+  - [defaults write -g ApplePressAndHoldEnabled -bool false]
+  - [defaults write NSGlobalDomain InitialKeyRepeat -int 12]
+  - [defaults write NSGlobalDomain KeyRepeat -int 1]
+  - [defaults write com.apple.dock "show-recents" -bool "false"]
+  - [defaults write com.apple.screencapture "location" -string "~/Downloads"]
+  - [defaults write com.apple.finder ShowPathbar -bool true]
+  - [cp -rf monaco-nerd-fonts/fonts/* ~/Library/Fonts/, "Installing font 'Monaco for Powerline'"]
+  -
+    description: Install Starship (https://starship.rs/)
+    command: "curl -sS https://starship.rs/install.sh | sh"
+  - [echo https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent]

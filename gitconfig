@@ -1,0 +1,100 @@
+[user]
+	name = Brandon🔥
+	email = brandonluth@gmail.com
+
+[github]
+    user = brandonl
+
+[alias]
+    l = "!source ~/.githelpers && pretty_git_log"
+	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+
+[branch]
+    sort = -committerdate
+
+[color]
+    ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+
+[color "branch"]
+    current = yellow reverse
+    remote = green bold
+    local = blue bold
+
+[color "diff"]
+    meta = blue bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[diff]
+    algorithm = histogram
+    submodule = log
+    tool = difftastic
+    external = difft
+
+[difftool]
+    prompt = false
+
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+    difftool = true
+
+[status]
+    submoduleSummary = true
+
+[submodule]
+    recurse = true
+
+[fetch]
+    prune = true
+
+[push]
+    default = simple
+    autoSetupRemote = true
+
+[pull]
+    default = current
+    rebase = true
+
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore
+    pager = less -FMRiX
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+# Tell git to always use ssh.
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+	insteadOf = git://github.com/
+	insteadOf = git+https://github.com/
+	insteadOf = git+git://github.com/
+
+# Don't use "git push -f" or "git push --force" they are not history-safe
+# instead always force push while using a history-lease
+# this forces you to make sure you have the latest remote history fetched before you can push and rewrite history
+# "git pushf" command can now be used
+[alias]
+	pushf = push --force-with-lease
+
+[init]
+	templatedir = ~/.git-templates
+	defaultBranch = main
+
+[merge]
+    conflictstyle = zdiff3
+
+[rerere]
+    enabled = true
+
+[help]
+    autocorrect = prompt
