@@ -8,9 +8,6 @@
 [submodule "fonts/monaco-nerd-fonts"]
 	path = fonts/monaco-nerd-fonts
 	url = https://github.com/Karmenzind/monaco-nerd-fonts
-[submodule "zsh/plugins/you-should-use"]
-	path = zsh/plugins/you-should-use
-	url = https://github.com/MichaelAquilina/zsh-you-should-use
 [submodule "zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
