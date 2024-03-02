@@ -11,9 +11,6 @@
 [submodule "fonts/monaco-nerd-fonts"]
 	path = fonts/monaco-nerd-fonts
 	url = https://github.com/Karmenzind/monaco-nerd-fonts
-[submodule "zsh/plugins/zsh-completions"]
-	path = zsh/plugins/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions
 [submodule "zsh/plugins/zsh-you-should-use"]
 	path = zsh/plugins/zsh-you-should-use
 	url = https://github.com/MichaelAquilina/zsh-you-should-use

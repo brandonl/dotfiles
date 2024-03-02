@@ -1,7 +1,7 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# # if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 eval "$(starship init zsh)"
 
@@ -17,7 +17,7 @@ path+=("/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/")
 export PATH
 
 # ZSH_THEME="spartan"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
   alias-tips # https://github.com/djui/alias-tips
@@ -40,4 +40,12 @@ source $HOME/.utils.zsh
 source $HOME/.local.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# https://github.com/marlonrichert/zsh-autocomplete?tab=readme-ov-file#reassign-tab
+# Make Tab and ShiftTab cycle completions on the command line
+# bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+
+# Make Tab go straight to the menu and cycle there
+bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
+bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
