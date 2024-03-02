@@ -12,14 +12,6 @@
 - create:
     ~/.ssh:
       mode: 0700
-- shell:
-    - description: Adding GitHub to known_hosts
-      command: > 
-        [ -f "$HOME/.ssh/known_hosts" ] || touch ~/.ssh/known_hosts && ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-#     - description: generate ssh key if not exists
-#       command: >
-#         [ -f "$HOME/.ssh/id_ed25519" ] ||
-#         ssh-keygen -t ed25519 -N "" -f $HOME/.ssh/id_ed25519 -C $(git config --global --get user.email)
 
 - shell:
     - [hash brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"]
