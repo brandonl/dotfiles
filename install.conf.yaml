@@ -9,10 +9,7 @@
 
 - clean: ['~']
 
-- create:
-    ~/.ssh:
-      mode: 0700
-
+# Stuff to call on repeat
 - shell:
     - [hash brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"]
     - [brew bundle]
@@ -27,6 +24,8 @@
     ~/.p10k.zsh: p10k.zsh
     ~/.config/bat: bat.config
     ~/.ssh/config: ssh.config
+    # ~/Library/Application Support/Code/User/settings.json: vscode.settings.json
+    ~/Library/Application Support/Code/User/keybindings.json: vscode.keybindings.json
     ~/.oh-my-zsh: oh-my-zsh/
     ~/.oh-my-zsh/custom/plugins/:
         glob: true
@@ -34,8 +33,6 @@
     ~/.oh-my-zsh/custom/themes/*:
         glob: true
         path: zsh/themes/*
-    # ~/Library/Application Support/Code/User/settings.json: config/vscode/settings.json
-    ~/Library/Application Support/Code/User/keybindings.json: keybindings.json
 
 - shell:
   - [defaults write -g ApplePressAndHoldEnabled -bool false]
