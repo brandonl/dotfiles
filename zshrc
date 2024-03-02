@@ -1,8 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# # if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
 eval "$(starship init zsh)"
 
 export ZSH="/Users/brandon/.oh-my-zsh"
@@ -37,10 +32,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.utils.zsh
-source $HOME/.local.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# source $HOME/.local.zsh
 
 # https://github.com/marlonrichert/zsh-autocomplete?tab=readme-ov-file#reassign-tab
 # Make Tab and ShiftTab cycle completions on the command line
@@ -49,3 +41,6 @@ source $HOME/.local.zsh
 # Make Tab go straight to the menu and cycle there
 bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+
+# Move zcompdump spam (for auotcomplete) to .cache
+export ZSH_COMPDUMP=$ZSH/.cache/.zcompdump-$HOST

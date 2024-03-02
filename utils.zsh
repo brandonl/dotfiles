@@ -2,10 +2,10 @@
 # GIT
 ###############################################################################
 # unalias ohmyzsh git plugin aliases
-unalias gma
-unalias gca
-unalias gc
-unalias gl
+# unalias gma
+# unalias gca
+# unalias gc
+# unalias gl
 
 function gs() { git status $*; }
 function gc() { git commit -m "$1"; }

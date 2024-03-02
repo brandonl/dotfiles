@@ -1,89 +1,96 @@
 - defaults:
-  shell:
-    stdin: true
-    stdout: true
-    stderr: true
-  link:
-    relink: true
-    create: true
+    shell:
+        stdin: true
+        stdout: true
+        stderr: true
+    link:
+        relink: true
+        create: true
 
 - clean: ['~']
-
-- shell:
-  - [brew cleanup && brew upgrade, Upgrade brew]
-
-- brew:
-  - font-hack-nerd-font
-  - git
-  - git-lfs
-  - htop
-  - jq
-  - lsd
-  - meetingbar
-  - node
-  - thefuck
-  - zsh-completions
-
-- cask:
-  - homebrew/cask-fonts
-  - iterm2
-  - jetbrains-toolbox
-  - rectangle
-  - slack
-  - visual-studio-code
-
-- link:
-  ~/.zshrc: zshrc
-  ~/.utils.zsh: utils.zsh
-  ~/.vimrc: vimrc
-  ~/.gitconfig: gitconfig
-  ~/.gitignore: gitignore
-  ~/.githelpers: githelpers
-  ~/.p10k.zsh: p10k.zsh
-  ~/.config/bat:
-    path: bat.config
-  ~/.oh-my-zsh/custom/plugins/:
-    glob: true
-    path: zsh/plugins/*    
-  ~/.oh-my-zsh/custom/themes/*:
-    glob: true
-    path: zsh/themes/*
-  ~/Library/Application Support/Code/User/settings.json: config/vscode/settings.json
-  ~/Library/Application Support/Code/User/keybindings.json: config/vscode/keybindings.json
 
 - create:
     ~/.ssh:
       mode: 0700
 - shell:
-    - touch ~/.ssh/known_hosts
-    - [
-        ssh-keyscan -H github.com >> ~/.ssh/known_hosts,
-        Adding github to known hosts,
-      ]
-    - description: generate ssh key if not exists
-      command: >
-        [ -f "$HOME/.ssh/id_ed25519" ] ||
-        ssh-keygen -t ed25519 -N "" -f $HOME/.ssh/id_ed25519 -C $(git config --global --get user.email)
-- link:
-    ~/.ssh/config: ssh/config
+    - description: Adding GitHub to known_hosts
+      command: > 
+        [ -f "$HOME/.ssh/known_hosts" ] || touch ~/.ssh/known_hosts && ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+#     - description: generate ssh key if not exists
+#       command: >
+#         [ -f "$HOME/.ssh/id_ed25519" ] ||
+#         ssh-keygen -t ed25519 -N "" -f $HOME/.ssh/id_ed25519 -C $(git config --global --get user.email)
 
 - shell:
-  - [git submodule update --init --recursive, Updating submodules]
+    - [hash brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"]
+    - [brew bundle]
+
+- link:
+    ~/.zshrc: zshrc
+    ~/.utils.zsh: utils.zsh
+    ~/.vimrc: vimrc
+    ~/.gitconfig: gitconfig
+    ~/.gitignore: gitignore
+    ~/.githelpers: githelpers
+    ~/.p10k.zsh: p10k.zsh
+    ~/.config/bat: bat.config
+    ~/.ssh/config: ssh.config
+    ~/.oh-my-zsh: oh-my-zsh/
+    ~/.oh-my-zsh/custom/plugins/:
+        glob: true
+        path: zsh/plugins/*    
+    ~/.oh-my-zsh/custom/themes/*:
+        glob: true
+        path: zsh/themes/*
+    # ~/Library/Application Support/Code/User/settings.json: config/vscode/settings.json
+    ~/Library/Application Support/Code/User/keybindings.json: keybindings.json
+
+- shell:
   - [defaults write -g ApplePressAndHoldEnabled -bool false]
-  - [defaults write com.apple.dock "show-recents" -bool "false"]
   - [defaults write com.apple.finder ShowPathbar -bool true]
-  - [defaults write com.apple.screencapture "location" -string "~/Downloads"]
   - [defaults write NSGlobalDomain InitialKeyRepeat -int 12]
   - [defaults write NSGlobalDomain KeyRepeat -int 1]
-  # Always open everything in Finder's list view. This is important.
+    # Always open everything in Finder's list view. This is important.
   - [defaults write com.apple.Finder FXPreferredViewStyle Nlsv]
-  # Show the ~/Library folder.
+    # Show the ~/Library folder.
   - [chflags nohidden ~/Library]
-  - [cp -rf monaco-nerd-fonts/fonts/* ~/Library/Fonts/, "Installing font 'Monaco for Powerline'"]
-  # lock if cursor is in the bottom-left hot corner.
+  - [defaults write com.apple.dock "show-recents" -bool false]
+  - [defaults write com.apple.dock minimize-to-application -bool true]
+  - [defaults write com.apple.dock show-process-indicators -bool true]
+  - [defaults write com.apple.dock tilesize -int 56]
+    # Hot corners
+    #  0: no-op
+    #  2: Mission Control
+    #  3: Show application windows
+    #  4: Desktop
+    #  5: Start screen saver
+    #  6: Disable screen saver
+    #  7: Dashboard
+    # 10: Put display to sleep
+    # 11: Launchpad
+    # 12: Notification Center
+    # 13: Lock Screen
+    # lock if cursor is in the bottom-left hot corner 13 = lockscreen, 
   - [defaults write com.apple.dock wvous-bl-corner -int 13]
   - [defaults write com.apple.dock wvous-bl-modifier -int 0]
-  -
-    description: Install Starship (https://starship.rs/)
-    command: "curl -sS https://starship.rs/install.sh | sh"
+  - [defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true]
+  - [defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2]
+  - [defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool false]
+    # Avoid create DS_Store to USB
+  - [defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true]
+  - [defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true]
+  # Show all hidden files
+  - [defaults write com.apple.finder AppleShowAllFiles true]
+  - [defaults write com.apple.screencapture "location" -string "~/Downloads"]
+  # Disable the “Are you sure you want to open this application?” dialog
+  - [defaults write com.apple.LaunchServices LSQuarantine -bool false]
+  # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
+  - [defaults write com.apple.finder QuitMenuItem -bool true]
+  # Keep folders on top when sorting by name
+  - [defaults write com.apple.finder _FXSortFoldersFirst -bool true]
+  # Disable the warning before emptying the Trash
+  - [defaults write com.apple.finder WarnOnEmptyTrash -bool false]
+
+  - [cp -rf fonts/monaco-nerd-fonts/fonts/* ~/Library/Fonts/, "Installing font 'Monaco for Powerline'"]
   - [echo https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent]
+  - [source ~/.zshrc]
