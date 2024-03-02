@@ -3,10 +3,6 @@
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
 
-[submodule "oh-my-zsh"]
-	path = oh-my-zsh
-	url =  https://github.com/robbyrussell/oh-my-zsh
-
 [submodule "fonts/monaco-nerd-fonts"]
 	path = fonts/monaco-nerd-fonts
 	url = https://github.com/Karmenzind/monaco-nerd-fonts
@@ -58,3 +54,7 @@
 [submodule "zsh/plugins/you-should-use"]
 	path = zsh/plugins/you-should-use
 	url = https://github.com/MichaelAquilina/zsh-you-should-use
+	
+[submodule "zsh/omz"]
+	path = zsh/omz
+	url = https://github.com/robbyrussell/oh-my-zsh

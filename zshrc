@@ -1,6 +1,6 @@
 eval "$(starship init zsh)"
 
-export ZSH="/Users/brandon/.oh-my-zsh"
+export ZSH="/Users/brandon/.zsh/omz"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 export GOPATH="$HOME/workspace/go"
 
@@ -9,6 +9,7 @@ path+=("$HOME/bin")
 path+=("/usr/local/bin")
 path+=("$GOPATH/bin")
 path+=("/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/")
+path+=("/Users/brandon/Library/Application Support/JetBrains/Toolbox/scripts")
 export PATH
 
 # ZSH_THEME="spartan"
@@ -30,9 +31,10 @@ plugins=(
   zsh-syntax-highlighting
 )
 
+source '/opt/homebrew/opt/autoenv/activate.sh'
 source $ZSH/oh-my-zsh.sh
-source $HOME/.utils.zsh
-# source $HOME/.local.zsh
+source $HOME/.zsh/utils.zsh
+[ -f $HOME/.zsh/local.zsh ] && source $HOME/.zsh/local.zsh
 
 # https://github.com/marlonrichert/zsh-autocomplete?tab=readme-ov-file#reassign-tab
 # Make Tab and ShiftTab cycle completions on the command line

@@ -9,28 +9,34 @@
 
 - clean: ['~']
 
-# Stuff to call on repeat
+# Stuff to call on repeat via cron
 - shell:
     - [hash brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"]
-    - [brew bundle]
+    - [brew bundle -q]
+    - [git submodule sync --quiet --recursive]
+    - [git submodule update --init --recursive]
 
 - link:
-    ~/.zshrc: zshrc
-    ~/.utils.zsh: utils.zsh
-    ~/.vimrc: vimrc
-    ~/.gitconfig: gitconfig
-    ~/.gitignore: gitignore
-    ~/.githelpers: githelpers
-    ~/.p10k.zsh: p10k.zsh
-    ~/.config/bat: bat.config
-    ~/.ssh/config: ssh.config
-    # ~/Library/Application Support/Code/User/settings.json: vscode.settings.json
-    ~/Library/Application Support/Code/User/keybindings.json: vscode.keybindings.json
-    ~/.oh-my-zsh: oh-my-zsh/
-    ~/.oh-my-zsh/custom/plugins/:
+    ~/.zshrc:
+    ~/.vimrc:
+    ~/: 
+      prefix: "."
+      glob: true
+      path: git/*
+    ~/.config/: 
+      glob: true
+      path: config/**
+    ~/.ssh/:
+      glob: true
+      path: ssh/*
+    ~/.zsh/:
+      glob: true
+      path: zsh/*
+      exclude: [plugins/*, themes/*]
+    ~/.zsh/omz/custom/plugins/:
         glob: true
         path: zsh/plugins/*    
-    ~/.oh-my-zsh/custom/themes/*:
+    ~/.zsh/omz/custom/themes/*:
         glob: true
         path: zsh/themes/*
 
@@ -79,7 +85,5 @@
   - [defaults write com.apple.finder _FXSortFoldersFirst -bool true]
   # Disable the warning before emptying the Trash
   - [defaults write com.apple.finder WarnOnEmptyTrash -bool false]
-
   - [cp -rf fonts/monaco-nerd-fonts/fonts/* ~/Library/Fonts/, "Installing font 'Monaco for Powerline'"]
-  - [echo https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent]
   - [source ~/.zshrc]
