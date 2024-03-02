@@ -2,6 +2,9 @@ tap "homebrew/bundle"
 tap "buo/cask-upgrade" # brew cu to update apps interactively 
 tap "homebrew/cask-fonts"
 
+brew 'coreutils'
+brew "autoenv"
+brew "awscli"
 brew "cfn-lint"
 brew "difftastic"
 brew "docker-credential-helper-ecr"
@@ -21,13 +24,15 @@ brew "thefuck"
 brew "tree"
 brew "zsh-completions"
 
+cask 'font-fira-mono'
 cask "1password"
 cask "clocker"
 cask "font-fira-code-nerd-font"
 cask "github"
-cask "graphql-playground"
 cask "grammarly-desktop"
 cask "grammarly"
+cask "graphql-playground"
+cask "insomnia"
 cask "iterm2"
 cask "jetbrains-toolbox"
 cask "meetingbar"

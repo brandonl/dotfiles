@@ -9,13 +9,14 @@
 
 - clean: ['~']
 
-# Stuff to call on repeat via cron
 - shell:
     - [hash brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"]
-    - [brew bundle -q]
+    - [brew bundle check || brew bundle install]
     - [git submodule sync --quiet --recursive]
     - [git submodule update --init --recursive]
+    - [mkdir -p $HOME/workspace]
 
+# Could just use gnu-stow
 - link:
     ~/.zshrc:
     ~/.vimrc:
@@ -41,49 +42,6 @@
         path: zsh/themes/*
 
 - shell:
-  - [defaults write -g ApplePressAndHoldEnabled -bool false]
-  - [defaults write com.apple.finder ShowPathbar -bool true]
-  - [defaults write NSGlobalDomain InitialKeyRepeat -int 12]
-  - [defaults write NSGlobalDomain KeyRepeat -int 1]
-    # Always open everything in Finder's list view. This is important.
-  - [defaults write com.apple.Finder FXPreferredViewStyle Nlsv]
-    # Show the ~/Library folder.
-  - [chflags nohidden ~/Library]
-  - [defaults write com.apple.dock "show-recents" -bool false]
-  - [defaults write com.apple.dock minimize-to-application -bool true]
-  - [defaults write com.apple.dock show-process-indicators -bool true]
-  - [defaults write com.apple.dock tilesize -int 56]
-    # Hot corners
-    #  0: no-op
-    #  2: Mission Control
-    #  3: Show application windows
-    #  4: Desktop
-    #  5: Start screen saver
-    #  6: Disable screen saver
-    #  7: Dashboard
-    # 10: Put display to sleep
-    # 11: Launchpad
-    # 12: Notification Center
-    # 13: Lock Screen
-    # lock if cursor is in the bottom-left hot corner 13 = lockscreen, 
-  - [defaults write com.apple.dock wvous-bl-corner -int 13]
-  - [defaults write com.apple.dock wvous-bl-modifier -int 0]
-  - [defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true]
-  - [defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2]
-  - [defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool false]
-    # Avoid create DS_Store to USB
-  - [defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true]
-  - [defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true]
-  # Show all hidden files
-  - [defaults write com.apple.finder AppleShowAllFiles true]
-  - [defaults write com.apple.screencapture "location" -string "~/Downloads"]
-  # Disable the “Are you sure you want to open this application?” dialog
-  - [defaults write com.apple.LaunchServices LSQuarantine -bool false]
-  # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
-  - [defaults write com.apple.finder QuitMenuItem -bool true]
-  # Keep folders on top when sorting by name
-  - [defaults write com.apple.finder _FXSortFoldersFirst -bool true]
-  # Disable the warning before emptying the Trash
-  - [defaults write com.apple.finder WarnOnEmptyTrash -bool false]
   - [cp -rf fonts/monaco-nerd-fonts/fonts/* ~/Library/Fonts/, "Installing font 'Monaco for Powerline'"]
+  - [./scripts/macosx.sh]
   - [source ~/.zshrc]

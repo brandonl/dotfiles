@@ -1,0 +1,3 @@
+PATH=/usr/local/bin:/usr/bin:/bin
+
+5,10,15,20	*	*	*	*	/Users/brandon/dotfiles/scripts/cron.sh
