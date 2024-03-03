@@ -53,9 +53,9 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 crontab ./scripts/cron.txt
 
 # Restart applications
-killall Dock &> /dev/null
-killall Finder &> /dev/null
-killall Safari &> /dev/null
+killall Dock > /dev/null 2>&1
+killall Finder > /dev/null 2>&1
+# killall Safari &> /dev/null
 
 # Install Xcode Command-Line Tools
 if ! xcode-select -p ; then
@@ -74,4 +74,3 @@ fi
 osascript -e 'tell application "System Events" to make login item at end with properties { name: "Clocker", path: "/Applications/Clocker.app", hidden: false }'
 osascript -e 'tell application "System Events" to make login item at end with properties { name: "Rectangle", path: "/Applications/Rectangle.app", hidden: false }'
 osascript -e 'tell application "System Events" to make login item at end with properties { name: "Rectangle", path: "/Applications/SaneSideButtons.app", hidden: false }'
-

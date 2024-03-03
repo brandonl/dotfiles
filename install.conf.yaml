@@ -18,7 +18,8 @@
 
 # Could just use gnu-stow
 - link:
-    ~/.zshrc:
+    ~/.zlogin:
+    ~/.zshrc:    
     ~/.vimrc:
     ~/: 
       prefix: "."
@@ -44,4 +45,4 @@
 - shell:
   - [cp -rf fonts/monaco-nerd-fonts/fonts/* ~/Library/Fonts/, "Installing font 'Monaco for Powerline'"]
   - [./scripts/macosx.sh]
-  - [source ~/.zshrc]
+  - [source $HOME/.zshrc]

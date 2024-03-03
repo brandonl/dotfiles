@@ -46,9 +46,10 @@ function dce() { docker-compose exec -it $*; }
 function psgrep() { ps -ef |grep $1 |grep -v grep; }
 function up() { Z=1 && [[ -n $1 ]] && Z=$1; for (( X=$Z; X>0; X-- )); do cd ..; done; }
 
-alias reload=". ~/.zshrc"
 alias sls=serverless
-alias work="cd ~/workspace"
+
+alias reload=". $HOME/.zshrc"
+alias work="cd $HOME/workspace"
 alias "?"=which
 
 

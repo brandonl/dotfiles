@@ -1,5 +1,4 @@
 PATH=/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin
+SHELL=/bin/zsh
 
-@reboot	ssh-add -K ~/.ssh/id_ed25519
-
-*	*	*	*	*	/Users/brandon/dotfiles/scripts/cron.sh
+*/1	*	*	*	* /Users/brandon/dotfiles/scripts/cron.sh > /dev/null 2>&1

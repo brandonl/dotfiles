@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
 
+set -e
+
+/usr/bin/osascript -e "display notification \"Updating Brew starting...\" with title \"Crontab\""
+
+. "$HOME/.keychain/$(hostname -f)-sh"
+
 # Update brew
-brew update
+/opt/homebrew/bin/brew update
 
 # Upgrade all brew packages
-brew upgrade
+/opt/homebrew/bin/brew upgrade
 
 # Remove old versions of packages
-brew cleanup
-brew cleanup --cask
+/opt/homebrew/bin/brew cleanup
+/opt/homebrew/bin/brew cleanup cask
 
-/usr/bin/osascript -e "display notification \"Cron finished updating Brew, check results with `mail`\" with title \"Brew Update\""
+/usr/bin/osascript -e "display notification \"Updating Brew finished; check results with mail\" with title \"Crontab\""

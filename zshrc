@@ -1,6 +1,6 @@
 eval "$(starship init zsh)"
 
-export ZSH="/Users/brandon/.zsh/omz"
+export ZSH="$HOME/.zsh/omz"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 export GOPATH="$HOME/workspace/go"
 
