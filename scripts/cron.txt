@@ -1,4 +1,4 @@
 PATH=/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin
 SHELL=/bin/zsh
 
-@daily /Users/brandon/dotfiles/scripts/cron.sh > /dev/null 2>&1
+@weekly /Users/brandon/dotfiles/scripts/cron.sh > /dev/null 2>&1
