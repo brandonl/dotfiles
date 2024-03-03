@@ -8,6 +8,6 @@ brew upgrade
 
 # Remove old versions of packages
 brew cleanup
-brew cask cleanup
+brew cleanup --cask
 
-/usr/bin/osascript -e "display notification \"Cron finished updating Brew\" with title \"Brew Update\""
+/usr/bin/osascript -e "display notification \"Cron finished updating Brew, check results with `mail`\" with title \"Brew Update\""

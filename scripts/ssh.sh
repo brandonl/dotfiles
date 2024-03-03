@@ -14,7 +14,7 @@ function openGitHub {
 
 function generateKeys {
   echo -e '\n🔒  Generating new SSH key\n'
-  ssh-keygen -t rsa -b 4096 -C "jsstrn@users.noreply.github.com"
+  ssh-keygen -t rsa -b 4096 -C "brandonl@users.noreply.github.com"
 }
 
 function addKeysToAgent {
@@ -32,9 +32,6 @@ function copyKeysToClipboard {
   cat ${PUBLIC_KEY} | pbcopy
 }
 
-function isGitHubInstalled {
-  command -v gh &> /dev/null
-}
 
 function promptUserForKeyFileTitle {
   echo -e '🙋‍♀️  Enter title for key file (e.g. personal computer)'
@@ -50,16 +47,6 @@ function listKeysOnGitHub {
   echo -e '📋  Listing all keys on GitHub\n'
   gh ssh-key list
 }
-
-function setRemoteUrl {
-  URL="git@github.com:jsstrn/dotfiles.git"
-  git remote set-url origin ${URL}
-}
-
-if ! isGitHubInstalled; then
-  echo -e '📦  Installing the GitHub CLI tool\n'
-  brew install gh
-fi
 
 if ! gh auth status; then
   echo -e '🔓  Login to GitHub\n'
@@ -77,4 +64,3 @@ fi
 promptUserForKeyFileTitle && \
 addKeyFileToGitHub
 listKeysOnGitHub
-setRemoteUrl

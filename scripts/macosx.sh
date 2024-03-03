@@ -50,25 +50,28 @@ defaults write com.apple.finder _FXSortFoldersFirst -bool true
 # Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
+crontab ./scripts/cron.txt
+
 # Restart applications
-killall Dock
-killall Finder
-killall Safari
+killall Dock &> /dev/null
+killall Finder &> /dev/null
+killall Safari &> /dev/null
 
 # Install Xcode Command-Line Tools
 if ! xcode-select -p ; then
+  	echo -e '\n🔒  Installing xcode cli tools\n'
 	xcode-select --install
 	exit 0
 fi
 
 # Switch to zsh shell
 if ! echo $SHELL | grep zsh; then
+  	echo -e '\n🔒  Switch to ZSH\n'
 	chsh -s $(which zsh)
 fi
 
-# # Login Items
+# Login Items
 osascript -e 'tell application "System Events" to make login item at end with properties { name: "Clocker", path: "/Applications/Clocker.app", hidden: false }'
 osascript -e 'tell application "System Events" to make login item at end with properties { name: "Rectangle", path: "/Applications/Rectangle.app", hidden: false }'
 osascript -e 'tell application "System Events" to make login item at end with properties { name: "Rectangle", path: "/Applications/SaneSideButtons.app", hidden: false }'
 
-# crontab ./cron.txt

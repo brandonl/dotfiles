@@ -45,4 +45,4 @@ bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
 # Move zcompdump spam (for auotcomplete) to .cache
-export ZSH_COMPDUMP=$ZSH/.cache/.zcompdump-$HOST
+export ZSH_COMPDUMP=$HOME/.cache/.zcompdump-$HOST

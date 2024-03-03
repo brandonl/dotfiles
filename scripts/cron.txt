@@ -1,3 +1,5 @@
-PATH=/usr/local/bin:/usr/bin:/bin
+PATH=/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin
 
-5,10,15,20	*	*	*	*	/Users/brandon/dotfiles/scripts/cron.sh
+@reboot	ssh-add -K ~/.ssh/id_ed25519
+
+*	*	*	*	*	/Users/brandon/dotfiles/scripts/cron.sh
