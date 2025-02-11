@@ -7,7 +7,13 @@
 
 [alias]
     l = "!source ~/.githelpers && pretty_git_log"
-	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+    dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+    default-branch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
+    autoprune = "!git branch --merged | egrep -v '^\\s*(\\*\\s+|'$(git default-branch)'$)' | xargs git branch -d"
+    fetch-origin = "!git checkout $(git default-branch) && git fetch origin && git pull origin"
+    fo = "fetch-origin"
+    fetch-origin-prune = "!git fo && git autoprune"
+    fop = "fetch-origin-prune"
 
 [branch]
     sort = -committerdate
@@ -65,6 +71,7 @@
     editor = vim
     excludesfile = ~/.gitignore
     pager = less -FMRiX
+	hooksPath = .githooks
 
 [filter "lfs"]
 	process = git-lfs filter-process
@@ -73,11 +80,12 @@
 	smudge = git-lfs smudge -- %f
 
 # Tell git to always use ssh.
-[url "git@github.com:"]
-    insteadOf = https://github.com/
-	insteadOf = git://github.com/
-	insteadOf = git+https://github.com/
-	insteadOf = git+git://github.com/
+# TODO: Commented out due to xcode reasons
+#[url "git@github.com:"]
+    # insteadOf = https://github.com/
+    # insteadOf = git://github.com/
+    # insteadOf = git+https://github.com/
+    # insteadOf = git+git://github.com/
 
 # Don't use "git push -f" or "git push --force" they are not history-safe
 # instead always force push while using a history-lease
