@@ -60,6 +60,7 @@ dotfile_links() {
     "$HOME/.config/atuin/config.toml:$dotfiles/config/atuin/config.toml"
     "$HOME/.config/mise/config.toml:$dotfiles/config/mise/config.toml"
     "$HOME/.config/bat/config:$dotfiles/config/bat/config"
+    "$HOME/.config/zsh/abbreviations:$dotfiles/config/zsh/abbreviations"
   )
 
   for pair in "${links[@]}"; do
@@ -91,6 +92,11 @@ zsh_syntax() {
 script_syntax() {
   local file
   for file in "$dotfiles"/scripts/*.sh; do
+    bash -n "$file" || return 1
+  done
+
+  for file in "$dotfiles"/bin/*; do
+    [[ -f "$file" ]] || continue
     bash -n "$file" || return 1
   done
 }

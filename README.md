@@ -29,17 +29,19 @@ Shell: `HOMEBREW_BUNDLE_FILE_GLOBAL` points at `Brewfile`; use `bbi <formula>` /
 `brew bundle cleanup --file Brewfile` only reads the main Brewfile, so local packages look orphaned. Use the wrapper instead:
 
 ```bash
-./scripts/brew-bundle-cleanup.sh          # preview
-./scripts/brew-bundle-cleanup.sh --force  # apply
+brew-bundle-cleanup          # preview (on PATH via $DOTFILES/bin)
+brew-bundle-cleanup --force  # apply
 ```
+
+User-facing commands live in `bin/` (on PATH). Install-only scripts stay in `scripts/`.
 
 ## Removing Homebrew packages
 
 Remove the item from `Brewfile` (or `Brewfile.local`), preview removals, then apply:
 
 ```bash
-./scripts/brew-bundle-cleanup.sh
-./scripts/brew-bundle-cleanup.sh --force
+brew-bundle-cleanup
+brew-bundle-cleanup --force
 ```
 
 ## macOS-specific setup
