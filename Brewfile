@@ -6,6 +6,7 @@ tap "domt4/autoupdate" # Brew autoupdate tap
 tap "homebrew/bundle" # Brewfile support
 tap "supabase/tap" # Supabase CLI tap
 tap "thoughtbot/formulae" # Thoughtbot tools tap
+tap "nikitabobko/tap" # AeroSpace tiling WM tap
 tap "xcodesorg/made" # Xcode manager tap
 brew "act" # Run GitHub Actions locally
 brew "atuin" # Shell history sync/search
@@ -40,21 +41,23 @@ brew "git" # Version control
 brew "git-delta" # Better git diffs
 brew "git-lfs" # Git large files
 brew "github-keygen" # GitHub SSH key helper
+brew "gitleaks" # Secret scan in git repos
+brew "glow" # Markdown renderer
 brew "gnutls" # TLS library
+brew "gum" # Glamorous shell script prompts
 brew "go" # Go toolchain
 brew "golangci-lint" # Go lint runner
 brew "googleworkspace-cli" # Google Workspace CLI
 brew "harfbuzz" # Text shaping library
 brew "hdf5" # Scientific data format
-brew "htop" # Process monitor
 brew "hyperfine" # CLI benchmarking
 brew "jless" # JSON/YAML pager
 brew "jq" # JSON processor
 brew "keychain" # SSH/GPG agent helper
 brew "lazydocker" # Docker TUI
 brew "lazygit" # Git TUI
-brew "node" # Node.js runtime
 brew "lerna" # JS monorepo tool
+brew "lnav" # Log file navigator
 brew "mas" # Mac App Store CLI
 brew "mise" # Runtime version manager
 brew "mysql@8.0" # MySQL client/server
@@ -62,6 +65,7 @@ brew "onnx" # ML model format tools
 brew "openjdk" # Java runtime
 brew "parquet-cli" # Parquet file CLI
 brew "pgcli" # Postgres shell
+brew "pre-commit" # Git hook framework
 brew "postgresql@14" # Postgres 14
 brew "postgresql@16" # Postgres 16
 brew "procs" # Modern ps
@@ -97,15 +101,17 @@ cask "firefox" # Web browser
 cask "font-fira-code-nerd-font" # Dev font
 cask "font-fira-mono" # Mono font
 cask "font-hack-nerd-font" # Dev font
-cask "ghostty" # Terminal emulator
+cask "betterdisplay" # HiDPI + external display control
 cask "github" # GitHub desktop app
 cask "google-chrome" # Web browser
+cask "hammerspoon" # macOS automation (Lua)
 cask "graphql-playground" # GraphQL IDE
 cask "insomnia" # API client
 cask "insta360-link-controller" # Webcam controller
 cask "iterm2" # Terminal emulator
 cask "karabiner-elements" # Keyboard remapping
 cask "meetingbar" # Calendar menu bar
+cask "nikitabobko/tap/aerospace" # i3-like tiling window manager
 cask "ngrok" # Local tunnel
 cask "obsidian" # Notes app
 cask "ollama-app" # Local LLM app
@@ -182,4 +188,3 @@ vscode "wix.vscode-import-cost" # Import size hints
 vscode "zhuangtongfa.material-theme" # Material theme
 uv "graphifyy" # Graphify CLI
 uv "specify-cli" # Specify CLI
-npm "corepack" # Package manager shims
