@@ -18,6 +18,7 @@ plugins=(
   mise # https://mise.jdx.dev/ (node/python/go via idiomatic version files)
   sudo # press Esc twice to prepend sudo
   you-should-use # https://github.com/MichaelAquilina/zsh-you-should-use
+  zsh-abbr # https://github.com/olets/zsh-abbr
   zoxide # https://github.com/ajeetdsouza/zoxide
   # zsh-autocomplete off: ↑ bound to atuin-up-search; re-enable only with `atuin init zsh --disable-up-arrow`
   # zsh-autocomplete # https://github.com/marlonrichert/zsh-autocomplete
@@ -45,17 +46,7 @@ source $ZSH/oh-my-zsh.sh
 #   • Registers strategy "atuin" so zsh-autosuggestions queries that DB for ghost text
 zsh-defer -c '(( $+commands[atuin] )) && { eval "$(atuin init zsh --disable-ai)"; ZSH_AUTOSUGGEST_STRATEGY=(atuin); }'
 
-# Tab: accept atuin-backed ghost suggestion, else normal completion
-_autosuggest_or_complete() {
-  emulate -L zsh
-  if (( $#POSTDISPLAY )) && (( CURSOR == $#BUFFER )); then
-    zle autosuggest-accept
-  else
-    zle expand-or-complete
-  fi
-}
-zle -N _autosuggest_or_complete
-bindkey '^I' _autosuggest_or_complete
+# Tab → completion (fzf-tab). Accept ghost suggestion with → / End instead.
 
 # ── FZF ────────────────────────────────────────────────
 # Use fd as the source (respects .gitignore, shows hidden) when available.
@@ -75,6 +66,11 @@ export FZF_DEFAULT_OPTS="--height 60% --layout=reverse --border --multi \
 # Previews for the built-in CTRL-T (files) and ALT-C (dirs) widgets.
 (( $+commands[bat] )) && export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range=:200 {}'"
 (( $+commands[eza] )) && export FZF_ALT_C_OPTS="--preview 'eza --tree --level=2 --color=always --icons=auto {}'"
+
+# OMZ sets `menu select`; fzf-tab needs `menu no` so it captures the prefix and
+# shows ALL matches on the first Tab instead of only extending the common prefix.
+zstyle ':completion:*' menu no
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # fzf-tab: follow FZF_DEFAULT_OPTS + show previews during tab completion.
 zstyle ':fzf-tab:*' use-fzf-default-opts yes

@@ -1,0 +1,20 @@
+# Dotfiles → ~/.config/zsh/abbreviations (loaded by zsh-abbr on startup).
+# Format: abbr lines only. Edit here, then `abbr load` or open a new shell.
+
+abbr gcb='git checkout -b'
+abbr gsw='git switch'
+abbr gswc='git switch -c'
+abbr gps='git push'
+abbr gd='git diff'
+abbr gst='git status'
+abbr gaa='git add --all'
+abbr gcm='git commit -m'
+abbr gfo='git fetch origin'
+abbr gtr='git trim --merged'
+
+abbr dc='docker compose'
+abbr dcu='docker compose up'
+abbr dcd='docker compose down'
+abbr dps='docker compose ps'
+abbr dex='docker compose exec'
+

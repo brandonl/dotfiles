@@ -58,3 +58,6 @@
 [submodule "zsh/plugins/fzf-tab"]
 	path = zsh/plugins/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
+[submodule "zsh/plugins/zsh-abbr"]
+	path = zsh/plugins/zsh-abbr
+	url = https://github.com/olets/zsh-abbr.git
