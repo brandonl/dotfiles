@@ -16,6 +16,42 @@ alias gpl="git pull"
 alias gds="git -c delta.side-by-side=true diff" # one-off side-by-side diff
 alias gmaint="git maintenance start" # enable background gc/prefetch in current repo
 
+function gco() {
+  local branch
+  branch=$(
+    git for-each-ref --format='%(refname:short)' --sort=-committerdate refs/heads refs/remotes/origin |
+      awk '$0 != "origin/HEAD" { sub(/^origin\//, ""); print }' |
+      sort -u |
+      fzf --preview 'git log --oneline --decorate --graph --max-count=30 {} 2>/dev/null || git log --oneline --decorate --graph --max-count=30 origin/{} 2>/dev/null'
+  ) || return
+  [[ -n "$branch" ]] && git checkout "$branch"
+}
+
+function gbd() {
+  local current branches
+  current=$(git branch --show-current)
+  branches=("${(@f)$(
+    git branch --format='%(refname:short)' --sort=-committerdate |
+      awk -v current="$current" '$0 != current { print }' |
+      fzf --multi --preview 'git log --oneline --decorate --graph --max-count=30 {}'
+  )}")
+  (( $#branches )) && git branch -d -- "${branches[@]}"
+}
+
+function gwd() {
+  local current worktrees worktree
+  current=$(git rev-parse --show-toplevel)
+  worktrees=("${(@f)$(
+    git worktree list --porcelain |
+      awk '/^worktree / { sub(/^worktree /, ""); print }' |
+      awk -v current="$current" '$0 != current { print }' |
+      fzf --multi --preview 'git -C {} status --short --branch'
+  )}")
+  for worktree in "${worktrees[@]}"; do
+    git worktree remove "$worktree"
+  done
+}
+
 
 # ── DOCKER ────────────────────────────────────────────
 # docker / docker-compose OMZ plugins: aliases + completions
