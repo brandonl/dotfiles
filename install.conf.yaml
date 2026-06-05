@@ -1,31 +1,41 @@
 - defaults:
     shell:
-        stdin: true
-        stdout: true
-        stderr: true
+      stdin: true
+      stdout: true
+      stderr: true
     link:
-        relink: true
-        create: true
+      relink: true
+      force: true
+      create: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - shell:
-    - [hash brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"]
-    - [brew bundle check || brew bundle install]
-    - [git submodule sync --quiet --recursive]
+    - [
+        hash brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)",
+      ]
+    - [
+        ./scripts/brew-bundle-install.sh,
+        "Install and upgrade Homebrew packages from Brewfile",
+      ]
+    - [
+        ./scripts/brew-autoupdate.sh,
+        "Enable brew autoupdate (weekly upgrade/cleanup)",
+      ]
+    - [git submodule sync --recursive]
     - [git submodule update --init --recursive]
     - [mkdir -p $HOME/workspace]
 
 # Could just use gnu-stow
 - link:
     ~/.zlogin:
-    ~/.zshrc:    
+    ~/.zshrc:
     ~/.vimrc:
-    ~/: 
+    ~/:
       prefix: "."
       glob: true
       path: git/*
-    ~/.config/: 
+    ~/.config/:
       glob: true
       path: config/**
     ~/.ssh/:
@@ -36,13 +46,18 @@
       path: zsh/*
       exclude: [plugins/*, themes/*]
     ~/.zsh/omz/custom/plugins/:
-        glob: true
-        path: zsh/plugins/*    
-    ~/.zsh/omz/custom/themes/*:
-        glob: true
-        path: zsh/themes/*
+      glob: true
+      path: zsh/plugins/*
 
 - shell:
-  - [cp -rf fonts/monaco-nerd-fonts/fonts/* ~/Library/Fonts/, "Installing font 'Monaco for Powerline'"]
-  - [./scripts/macosx.sh]
-  - [source $HOME/.zshrc]
+    - [
+        cp -rf fonts/monaco-nerd-fonts/fonts/* ~/Library/Fonts/,
+        "Installing font 'Monaco for Powerline'",
+      ]
+    - [
+        cp -rf fonts/Monaspace/*.otf ~/Library/Fonts/,
+        "Installing font 'Monaspace nerdfont'",
+      ]
+    - [./scripts/run-macosx-if-enabled.sh]
+    - [./scripts/mise-install.sh, "Install mise global runtimes"]
+    - [source $HOME/.zshrc]

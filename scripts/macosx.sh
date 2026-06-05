@@ -49,12 +49,37 @@ defaults write com.apple.finder QuitMenuItem -bool true
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 # Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
-
-crontab ./scripts/cron.txt
+defaults write -g AppleInterfaceStyle -string Dark
+defaults write -g com.apple.mouse.scaling -int 2
+defaults write com.apple.menuextra.clock ShowAMPM -bool true
+defaults write com.apple.menuextra.clock ShowDate -bool false
+defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonDivision -int 55
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonMode -string OneButton
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseHorizontalScroll -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseMomentumScroll -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseOneFingerDoubleTapGesture -int 0
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseTwoFingerDoubleTapGesture -int 3
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseTwoFingerHorizSwipeGesture -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseVerticalScroll -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse UserPreferences -bool true
+defaults write com.apple.AppleMultitouchMouse MouseButtonDivision -int 55
+defaults write com.apple.AppleMultitouchMouse MouseButtonMode -string OneButton
+defaults write com.apple.AppleMultitouchMouse MouseHorizontalScroll -bool true
+defaults write com.apple.AppleMultitouchMouse MouseMomentumScroll -bool true
+defaults write com.apple.AppleMultitouchMouse MouseOneFingerDoubleTapGesture -int 0
+defaults write com.apple.AppleMultitouchMouse MouseTwoFingerDoubleTapGesture -int 3
+defaults write com.apple.AppleMultitouchMouse MouseTwoFingerHorizSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchMouse MouseVerticalScroll -bool true
+defaults write com.apple.AppleMultitouchMouse UserPreferences -bool true
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/dotfiles/config/iterm2"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+brew analytics off
 
 # Restart applications
 killall Dock > /dev/null 2>&1
 killall Finder > /dev/null 2>&1
+killall iTerm2 > /dev/null 2>&1
 # killall Safari &> /dev/null
 
 # Install Xcode Command-Line Tools
@@ -71,6 +96,24 @@ if ! echo $SHELL | grep zsh; then
 fi
 
 # Login Items
-osascript -e 'tell application "System Events" to make login item at end with properties { name: "Clocker", path: "/Applications/Clocker.app", hidden: false }'
-osascript -e 'tell application "System Events" to make login item at end with properties { name: "Rectangle", path: "/Applications/Rectangle.app", hidden: false }'
-osascript -e 'tell application "System Events" to make login item at end with properties { name: "Rectangle", path: "/Applications/SaneSideButtons.app", hidden: false }'
+ensure_login_item() {
+  local name="$1"
+  local path="$2"
+  osascript <<EOF
+tell application "System Events"
+  repeat with li in login items
+    if (path of li as text) is "$path" then
+      return
+    end if
+  end repeat
+  make login item at end with properties {name:"$name", path:"$path", hidden:false}
+end tell
+EOF
+}
+
+ensure_login_item "1Password" "/Applications/1Password.app"
+ensure_login_item "Raycast" "/Applications/Raycast.app"
+ensure_login_item "superwhisper" "/Applications/superwhisper.app"
+ensure_login_item "Clocker" "/Applications/Clocker.app"
+ensure_login_item "Rectangle" "/Applications/Rectangle.app"
+ensure_login_item "SaneSideButtons" "/Applications/SaneSideButtons.app"

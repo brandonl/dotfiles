@@ -8,8 +8,51 @@ DOTBOT_DIR="dotbot"
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+WITH_MACOSX=0
+DOTBOT_ARGS=()
+
+usage() {
+  cat <<EOF
+Usage: ./install [options] [-- dotbot-args...]
+
+Options:
+  --with-macosx  Apply macOS-specific settings (defaults, login items, iTerm prefs, brew analytics off)
+  -h, --help     Show this help
+
+By default, scripts/macosx.sh is skipped. Dotbot options can follow or appear after "--".
+EOF
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --with-macosx)
+      WITH_MACOSX=1
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    --)
+      shift
+      DOTBOT_ARGS+=("$@")
+      break
+      ;;
+    *)
+      DOTBOT_ARGS+=("$1")
+      shift
+      ;;
+  esac
+done
+
+export DOTFILES_WITH_MACOSX="$WITH_MACOSX"
+
+if [[ "$WITH_MACOSX" != "1" ]]; then
+  echo "warning: skipping scripts/macosx.sh by default; pass --with-macosx to apply macOS-specific settings"
+fi
+
 cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${DOTBOT_ARGS[@]}"

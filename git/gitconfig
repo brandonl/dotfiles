@@ -9,11 +9,15 @@
     l = "!source ~/.githelpers && pretty_git_log"
     dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
     default-branch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
-    autoprune = "!git branch --merged | egrep -v '^\\s*(\\*\\s+|'$(git default-branch)'$)' | xargs git branch -d"
     fetch-origin = "!git checkout $(git default-branch) && git fetch origin && git pull origin"
     fo = "fetch-origin"
-    fetch-origin-prune = "!git fo && git autoprune"
+    fetch-origin-prune = "!git fo && git trim --merged"
     fop = "fetch-origin-prune"
+    # Don't use "git push -f" or "git push --force" they are not history-safe
+    # instead always force push while using a history-lease
+    # this forces you to make sure you have the latest remote history fetched before you can push and rewrite history
+    # "git pushf" command can now be used
+	pushf = push --force-with-lease
 
 [branch]
     sort = -committerdate
@@ -38,8 +42,9 @@
 [diff]
     algorithm = histogram
     submodule = log
-    tool = difftastic
-    external = difft
+    # difftastic swap-back:
+    # tool = difftastic
+    # external = difft
 
 [difftool]
     prompt = false
@@ -49,6 +54,13 @@
 
 [pager]
     difftool = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    line-numbers = true
 
 [status]
     submoduleSummary = true
@@ -70,8 +82,7 @@
 [core]
     editor = vim
     excludesfile = ~/.gitignore
-    pager = less -FMRiX
-	hooksPath = .githooks
+    pager = delta
 
 [filter "lfs"]
 	process = git-lfs filter-process
@@ -80,19 +91,12 @@
 	smudge = git-lfs smudge -- %f
 
 # Tell git to always use ssh.
-# TODO: Commented out due to xcode reasons
-#[url "git@github.com:"]
-    # insteadOf = https://github.com/
-    # insteadOf = git://github.com/
-    # insteadOf = git+https://github.com/
-    # insteadOf = git+git://github.com/
-
-# Don't use "git push -f" or "git push --force" they are not history-safe
-# instead always force push while using a history-lease
-# this forces you to make sure you have the latest remote history fetched before you can push and rewrite history
-# "git pushf" command can now be used
-[alias]
-	pushf = push --force-with-lease
+# TODO: Comment out when using xcode to avoid ssh key prompt
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+    insteadOf = git://github.com/
+    insteadOf = git+https://github.com/
+    insteadOf = git+git://github.com/
 
 [init]
 	templatedir = ~/.git-templates

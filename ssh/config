@@ -1,6 +1,6 @@
 Include /Users/brandon/.colima/ssh_config
 
-Host github.com
+Host *
   AddKeysToAgent yes
   UseKeychain yes
   IdentityFile ~/.ssh/id_ed25519

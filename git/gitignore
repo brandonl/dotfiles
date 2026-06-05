@@ -84,3 +84,9 @@ settings.json
 yarn.lock
 
 **/spring.rb
+
+# Local-only HTTP client scratch files
+requests.local.http
+
+# Local dump output
+dump/
