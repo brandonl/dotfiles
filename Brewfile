@@ -13,6 +13,7 @@ brew "aws-sso-util" # AWS SSO helper
 brew "awscli" # AWS CLI
 brew "awsume" # AWS role switching
 brew "bat" # Better cat
+brew "btop" # Resource monitor (better htop)
 brew "buf" # Protobuf tooling
 brew "cairo" # 2D graphics library
 brew "cfn-lint" # CloudFormation linting
@@ -31,10 +32,12 @@ brew "docker-credential-helper-ecr" # ECR Docker auth
 brew "duf" # Disk usage viewer
 brew "dust" # Disk usage tree
 brew "eza" # Modern ls
+brew "fd" # Fast, friendly find
 brew "fzf" # Fuzzy finder
 brew "libtiff" # TIFF image support
 brew "gh" # GitHub CLI
 brew "git" # Version control
+brew "git-absorb" # Auto-fixup commits
 brew "git-delta" # Better git diffs
 brew "git-lfs" # Git large files
 brew "github-keygen" # GitHub SSH key helper
@@ -45,8 +48,12 @@ brew "googleworkspace-cli" # Google Workspace CLI
 brew "harfbuzz" # Text shaping library
 brew "hdf5" # Scientific data format
 brew "htop" # Process monitor
+brew "hyperfine" # CLI benchmarking
+brew "jless" # JSON/YAML pager
 brew "jq" # JSON processor
 brew "keychain" # SSH/GPG agent helper
+brew "lazydocker" # Docker TUI
+brew "lazygit" # Git TUI
 brew "node" # Node.js runtime
 brew "lerna" # JS monorepo tool
 brew "mas" # Mac App Store CLI
@@ -63,10 +70,13 @@ brew "python-setuptools" # Python packaging tools
 brew "qemu" # Machine emulator
 brew "redis" # Redis server/CLI
 brew "ripgrep" # Fast text search
+brew "sd" # Intuitive sed replacement
 brew "starship" # Shell prompt
 brew "tealdeer" # Fast tldr pages
 brew "temporal" # Temporal CLI/server
+brew "tokei" # Code line counter
 brew "tree" # Directory tree
+brew "watchexec" # Run cmds on file change
 brew "unbound" # DNS resolver
 brew "uv" # Python package manager
 brew "vips" # Image processing library
