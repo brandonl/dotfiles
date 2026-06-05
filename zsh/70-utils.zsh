@@ -13,7 +13,6 @@ function gl() { git dag --max-count=35 $*; }
 function gma() { gcm && git pull $@; }
 alias gpl="git pull"
 (( $+commands[lazygit] )) && alias lg=lazygit
-(( $+commands[git-absorb] )) && alias gab="git absorb --and-rebase" # auto-fixup staged hunks into their commits
 alias gds="git -c delta.side-by-side=true diff" # one-off side-by-side diff
 alias gmaint="git maintenance start" # enable background gc/prefetch in current repo
 

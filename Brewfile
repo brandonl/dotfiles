@@ -37,7 +37,6 @@ brew "fzf" # Fuzzy finder
 brew "libtiff" # TIFF image support
 brew "gh" # GitHub CLI
 brew "git" # Version control
-brew "git-absorb" # Auto-fixup commits
 brew "git-delta" # Better git diffs
 brew "git-lfs" # Git large files
 brew "github-keygen" # GitHub SSH key helper

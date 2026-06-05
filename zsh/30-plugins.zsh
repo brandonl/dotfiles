@@ -7,7 +7,6 @@ plugins=(
   # almostontop # pins prompt to top; hides scrollback — off
   aws
   brew
-  colored-man-pages
   direnv # https://direnv.net/
   docker
   docker-compose
@@ -61,9 +60,9 @@ bindkey '^I' _autosuggest_or_complete
 # ── FZF ────────────────────────────────────────────────
 # Use fd as the source (respects .gitignore, shows hidden) when available.
 if (( $+commands[fd] )); then
-  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude node_modules --exclude .next --exclude dist --exclude build --exclude Library'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-  export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+  export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git --exclude node_modules --exclude .next --exclude dist --exclude build --exclude Library'
 fi
 
 # Catppuccin Mocha theme + sane layout (matches starship palette).
