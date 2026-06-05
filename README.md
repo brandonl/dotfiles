@@ -24,7 +24,7 @@ Re-run `./install` after pulling changes. Dotbot relinks files in place.
 
 Machine-specific packages (work tools, etc.) live in `Brewfile.local` (gitignored). `./install` installs it when present.
 
-Shell: `HOMEBREW_BUNDLE_FILE_GLOBAL` points at `Brewfile`; use `bbi <formula>` / `bbic <cask>` to install and append (see `zsh/70-utils.zsh`). Machine-only: `bbil` / `bbilc` → `Brewfile.local`.
+Shell: `HOMEBREW_BUNDLE_FILE_GLOBAL` points at `Brewfile`; use `bbi <formula>` / `bbic <cask>` to install and append (see `zsh/70-utils.zsh`).
 
 `brew bundle cleanup --file Brewfile` only reads the main Brewfile, so local packages look orphaned. Use the wrapper instead:
 
