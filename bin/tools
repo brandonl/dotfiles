@@ -1,0 +1,217 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+dotfiles="${DOTFILES:-$HOME/dotfiles}"
+brewfile="$dotfiles/Brewfile"
+utils="$dotfiles/zsh/70-utils.zsh"
+replacements="$dotfiles/config/tools/replacements.tsv"
+nudge_cache="${XDG_CACHE_HOME:-$HOME/.cache}/dotfiles-tool-nudge"
+
+usage() {
+  cat <<'EOF'
+Usage: tools [--nudge] [--gaps] [--help]
+
+  tools         fzf browser: Brewfile tools, aliases, install status
+  tools --gaps  same, pre-filtered to tools without aliases
+  tools --nudge once/day: top habits from Atuin history vs preferred tools
+
+fzf: type to filter, ↑↓ pick, Enter copies preferred command, ? shows tldr
+EOF
+}
+
+formula_name() {
+  local spec="$1"
+  spec="${spec#\"}"
+  spec="${spec%\"}"
+  spec="${spec%,*}"
+  printf '%s\n' "${spec##*/}"
+}
+
+brew_inventory() {
+  local line kind spec name desc
+  while IFS= read -r line; do
+    [[ "$line" =~ ^(brew|cask|vscode)[[:space:]]+ ]] || continue
+    kind="${BASH_REMATCH[1]}"
+    spec="${line#* }"
+    spec="${spec%%#*}"
+    spec="${spec%"${spec##*[![:space:]]}"}"
+    name="$(formula_name "$spec")"
+    if [[ "$line" == *"#"* ]]; then
+      desc="${line#*# }"
+    else
+      desc=""
+    fi
+    printf '%s\t%s\t%s\n' "$kind" "$name" "$desc"
+  done <"$brewfile"
+}
+
+alias_map() {
+  rg '^[[:space:]]*alias [^=]+=' "$utils" 2>/dev/null | while IFS= read -r line; do
+    [[ "$line" == *'commands['* ]] && continue
+    local name target
+    name="${line#*alias }"
+    name="${name%%=*}"
+    name="${name//\"/}"
+    target="${line#*=}"
+    target="${target#\"}"
+    target="${target%% *}"
+    target="${target%%\'*}"
+    printf '%s\t%s\n' "$name" "$target"
+  done
+}
+
+alias_for_tool() {
+  local tool="$1"
+  local name target
+  while IFS=$'\t' read -r name target; do
+    if [[ "$target" == "$tool"* || "$name" == "$tool" ]]; then
+      printf '%s' "$name"
+      return 0
+    fi
+  done < <(alias_map)
+  return 1
+}
+
+tool_status() {
+  local tool="$1"
+  if command -v "$tool" >/dev/null 2>&1; then
+    printf 'installed'
+  else
+    printf 'missing'
+  fi
+}
+
+build_rows() {
+  local gaps_only="${1:-0}"
+  local kind name desc status alias replaces row
+
+  while IFS=$'\t' read -r kind name desc; do
+    [[ "$kind" == "vscode" ]] && continue
+    status="$(tool_status "$name")"
+    alias="$(alias_for_tool "$name" 2>/dev/null || true)"
+    replaces=""
+
+    if [[ -n "$alias" && "$alias" != "$name" ]]; then
+      row=$'alias\t'"$name"$'\t'"$alias"$'\t'"$desc"$'\t'"$status"
+    elif [[ -n "$alias" ]]; then
+      row=$'shortcut\t'"$name"$'\t—'$'\t'"$desc"$'\t'"$status"
+    else
+      row=$'naked\t'"$name"$'\t—'$'\t'"$desc"$'\t'"$status"
+    fi
+
+  if [[ "$gaps_only" == "1" && "$row" == alias* ]]; then
+      continue
+    fi
+    if [[ "$gaps_only" == "1" && "$status" == "missing" ]]; then
+      continue
+    fi
+
+    printf '%s\n' "$row"
+  done < <(brew_inventory | sort -u -t$'\t' -k2,2)
+}
+
+preview_row() {
+  local row="$1" tool alias desc
+  tool="$(printf '%s' "$row" | cut -f2)"
+  alias="$(printf '%s' "$row" | cut -f3)"
+  desc="$(printf '%s' "$row" | cut -f4)"
+  printf '%s — %s\n\n' "$tool" "$desc"
+  [[ "$alias" != "—" ]] && printf 'via: %s\n' "$alias"
+  command -v "$tool" >/dev/null 2>&1 && printf 'path: %s\n\n' "$(command -v "$tool")"
+  command -v tldr >/dev/null 2>&1 && tldr "$tool" 2>/dev/null | head -35
+}
+
+browse() {
+  local gaps="${1:-0}"
+  command -v fzf >/dev/null 2>&1 || {
+    printf 'fzf required\n' >&2
+    build_rows "$gaps"
+    exit 1
+  }
+
+  local selected
+  selected="$(
+    build_rows "$gaps" |
+      sort -t$'\t' -k1,1 -k2,2 |
+      fzf --delimiter=$'\t' \
+        --with-nth=1,2,3,4 \
+        --header=$'status\ttool\tvia\tdescription\n\nfilter: naked = no alias yet | alias = use shortcut | ? = tldr' \
+        --preview "DOTFILES='$dotfiles' bash '$dotfiles/bin/tools' --preview-row {}" \
+        --preview-window=right:55%:wrap \
+        --bind='?:execute-silent(tldr {2} >/dev/null 2>&1 && tldr {2} | ${PAGER:-less})' \
+        --bind='enter:execute-silent(printf %s {2} | pbcopy)+abort' \
+        --ansi \
+        --color='header:italic,fg+:bold' \
+        --height=80% \
+        --layout=reverse \
+        --border
+  )" || return 0
+
+  [[ -z "$selected" ]] && return 0
+  local tool="${selected#*$'\t'}"
+  tool="${tool%%$'\t'*}"
+  printf 'copied: %s\n' "$tool"
+}
+
+nudge_today() {
+  mkdir -p "${nudge_cache%/*}"
+  [[ -f "$nudge_cache" && "$(<"$nudge_cache")" == "$(date +%Y-%m-%d)" ]] && return 1
+  date +%Y-%m-%d >"$nudge_cache"
+  return 0
+}
+
+cmd_nudge() {
+  command -v atuin >/dev/null 2>&1 || return 0
+  [[ -f "$replacements" ]] || return 0
+  nudge_today || return 0
+
+  local -a history=()
+  while IFS= read -r line; do
+    history+=("$line")
+  done < <(atuin history list --cmd-only 2>/dev/null | head -n 800)
+
+  ((${#history[@]})) || return 0
+
+  local line legacy preferred hint legacy_re
+  local -a scores=()
+  local legacy_count preferred_count
+
+  while IFS=$'\t' read -r legacy preferred hint; do
+    [[ -z "$legacy" || "$legacy" == \#* ]] && continue
+    command -v "$preferred" >/dev/null 2>&1 || continue
+
+    legacy_count=0
+    preferred_count=0
+    for line in "${history[@]}"; do
+      [[ "$line" =~ $legacy ]] && ((legacy_count++)) || true
+      [[ "$line" == "$preferred"* ]] && ((preferred_count++)) || true
+    done
+
+    ((legacy_count > preferred_count && legacy_count > 0)) || continue
+    scores+=("$legacy_count|$preferred_count|$preferred|$hint|$legacy")
+  done <"$replacements"
+
+  ((${#scores[@]})) || return 0
+
+  printf '\n── tool nudges (from recent Atuin history) ──\n'
+  printf '%s\n' "${scores[@]}" |
+    sort -t'|' -k1,1nr |
+    head -10 |
+    while IFS='|' read -r lc pc pref hint leg; do
+      printf '  %dx %s → try %s (%s)\n' "$lc" "$leg" "$pref" "$hint"
+    done
+  printf '  run: tools | tools --gaps\n\n'
+}
+
+main() {
+  case "${1:-}" in
+    --nudge) cmd_nudge ;;
+    --gaps) browse 1 ;;
+    --preview-row) preview_row "${2:-}" ;;
+    -h|--help) usage ;;
+    "") browse 0 ;;
+    *) printf 'unknown option: %s\n' "$1" >&2; usage >&2; exit 1 ;;
+  esac
+}
+
+main "$@"

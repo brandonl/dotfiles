@@ -1,0 +1,18 @@
+# legacy_regex	preferred	hint
+^ps(\s|$)	procs	pss → procs
+^top$	btop	top → btop
+\bcat(\s|$)	bat	cat → bat (aliased)
+\bless(\s|$)	bat	less → bat (aliased)
+\bdf(\s|$)	duf	disk → duf
+\bdu(\s|$)	dust	space → dust
+\bfind(\s|$)	fd	fd respects .gitignore
+\bgrep(\s|$)	rg	ripgrep is faster
+^docker ps	lazydocker	lzd → lazydocker
+^docker compose ps	lazydocker	lzd for container UI
+git log(\s|$)	lazygit	gl / lg for git graph UI
+^tail -f	lnav	logs → lnav for structured logs
+^man(\s|$)	bat	man pages via bat MANPAGER
+^python3(\s|$)	uv	uv run / uv pip
+^pip(\s|$)	uv	prefer uv for python packages
+^npm(\s|$)	mise	node via mise; corepack for yarn/pnpm
+^yarn(\s|$)	corepack	corepack enable once

@@ -82,6 +82,13 @@ alias pss="procs"
 alias sls=serverless
 alias space="dust"
 
+(( $+commands[glow] )) && alias md='glow'
+(( $+commands[lnav] )) && alias logs=lnav
+(( $+commands[btop] )) && alias top=btop
+(( $+commands[jless] )) && alias json=jless
+(( $+commands[glow] )) && alias -s md=glow
+(( $+commands[jless] )) && alias -s json=jless yaml=jless yml=jless
+
 reload() { exec zsh -l; }
 alias work="cd $HOME/workspace"
 alias "?"=which
