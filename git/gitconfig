@@ -42,6 +42,9 @@
 [diff]
     algorithm = histogram
     submodule = log
+    colorMoved = default
+    mnemonicPrefix = true
+    renames = copies
     # difftastic swap-back:
     # tool = difftastic
     # external = difft
@@ -61,6 +64,12 @@
 [delta]
     navigate = true
     line-numbers = true
+    hyperlinks = true
+    # side-by-side off by default; toggle per-invocation with `gds` (see zsh utils)
+    side-by-side = false
+
+[maintenance]
+    auto = false  # opt in per repo via `git maintenance start`
 
 [status]
     submoduleSummary = true
@@ -78,6 +87,23 @@
 [pull]
     default = current
     rebase = true
+
+[commit]
+    verbose = true
+
+[rebase]
+    autosquash = true
+    autostash = true
+    updateRefs = true
+
+[column]
+    ui = auto
+
+[tag]
+    sort = version:refname
+
+[log]
+    date = iso
 
 [core]
     editor = vim
