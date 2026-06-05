@@ -1,0 +1,8 @@
+[updates]
+# Refresh the tldr page cache automatically when it gets stale.
+auto_update = true
+auto_update_interval_hours = 168
+
+[display]
+compact = false
+use_pager = false
