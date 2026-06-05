@@ -17,3 +17,13 @@ export GOPATH="$HOME/workspace/go"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 export ZSH="$HOME/.zsh/omz"
 export ZSH_COMPDUMP=$HOME/.cache/.zcompdump-$HOST
+
+# Skip noisy commands in zsh history (Atuin has matching filters in config.toml).
+zshaddhistory() {
+  emulate -L zsh
+  local line="${1%%$'\n'}"
+  [[ "$line" =~ '^[[:space:]]*(ls|cd|pwd|exit|clear)([[:space:]]|$)' ]] && return 1
+  return 0
+}
+
+export ZSH_AUTOSUGGEST_HISTORY_IGNORE='?(#c1,)(ls|cd|pwd|exit|clear)*'
