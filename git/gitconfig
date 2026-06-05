@@ -69,7 +69,7 @@
     side-by-side = false
 
 [maintenance]
-    auto = false  # opt in per repo via `git maintenance start`
+    auto = true
 
 [status]
     submoduleSummary = true
@@ -109,6 +109,11 @@
     editor = vim
     excludesfile = ~/.gitignore
     pager = delta
+    fsmonitor = true
+    untrackedCache = true
+
+[feature]
+    manyFiles = true
 
 [filter "lfs"]
 	process = git-lfs filter-process
