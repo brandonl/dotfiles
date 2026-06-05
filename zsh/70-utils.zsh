@@ -12,11 +12,16 @@ function gca() { git commit --amend -C HEAD; }
 function gl() { git dag --max-count=35 $*; }
 function gma() { gcm && git pull $@; }
 alias gpl="git pull"
+(( $+commands[lazygit] )) && alias lg=lazygit
+(( $+commands[git-absorb] )) && alias gab="git absorb --and-rebase" # auto-fixup staged hunks into their commits
+alias gds="git -c delta.side-by-side=true diff" # one-off side-by-side diff
+alias gmaint="git maintenance start" # enable background gc/prefetch in current repo
 
 
 # ── DOCKER ────────────────────────────────────────────
 # docker / docker-compose OMZ plugins: aliases + completions
 
+(( $+commands[lazydocker] )) && alias lzd=lazydocker
 function dstats() { docker stats $(docker ps -q); }
 function dcsh() {
   containers=($(docker ps | awk '{if(NR>1) print $NF}'))
@@ -47,3 +52,7 @@ alias work="cd $HOME/workspace"
 alias "?"=which
 alias m=make
 alias l="eza -lha --icons=auto --group-directories-first --git"
+
+# ── NAV ────────────────────────────────────────────────
+alias ..="cd .."                       # OMZ only aliases ...,....,etc
+mkcd() { mkdir -p "$1" && cd "$1"; }    # make dir + cd into it
