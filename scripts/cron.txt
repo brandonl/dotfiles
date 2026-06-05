@@ -1,4 +1,0 @@
-PATH=/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin
-SHELL=/bin/zsh
-
-@weekly /Users/brandon/dotfiles/scripts/cron.sh > /dev/null 2>&1

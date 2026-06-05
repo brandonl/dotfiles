@@ -1,0 +1,12 @@
+# Managed in dotfiles → ~/.config/mise/config.toml via install
+
+[tools]
+node = "24.9.0"
+python = "3.10.10"
+go = "1.23.1"
+ruby = "3.4"
+tuist = "4.195.17"
+usage = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node", "python", "go"]

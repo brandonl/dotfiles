@@ -1,0 +1,8 @@
+# Machine-specific zsh overrides (see zsh/99-local.zsh.example)
+zsh/99-local.zsh
+
+# Machine-specific Homebrew packages/taps
+Brewfile.local
+
+# Legacy brew bundle snapshot; install always upgrades to latest
+Brewfile.lock.json
