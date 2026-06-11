@@ -53,6 +53,27 @@ function gwd() {
 }
 
 
+# ── AWS ────────────────────────────────────────────────
+# fzf-pick an SSO profile, refresh the SSO token only if expired, then export
+# temp creds into the shell. All profiles share the `ltk` sso-session, so one
+# login covers every profile. Replaces awsume + fzf for this config.
+function awsx() {
+  local profile
+  profile="${1:-$(aws configure list-profiles | fzf --prompt='aws> ' \
+    --preview 'aws configure get sso_account_id --profile {}; aws configure get sso_role_name --profile {}')}"
+  [[ -z "$profile" ]] && return 1
+
+  if ! aws sts get-caller-identity --profile "$profile" &>/dev/null; then
+    aws sso login --profile "$profile" || return 1
+  fi
+
+  eval "$(aws configure export-credentials --profile "$profile" --format env)"
+  export AWS_PROFILE="$profile"
+  aws sts get-caller-identity --output json
+}
+# drop exported creds + profile from the shell
+function awsoff() { unset AWS_PROFILE AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_CREDENTIAL_EXPIRATION; }
+
 # ── DOCKER ────────────────────────────────────────────
 # docker / docker-compose OMZ plugins: aliases + completions
 
