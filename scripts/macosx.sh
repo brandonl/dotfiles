@@ -5,6 +5,26 @@ set -e
 # Ask for administrator password upfront
 sudo --validate
 
+ensure_sudo_touchid() {
+  local sudo_local=/etc/pam.d/sudo_local
+  local pam_line='auth       sufficient     pam_tid.so'
+
+  if [[ -f "$sudo_local" ]] && grep -q 'pam_tid' "$sudo_local"; then
+    return 0
+  fi
+
+  if [[ -f "$sudo_local" ]]; then
+    printf '%s\n' "$pam_line" | sudo tee -a "$sudo_local" >/dev/null
+  else
+    sudo tee "$sudo_local" >/dev/null <<'EOF'
+# sudo_local: local sudo config
+auth       sufficient     pam_tid.so
+EOF
+  fi
+}
+
+ensure_sudo_touchid
+
 defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
