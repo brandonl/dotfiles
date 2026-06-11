@@ -22,7 +22,7 @@ brew "coreutils" # GNU core utilities
 brew "crit" # Code review CLI
 brew "difftastic" # Syntax-aware diffs
 brew "direnv" # Directory env loading
-brew "docker", link: false # Docker CLI
+brew "docker" # Docker CLI
 brew "docker-buildx" # Docker build extensions
 brew "docker-compose" # Docker Compose CLI
 brew "docker-credential-helper" # Docker credential storage
