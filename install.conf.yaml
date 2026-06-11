@@ -22,6 +22,7 @@
         ./scripts/brew-autoupdate.sh,
         "Enable brew autoupdate (weekly upgrade/cleanup)",
       ]
+    - [./scripts/ensure-github-ssh.sh, "Bootstrap GitHub SSH if needed"]
     - [git submodule sync --recursive]
     - [git submodule update --init --recursive]
     - [mkdir -p $HOME/workspace]
