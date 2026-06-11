@@ -1,5 +1,3 @@
-eval "$(starship init zsh)"
-
 export DOTFILES="${DOTFILES:-$HOME/dotfiles}"
 if [[ -f "$DOTFILES/Brewfile" ]]; then
   export HOMEBREW_BUNDLE_FILE_GLOBAL="$DOTFILES/Brewfile"
