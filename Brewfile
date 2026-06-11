@@ -6,7 +6,6 @@ tap "domt4/autoupdate" # Brew autoupdate tap
 tap "homebrew/bundle" # Brewfile support
 tap "supabase/tap" # Supabase CLI tap
 tap "thoughtbot/formulae" # Thoughtbot tools tap
-tap "nikitabobko/tap" # AeroSpace tiling WM tap
 tap "xcodesorg/made" # Xcode manager tap
 brew "act" # Run GitHub Actions locally
 brew "atuin" # Shell history sync/search
@@ -109,7 +108,6 @@ cask "insta360-link-controller" # Webcam controller
 cask "iterm2" # Terminal emulator
 cask "karabiner-elements" # Keyboard remapping
 cask "meetingbar" # Calendar menu bar
-cask "nikitabobko/tap/aerospace" # i3-like tiling window manager
 cask "ngrok" # Local tunnel
 cask "obsidian" # Notes app
 cask "ollama-app" # Local LLM app
