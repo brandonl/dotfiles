@@ -46,6 +46,10 @@ source $ZSH/oh-my-zsh.sh
 #   • Registers strategy "atuin" so zsh-autosuggestions queries that DB for ghost text
 zsh-defer -c '(( $+commands[atuin] )) && { eval "$(atuin init zsh --disable-ai)"; ZSH_AUTOSUGGEST_STRATEGY=(atuin); }'
 
+# Once per day: compare Atuin history to config/tools/replacements.tsv.
+[[ -o interactive ]] && [[ -t 0 && -t 1 ]] && \
+  zsh-defer -c '(( $+commands[tools] )) && tools --nudge'
+
 # Tab → completion (fzf-tab). Accept ghost suggestion with → / End instead.
 
 # ── FZF ────────────────────────────────────────────────
