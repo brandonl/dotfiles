@@ -10,9 +10,7 @@ tap "nikitabobko/tap" # AeroSpace tiling WM tap
 tap "xcodesorg/made" # Xcode manager tap
 brew "act" # Run GitHub Actions locally
 brew "atuin" # Shell history sync/search
-brew "aws-sso-util" # AWS SSO helper
-brew "awscli" # AWS CLI
-brew "awsume" # AWS role switching
+brew "awscli" # AWS CLI (native SSO; see awsx in zsh/70-utils.zsh)
 brew "bat" # Better cat
 brew "btop" # Resource monitor (better htop)
 brew "buf" # Protobuf tooling
@@ -188,3 +186,5 @@ vscode "wix.vscode-import-cost" # Import size hints
 vscode "zhuangtongfa.material-theme" # Material theme
 uv "graphifyy" # Graphify CLI
 uv "specify-cli" # Specify CLI
+# Plugin for AWS CLI to start and end sessions that connect to managed instances
+cask "session-manager-plugin"
