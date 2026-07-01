@@ -25,6 +25,32 @@ EOF
 
 ensure_sudo_touchid
 
+disable_gui_service() {
+  local service="$1"
+  local target="gui/$(id -u)/${service}"
+  launchctl bootout "$target" 2>/dev/null || true
+  launchctl disable "$target" 2>/dev/null || true
+}
+
+# Unused bundled apps: bootout/disable background agents.
+BUNDLED_APP_SERVICES=(
+  com.apple.watchlistd              # Stocks
+  com.apple.weatherd                # Weather
+  com.apple.weather.menu            # Weather menu bar
+  com.apple.ScreenTimeAgent         # Screen Time
+  com.apple.ScreenTimeSettingsAgent
+  com.apple.tipsd                   # Tips
+  com.apple.photolibraryd           # Photos
+  com.apple.photoanalysisd
+  com.apple.cloudphotod
+  com.apple.mediastream.mstreamd
+  com.apple.mediaanalysisd
+)
+
+for service in "${BUNDLED_APP_SERVICES[@]}"; do
+  disable_gui_service "$service"
+done
+
 defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
