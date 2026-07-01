@@ -3,7 +3,6 @@ tap "bufbuild/buf" # Buf protobuf tap
 tap "buo/cask-upgrade" # Cask upgrade tap
 tap "charmbracelet/tap" # Charm CLI tap
 tap "domt4/autoupdate" # Brew autoupdate tap
-tap "homebrew/bundle" # Brewfile support
 tap "supabase/tap" # Supabase CLI tap
 tap "thoughtbot/formulae" # Thoughtbot tools tap
 tap "xcodesorg/made" # Xcode manager tap
@@ -57,7 +56,6 @@ brew "lerna" # JS monorepo tool
 brew "lnav" # Log file navigator
 brew "mas" # Mac App Store CLI
 brew "mise" # Runtime version manager
-brew "mysql@8.0" # MySQL client/server
 brew "onnx" # ML model format tools
 brew "openjdk" # Java runtime
 brew "parquet-cli" # Parquet file CLI
@@ -88,7 +86,7 @@ brew "atlassian-labs/acli/acli" # Atlassian CLI
 brew "charmbracelet/tap/crush" # AI coding CLI
 brew "supabase/tap/supabase" # Supabase CLI
 brew "thoughtbot/formulae/complexity" # Code complexity checker
-brew "xcodesorg/made/xcodes", link: false # Xcode installer CLI
+brew "xcodesorg/made/xcodes" # Xcode installer CLI
 cask "1password" # Password manager
 cask "bruno" # API client
 cask "clocker" # Menu bar time zones
@@ -102,7 +100,6 @@ cask "betterdisplay" # HiDPI + external display control
 cask "github" # GitHub desktop app
 cask "google-chrome" # Web browser
 cask "hammerspoon" # macOS automation (Lua)
-cask "graphql-playground" # GraphQL IDE
 cask "insomnia" # API client
 cask "insta360-link-controller" # Webcam controller
 cask "iterm2" # Terminal emulator
@@ -110,7 +107,6 @@ cask "karabiner-elements" # Keyboard remapping
 cask "meetingbar" # Calendar menu bar
 cask "ngrok" # Local tunnel
 cask "obsidian" # Notes app
-cask "ollama-app" # Local LLM app
 cask "postgres-app" # Postgres desktop app
 cask "proxyman" # HTTP debugging proxy
 cask "raycast" # Launcher
@@ -118,6 +114,7 @@ cask "rectangle" # Window manager
 cask "sanesidebuttons" # Mouse button fix
 cask "superwhisper" # Voice dictation
 cask "visual-studio-code" # Code editor
+cask "vscodium" # Code editor
 vscode "adpyke.vscode-sql-formatter" # SQL formatter
 vscode "akamud.vscode-theme-onedark" # One Dark theme
 vscode "anthropic.claude-code" # Claude Code integration

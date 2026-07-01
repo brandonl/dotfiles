@@ -6,6 +6,7 @@ typeset -U path PATH
 [[ -d "$HOME/bin" ]] && path+=("$HOME/bin")
 # Prepend Homebrew so it wins over stale binaries in inherited /usr/local/bin.
 [[ -d "/opt/homebrew/bin" ]] && path=("/opt/homebrew/bin" $path)
+[[ -d "/opt/homebrew/sbin" ]] && path=("/opt/homebrew/sbin" $path)
 
 [[ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ]] && path+=("/Applications/Visual Studio Code.app/Contents/Resources/app/bin")
 
