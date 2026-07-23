@@ -183,3 +183,11 @@ uv "graphifyy" # Graphify CLI
 uv "specify-cli" # Specify CLI
 # Plugin for AWS CLI to start and end sessions that connect to managed instances
 cask "session-manager-plugin"
+# Window peeking utility app
+cask "dockdoor"
+# System-wide AI autocomplete
+cask "cotypist"
+# Convert your caps lock key or any of your modifier keys to the hyper key
+cask "hyperkey"
+# Customise mouse behavior
+cask "linearmouse"
