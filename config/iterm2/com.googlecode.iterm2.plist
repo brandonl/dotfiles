@@ -21,7 +21,7 @@
 	<key>AiMaxTokens</key>
 	<integer>1048576</integer>
 	<key>AiModel</key>
-	<string>gemini-3-flash-preview</string>
+	<string>gemini-3.5-flash</string>
 	<key>AiResponseMaxTokens</key>
 	<integer>65536</integer>
 	<key>AitermURL</key>
@@ -704,6 +704,8 @@
 	<string>07CD50D8-C3D0-4655-B8D2-EC81B685A9FD</string>
 	<key>EnableAPIServer</key>
 	<true/>
+	<key>EnableDivisionView</key>
+	<true/>
 	<key>GlobalKeyMap</key>
 	<dict>
 		<key>0x19-0x60000</key>
@@ -826,8 +828,14 @@
 	</dict>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
+	<key>HideMenuBarInFullscreen</key>
+	<true/>
+	<key>HideTabNumber</key>
+	<true/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
+	<key>LeftTabBarWidth</key>
+	<real>167</real>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1326,13 +1334,21 @@
 	<true/>
 	<key>SoundForEsc</key>
 	<false/>
+	<key>StatusBarPosition</key>
+	<integer>0</integer>
+	<key>StretchTabsToFillBar</key>
+	<false/>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
+	<key>TabViewType</key>
+	<integer>2</integer>
 	<key>TerminalMargin</key>
 	<integer>20</integer>
 	<key>TerminalVMargin</key>
 	<integer>6</integer>
 	<key>VisualIndicatorForEsc</key>
+	<false/>
+	<key>WindowNumber</key>
 	<false/>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
