@@ -131,3 +131,21 @@ setup while validating a new tool).
    shell env (not in this repo), confirm private deps resolve.
 6. Commit lockfiles, document the two env vars (`DOTFILES_WITH_WORK`,
    `GITHUB_APM_PAT`) in README.
+
+## Appendix: Zed editor config (no new mechanism needed)
+
+Unrelated to APM, but same "sync across machines" goal — noted here since it
+came up alongside this work. Zed reads `~/.config/zed/settings.json` and
+`~/.config/zed/keymap.json`. The existing dotbot glob (`~/.config/` <-
+`config/**` in `install.conf.yaml`) already covers this — no new install step.
+
+Steps:
+1. In Zed: `Open Settings` / `Open Keymap` to create the files if missing.
+2. `mkdir -p config/zed`, move `settings.json` + `keymap.json` in.
+3. Rerun `./install` to symlink them back.
+4. Commit `config/zed/`.
+
+Skip `~/.config/zed/prompts/` and `themes/` — local cache/DB and downloaded
+assets, not portable config. Zed extensions (if wanted later) would need a
+separate tracked list, same pattern as the vscode extension lines already in
+`Brewfile`.
