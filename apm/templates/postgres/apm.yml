@@ -1,0 +1,10 @@
+name: template-postgres
+version: 1.0.0
+targets:
+  - agent-skills
+dependencies:
+  apm:
+    - git: supabase/agent-skills
+      path: skills/supabase-postgres-best-practices
+      targets: [agent-skills]
+  mcp: []

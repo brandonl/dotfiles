@@ -1,0 +1,13 @@
+name: template-go
+version: 1.0.0
+targets:
+  - agent-skills
+dependencies:
+  apm:
+    - git: affaan-m/everything-claude-code
+      path: skills/golang-patterns
+      targets: [agent-skills]
+    - git: affaan-m/everything-claude-code
+      path: skills/golang-testing
+      targets: [agent-skills]
+  mcp: []

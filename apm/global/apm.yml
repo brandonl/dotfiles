@@ -1,0 +1,92 @@
+name: dotfiles-global
+version: 1.0.0
+targets:
+  - claude
+  - agent-skills
+dependencies:
+  apm:
+    - git: juliusbrussee/caveman
+      ref: v1.9.1
+      targets: [claude, agent-skills]
+      skills:
+        - caveman-compress
+    - git: juliusbrussee/caveman
+      ref: v1.9.1
+      path: skills/caveman
+      targets: [claude, agent-skills]
+    - git: juliusbrussee/caveman
+      ref: v1.9.1
+      path: skills/caveman-commit
+      targets: [claude, agent-skills]
+    - git: juliusbrussee/caveman
+      ref: v1.9.1
+      path: skills/caveman-help
+      targets: [claude, agent-skills]
+    - git: juliusbrussee/caveman
+      ref: v1.9.1
+      path: skills/caveman-review
+      targets: [claude, agent-skills]
+    - git: pproenca/dot-skills
+      path: skills/.experimental/clean-architecture
+      targets: [claude, agent-skills]
+    - git: affaan-m/everything-claude-code
+      path: skills/hexagonal-architecture
+      targets: [claude, agent-skills]
+    - git: anthropics/claude-code
+      path: plugins/plugin-dev/skills/hook-development
+      targets: [claude, agent-skills]
+    - git: anthropics/claude-code
+      path: plugins/plugin-dev/skills/mcp-integration
+      targets: [claude, agent-skills]
+    - git: anthropics/claude-code
+      path: plugins/plugin-dev/skills/skill-development
+      targets: [claude, agent-skills]
+    - git: anthropics/claude-code
+      path: plugins/hookify/skills/writing-rules
+      targets: [claude, agent-skills]
+    - git: xixu-me/skills
+      path: skills/github-actions-docs
+      targets: [claude, agent-skills]
+    - git: mattpocock/skills
+      path: skills/engineering/diagnosing-bugs
+      targets: [claude, agent-skills]
+    - git: mattpocock/skills
+      path: skills/productivity/grill-me
+      targets: [claude, agent-skills]
+    - git: mattpocock/skills
+      path: skills/engineering/grill-with-docs
+      targets: [claude, agent-skills]
+    - git: mattpocock/skills
+      path: skills/productivity/handoff
+      targets: [claude, agent-skills]
+    - git: mattpocock/skills
+      path: skills/engineering/improve-codebase-architecture
+      targets: [claude, agent-skills]
+    - git: mattpocock/skills
+      path: skills/engineering/tdd
+      targets: [claude, agent-skills]
+    - git: alibaba/open-code-review
+      path: skills/open-code-review
+      targets: [claude, agent-skills]
+    - git: PeonPing/peon-ping
+      ref: v2.35.1
+      path: skills/peon-ping-config
+      targets: [claude, agent-skills]
+    - git: PeonPing/peon-ping
+      ref: v2.35.1
+      path: skills/peon-ping-log
+      targets: [claude, agent-skills]
+    - git: PeonPing/peon-ping
+      ref: v2.35.1
+      path: skills/peon-ping-toggle
+      targets: [claude, agent-skills]
+    - git: PeonPing/peon-ping
+      ref: v2.35.1
+      path: skills/peon-ping-use
+      targets: [claude, agent-skills]
+  mcp:
+    - name: context7
+      registry: false
+      transport: stdio
+      command: npx
+      args: ["-y", "@upstash/context7-mcp"]

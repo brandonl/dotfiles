@@ -1,0 +1,34 @@
+name: template-browser-extension
+version: 1.0.0
+targets:
+  - claude
+  - agent-skills
+dependencies:
+  apm:
+    - git: sickn33/antigravity-awesome-skills
+      path: skills/browser-extension-builder
+      targets: [agent-skills]
+    - git: mindrally/skills
+      path: chrome-extension-development
+      targets: [agent-skills]
+    - git: pproenca/dot-skills
+      path: skills/.experimental/chrome-extension-ui
+      targets: [agent-skills]
+    - git: wshobson/agents
+      path: plugins/javascript-typescript/skills/typescript-advanced-types
+      targets: [agent-skills]
+    - git: sickn33/antigravity-awesome-skills
+      path: skills/typescript-expert
+      targets: [agent-skills]
+    - git: supabase/supabase
+      path: .agents/skills/vitest
+      targets: [agent-skills]
+    - git: github/awesome-copilot
+      path: skills/playwright-generate-test
+      targets: [agent-skills]
+    - git: currents-dev/playwright-best-practices-skill
+      path: playwright-best-practices
+      targets: [agent-skills]
+  mcp:
+    - io.github.ChromeDevTools/chrome-devtools-mcp
+    - microsoft/playwright-mcp

@@ -1,0 +1,51 @@
+name: template-react-typescript
+version: 1.0.0
+targets:
+  - claude
+  - agent-skills
+dependencies:
+  apm:
+    - git: vercel-labs/agent-skills
+      path: skills/react-best-practices
+      targets: [agent-skills]
+    - git: wshobson/agents
+      path: plugins/frontend-mobile-development/skills/tailwind-design-system
+      targets: [agent-skills]
+    - git: wshobson/agents
+      path: plugins/javascript-typescript/skills/typescript-advanced-types
+      targets: [agent-skills]
+    - git: sickn33/antigravity-awesome-skills
+      path: skills/typescript-expert
+      targets: [agent-skills]
+    - git: supabase/supabase
+      path: .agents/skills/vitest
+      targets: [agent-skills]
+    - git: github/awesome-copilot
+      path: skills/playwright-generate-test
+      targets: [agent-skills]
+    - git: currents-dev/playwright-best-practices-skill
+      path: playwright-best-practices
+      targets: [agent-skills]
+    - git: microsoft/playwright
+      path: .claude/skills/playwright-dev
+      targets: [agent-skills]
+    - git: fallow-rs/fallow-skills
+      path: fallow/skills/fallow
+      targets: [agent-skills]
+    - git: tanstack-skills/tanstack-skills
+      path: plugins/tanstack-config/skills/tanstack-config
+      targets: [agent-skills]
+    - git: tanstack-skills/tanstack-skills
+      path: plugins/tanstack-pacer/skills/tanstack-pacer
+      targets: [agent-skills]
+    - git: tanstack-skills/tanstack-skills
+      path: plugins/tanstack-query/skills/tanstack-query
+      targets: [agent-skills]
+    - git: tanstack-skills/tanstack-skills
+      path: plugins/tanstack-store/skills/tanstack-store
+      targets: [agent-skills]
+    - git: millionco/react-doctor
+      path: skills/react-doctor
+      targets: [agent-skills]
+  mcp:
+    - microsoft/playwright-mcp

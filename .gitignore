@@ -6,3 +6,6 @@ Brewfile.local
 
 # Legacy brew bundle snapshot; install always upgrades to latest
 Brewfile.lock.json
+
+# APM installed dependencies
+/apm/**/apm_modules/

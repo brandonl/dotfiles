@@ -24,6 +24,10 @@
       ]
     - [git submodule sync --recursive]
     - [git submodule update --init --recursive]
+    - [
+        ./scripts/apm-install.sh,
+        "Install and sync global agent configuration via APM",
+      ]
     - [mkdir -p $HOME/workspace]
 
 # Could just use gnu-stow

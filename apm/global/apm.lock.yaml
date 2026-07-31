@@ -1,0 +1,716 @@
+lockfile_version: '1'
+generated_at: '2026-07-31T18:32:44.343498+00:00'
+apm_version: 0.26.0
+dependencies:
+- repo_url: affaan-m/everything-claude-code
+  name: hexagonal-architecture
+  host: github.com
+  resolved_commit: e4e4163101f162881e628f300a9ca4e6a940bcea
+  version: unknown
+  virtual_path: skills/hexagonal-architecture
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:423c177b1d49c286960da0d20f0788d57f5cbde3c0a8b706a0f99ba400c47dad
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: alibaba/open-code-review
+  name: open-code-review
+  host: github.com
+  resolved_commit: 80a57946674bcfee5512fda9ca8d0c4e1db2b19c
+  version: unknown
+  virtual_path: skills/open-code-review
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:5ebd7726ff89b3f5906b6dc4f3a16dfa9684e30181f619d95a3fb7bc00ad3f3a
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: anthropics/claude-code
+  name: Writing Hookify Rules
+  host: github.com
+  resolved_commit: 7ef6eec9d9ba84ea6f233f26c45f1df5c5991843
+  version: unknown
+  virtual_path: plugins/hookify/skills/writing-rules
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:429463a57a711ee42d1373a726e66ccc2189118022f0c281dbb48b28796d417f
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: anthropics/claude-code
+  name: Hook Development
+  host: github.com
+  resolved_commit: 7ef6eec9d9ba84ea6f233f26c45f1df5c5991843
+  version: unknown
+  virtual_path: plugins/plugin-dev/skills/hook-development
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:f00a1f5edcb60a60e0188be63bebeca2239199a4c9314a5d755bb5af766c2773
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: anthropics/claude-code
+  name: MCP Integration
+  host: github.com
+  resolved_commit: 7ef6eec9d9ba84ea6f233f26c45f1df5c5991843
+  version: unknown
+  virtual_path: plugins/plugin-dev/skills/mcp-integration
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:1c8562644cf4aff17a2c545498999beec24045665aa1cb278a092c7a77a8cab8
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: anthropics/claude-code
+  name: Skill Development
+  host: github.com
+  resolved_commit: 7ef6eec9d9ba84ea6f233f26c45f1df5c5991843
+  version: unknown
+  virtual_path: plugins/plugin-dev/skills/skill-development
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:9ae4ff08d208f0ef73f660276cca860c4bb76f18a867c4abcc68414fd39778f3
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: juliusbrussee/caveman
+  name: caveman
+  host: github.com
+  resolved_commit: 0d95a81d35a9f2d123a5e9430d1cfc43d55f1bb0
+  resolved_ref: v1.9.1
+  version: 0d95a81
+  package_type: marketplace_plugin
+  deployed_files:
+  - .agents/skills/caveman
+  - .agents/skills/caveman-commit
+  - .agents/skills/caveman-commit/README.md
+  - .agents/skills/caveman-help
+  - .agents/skills/caveman-help/README.md
+  - .agents/skills/caveman-review
+  - .agents/skills/caveman-review/README.md
+  - .agents/skills/caveman/README.md
+  - .claude/agents/cavecrew-builder.md
+  - .claude/agents/cavecrew-investigator.md
+  - .claude/agents/cavecrew-reviewer.md
+  - .claude/hooks/caveman/src/hooks/README.md
+  - .claude/hooks/caveman/src/hooks/cavecrew-model-overrides.js
+  - .claude/hooks/caveman/src/hooks/caveman-activate.js
+  - .claude/hooks/caveman/src/hooks/caveman-config.js
+  - .claude/hooks/caveman/src/hooks/caveman-mode-tracker.js
+  - .claude/hooks/caveman/src/hooks/caveman-stats.js
+  - .claude/hooks/caveman/src/hooks/caveman-statusline.ps1
+  - .claude/hooks/caveman/src/hooks/caveman-statusline.sh
+  - .claude/hooks/caveman/src/hooks/checksums.sha256
+  - .claude/hooks/caveman/src/hooks/install.ps1
+  - .claude/hooks/caveman/src/hooks/install.sh
+  - .claude/hooks/caveman/src/hooks/package.json
+  - .claude/hooks/caveman/src/hooks/uninstall.ps1
+  - .claude/hooks/caveman/src/hooks/uninstall.sh
+  - .claude/skills/caveman-compress
+  - .claude/skills/caveman-compress/README.md
+  - .claude/skills/caveman-compress/SECURITY.md
+  - .claude/skills/caveman-compress/SKILL.md
+  - .claude/skills/caveman-compress/scripts/__init__.py
+  - .claude/skills/caveman-compress/scripts/__main__.py
+  - .claude/skills/caveman-compress/scripts/benchmark.py
+  - .claude/skills/caveman-compress/scripts/cli.py
+  - .claude/skills/caveman-compress/scripts/compress.py
+  - .claude/skills/caveman-compress/scripts/detect.py
+  - .claude/skills/caveman-compress/scripts/validate.py
+  - .claude/skills/caveman/.claude-plugin/plugin.json
+  - .claude/skills/caveman/bin/install.js
+  deployed_file_hashes:
+    .agents/skills/caveman-commit/README.md: sha256:9b3157ce8ee8907231ee755766f2d1a8d762486b8d541d09894913043ed37944
+    .agents/skills/caveman-help/README.md: sha256:0a35beec7acf6c1c4a28af04b2d88cdcc9e43bf978b2d1941b625ce2bc51c221
+    .agents/skills/caveman-review/README.md: sha256:6e61da50505309ab9d1352987eef51ce3c7697b262e889d16521d219330fcbbb
+    .agents/skills/caveman/README.md: sha256:d14dfdf139aba87beb0bffe19a369a1bcdf0ccea69a909f404702fb570fc0585
+    .claude/agents/cavecrew-builder.md: sha256:135af639b287ed7534b66d01390c4dc48d98683af52232728a0e87db9c558b3e
+    .claude/agents/cavecrew-investigator.md: sha256:f1ce01150aeeec7de98d487f41693d27eba1bc9d4cc67f4c774675bb21c24fc2
+    .claude/agents/cavecrew-reviewer.md: sha256:ae45346edae2cdb97018a38ebdcb79b162c59875cac2921d976a7d7540e4df70
+    .claude/hooks/caveman/src/hooks/README.md: sha256:2ed93bffa47ef4109e437a3aa612903f5e53e4392de7195d37f24a1dbd5e42fd
+    .claude/hooks/caveman/src/hooks/cavecrew-model-overrides.js: sha256:9f2601e8551653609f0b9d700c9bd75bffa43747d2db18ffe83fb73de5dc3607
+    .claude/hooks/caveman/src/hooks/caveman-activate.js: sha256:bc0af3ba327657630e5f6c60be619e6b5394bf03edc29b1384a15f09a1b348bf
+    .claude/hooks/caveman/src/hooks/caveman-config.js: sha256:f47fe2e6440578eeb20408bc3131b63fb8e1ae4f6ea26dbdcca33e7901e5ee8c
+    .claude/hooks/caveman/src/hooks/caveman-mode-tracker.js: sha256:3e34f004d4a9e65609f8c95b47dfe5f0e3a6f2d16b88c7f8af730187ee2fb246
+    .claude/hooks/caveman/src/hooks/caveman-stats.js: sha256:433a345a279c2d54be51864ef77c0a7b19d0f8604b9a441ce0a1eded31f113e8
+    .claude/hooks/caveman/src/hooks/caveman-statusline.ps1: sha256:1690c639f05940cbff39e0383a27053898b30c224aa651043db29b2842cb524a
+    .claude/hooks/caveman/src/hooks/caveman-statusline.sh: sha256:d2deff457d0a5d8e1848193e6af6a68a0ebdba4fbdf250889400d5ea231e088f
+    .claude/hooks/caveman/src/hooks/checksums.sha256: sha256:05b087d6db80dc58cb81ecd83374a008fd14f9de159e4cfe7771bc738ca6afe3
+    .claude/hooks/caveman/src/hooks/install.ps1: sha256:cc439e2f05564de875f24b917a7fe129e3a664be9e2a9f990ac0622d653b31fa
+    .claude/hooks/caveman/src/hooks/install.sh: sha256:495faef6caf9d63cfb30226f3fef6a252a2c47d16c0264af0126e92b18408a94
+    .claude/hooks/caveman/src/hooks/package.json: sha256:8005a3491db7d92f36ac66369861589f9c47123d3a7c71e643fc2c06168cd45a
+    .claude/hooks/caveman/src/hooks/uninstall.ps1: sha256:1db7be0695faaefefbcd6a6cdb1689efdd4da0a813b41e57bc6948c8cde0c2b7
+    .claude/hooks/caveman/src/hooks/uninstall.sh: sha256:ba47365cfb88ed35a481ad75534410548a4c79c0d47dd146ea424e6e1dea4879
+    .claude/skills/caveman-compress/README.md: sha256:dd772fc8791ea5bd6041e441f91ff355392d4f30c9f56310be7f4bc6cdaf5126
+    .claude/skills/caveman-compress/SECURITY.md: sha256:ac3432493cfe71368a141f437bf35562eb8f4ce07ae699e5399c0cb665e02da3
+    .claude/skills/caveman-compress/SKILL.md: sha256:8b0d64c622d8a70411bbd86e736ac23cc0465fca1943a37f081e58e9d3afd210
+    .claude/skills/caveman-compress/scripts/__init__.py: sha256:429c3e1c5cc5b9705f28d77f303c728304ae68693913ad3d5ce9b5a44c8ee40f
+    .claude/skills/caveman-compress/scripts/__main__.py: sha256:6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279
+    .claude/skills/caveman-compress/scripts/benchmark.py: sha256:84a5a94bebcce03c9dc4a70333f120f03e11075bce9298e1e74b95594e142d43
+    .claude/skills/caveman-compress/scripts/cli.py: sha256:17edb6b425adc0ea04e35f1e90dfe318ba4232a1b815c5ff7d6cff7d574efea6
+    .claude/skills/caveman-compress/scripts/compress.py: sha256:9537671f5b8bf81bfe99078666948a93b5a5f1ae07d2f7bc3f085fe1a6b408c0
+    .claude/skills/caveman-compress/scripts/detect.py: sha256:46bb2b3092c2896eec023135495923701716c586b370976f244674342dd9a35e
+    .claude/skills/caveman-compress/scripts/validate.py: sha256:8b9e752b70868f6e03b3d7e76de19dd6b4ac92dad50522992738340e9916dc0d
+    .claude/skills/caveman/.claude-plugin/plugin.json: sha256:b76999bd244fa59c2b8805b1c2b573458e2d065b58e5904fc8e9e545e3dac7a6
+    .claude/skills/caveman/bin/install.js: sha256:572ed924b7a0f7bb23f2783ca0abf6d398204ae98e925d129f420d0bdad2c1b3
+  content_hash: sha256:f97f0c9c78157bf4176f7ff69b93ea3631c21103e803eeb71fe0f786efb50996
+  skill_subset:
+  - caveman-compress
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: juliusbrussee/caveman
+  name: caveman
+  host: github.com
+  resolved_commit: 0d95a81d35a9f2d123a5e9430d1cfc43d55f1bb0
+  resolved_ref: v1.9.1
+  version: unknown
+  virtual_path: skills/caveman
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:d18cdf73a5f5c496d681a43a6846336b110223bdffa6817b8992529c57f1a815
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: juliusbrussee/caveman
+  name: caveman-commit
+  host: github.com
+  resolved_commit: 0d95a81d35a9f2d123a5e9430d1cfc43d55f1bb0
+  resolved_ref: v1.9.1
+  version: unknown
+  virtual_path: skills/caveman-commit
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:790a4eeace0be35c6691faf923518ba5bd50f1f1305d1101d09dd4971be94e00
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: juliusbrussee/caveman
+  name: caveman-help
+  host: github.com
+  resolved_commit: 0d95a81d35a9f2d123a5e9430d1cfc43d55f1bb0
+  resolved_ref: v1.9.1
+  version: unknown
+  virtual_path: skills/caveman-help
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:dd85267e76baad76995157e7b9f762dfa557cd58951ee92af0c283f48aa26537
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: juliusbrussee/caveman
+  name: caveman-review
+  host: github.com
+  resolved_commit: 0d95a81d35a9f2d123a5e9430d1cfc43d55f1bb0
+  resolved_ref: v1.9.1
+  version: unknown
+  virtual_path: skills/caveman-review
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:fb7214a1c5793bae6ba8b1be4329e2e6f40dbec6dd911dfb335ad29f09c316a1
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: mattpocock/skills
+  name: diagnosing-bugs
+  host: github.com
+  resolved_commit: 2ab958093e83e0ec752e6c1c5932da465bf23e0c
+  version: unknown
+  virtual_path: skills/engineering/diagnosing-bugs
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:4cfc9a76401a2c153cc650115523393cecf58f7ad67a0ac81c193bd3baad59d0
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: mattpocock/skills
+  name: grill-with-docs
+  host: github.com
+  resolved_commit: 2ab958093e83e0ec752e6c1c5932da465bf23e0c
+  version: unknown
+  virtual_path: skills/engineering/grill-with-docs
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:c3a266bcc09eab29358eaae6e288f9a2cd492fd0af2bcaeeec55fd6207da9a89
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: mattpocock/skills
+  name: improve-codebase-architecture
+  host: github.com
+  resolved_commit: 2ab958093e83e0ec752e6c1c5932da465bf23e0c
+  version: unknown
+  virtual_path: skills/engineering/improve-codebase-architecture
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:99a9513188420a190ea4e20f034d9a8f5ae43f887ba4c007fc19b1f168c716ff
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: mattpocock/skills
+  name: tdd
+  host: github.com
+  resolved_commit: 2ab958093e83e0ec752e6c1c5932da465bf23e0c
+  version: unknown
+  virtual_path: skills/engineering/tdd
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:f8a22902156d595540b198ee06c0ca793a67935eeb9b681df5dbdf0e193b286e
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: mattpocock/skills
+  name: grill-me
+  host: github.com
+  resolved_commit: 2ab958093e83e0ec752e6c1c5932da465bf23e0c
+  version: unknown
+  virtual_path: skills/productivity/grill-me
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:0ac1a28d5e7ab05c4a51046c9d74fd7bfc070ba6a3b9ec8451bd274e746d67b6
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: mattpocock/skills
+  name: handoff
+  host: github.com
+  resolved_commit: 2ab958093e83e0ec752e6c1c5932da465bf23e0c
+  version: unknown
+  virtual_path: skills/productivity/handoff
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:89e3d3e72b94973b557120eee18232218691989f53564f9e163467e6d377d5a8
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: peonping/peon-ping
+  name: peon-ping-config
+  host: github.com
+  resolved_commit: fef63cfdb134f2ed207c02ed69772f9dc8a9b177
+  resolved_ref: v2.35.1
+  version: unknown
+  virtual_path: skills/peon-ping-config
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:7e6819fe278666b54cfd022b2d40fbdd8e9566dbb7c1bae7c982c914d7a44ce3
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: peonping/peon-ping
+  name: peon-ping-log
+  host: github.com
+  resolved_commit: fef63cfdb134f2ed207c02ed69772f9dc8a9b177
+  resolved_ref: v2.35.1
+  version: unknown
+  virtual_path: skills/peon-ping-log
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:6d273954c8027898fc833b8d6775fae9c31d3ed8bbabc29a9eed29be7e81be52
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: peonping/peon-ping
+  name: peon-ping-toggle
+  host: github.com
+  resolved_commit: fef63cfdb134f2ed207c02ed69772f9dc8a9b177
+  resolved_ref: v2.35.1
+  version: unknown
+  virtual_path: skills/peon-ping-toggle
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:4e17ca2cb6bf652a79be39e22ba5e557381b78a8a27d0adc4add386fcc65a132
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: peonping/peon-ping
+  name: peon-ping-use
+  host: github.com
+  resolved_commit: fef63cfdb134f2ed207c02ed69772f9dc8a9b177
+  resolved_ref: v2.35.1
+  version: unknown
+  virtual_path: skills/peon-ping-use
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:879637353538bff912d100a0d56db909f415a0a682b58a3d7907d706c5426bb4
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: pproenca/dot-skills
+  name: clean-architecture
+  host: github.com
+  resolved_commit: c9228d2d0c1391190168845824ceb4e33bb844fb
+  version: unknown
+  virtual_path: skills/.experimental/clean-architecture
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:808f2bb0d6a900ef6d8d40b7de64ffa6ec85754a82b6592096926625649d8e55
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: xixu-me/skills
+  name: github-actions-docs
+  host: github.com
+  resolved_commit: 1a68a20b1fc50c5bf215ecbc016ad2ba4b30791f
+  version: unknown
+  virtual_path: skills/github-actions-docs
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:011072c2d82d9c207a569ce303f8ca3b47b20b587fb9c9ec35e3e555bbb9d45e
+  target_subset:
+  - agent-skills
+  - claude
+deployments:
+- kind: project-relative
+  target: claude
+  value: .claude/agents/cavecrew-builder.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:135af639b287ed7534b66d01390c4dc48d98683af52232728a0e87db9c558b3e
+- kind: project-relative
+  target: claude
+  value: .claude/agents/cavecrew-investigator.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:f1ce01150aeeec7de98d487f41693d27eba1bc9d4cc67f4c774675bb21c24fc2
+- kind: project-relative
+  target: claude
+  value: .claude/agents/cavecrew-reviewer.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:ae45346edae2cdb97018a38ebdcb79b162c59875cac2921d976a7d7540e4df70
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/caveman/src/hooks/README.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:2ed93bffa47ef4109e437a3aa612903f5e53e4392de7195d37f24a1dbd5e42fd
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/caveman/src/hooks/cavecrew-model-overrides.js
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:9f2601e8551653609f0b9d700c9bd75bffa43747d2db18ffe83fb73de5dc3607
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/caveman/src/hooks/caveman-activate.js
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:bc0af3ba327657630e5f6c60be619e6b5394bf03edc29b1384a15f09a1b348bf
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/caveman/src/hooks/caveman-config.js
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:f47fe2e6440578eeb20408bc3131b63fb8e1ae4f6ea26dbdcca33e7901e5ee8c
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/caveman/src/hooks/caveman-mode-tracker.js
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:3e34f004d4a9e65609f8c95b47dfe5f0e3a6f2d16b88c7f8af730187ee2fb246
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/caveman/src/hooks/caveman-stats.js
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:433a345a279c2d54be51864ef77c0a7b19d0f8604b9a441ce0a1eded31f113e8
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/caveman/src/hooks/caveman-statusline.ps1
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:1690c639f05940cbff39e0383a27053898b30c224aa651043db29b2842cb524a
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/caveman/src/hooks/caveman-statusline.sh
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:d2deff457d0a5d8e1848193e6af6a68a0ebdba4fbdf250889400d5ea231e088f
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/caveman/src/hooks/checksums.sha256
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:05b087d6db80dc58cb81ecd83374a008fd14f9de159e4cfe7771bc738ca6afe3
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/caveman/src/hooks/install.ps1
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:cc439e2f05564de875f24b917a7fe129e3a664be9e2a9f990ac0622d653b31fa
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/caveman/src/hooks/install.sh
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:495faef6caf9d63cfb30226f3fef6a252a2c47d16c0264af0126e92b18408a94
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/caveman/src/hooks/package.json
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:8005a3491db7d92f36ac66369861589f9c47123d3a7c71e643fc2c06168cd45a
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/caveman/src/hooks/uninstall.ps1
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:1db7be0695faaefefbcd6a6cdb1689efdd4da0a813b41e57bc6948c8cde0c2b7
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/caveman/src/hooks/uninstall.sh
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:ba47365cfb88ed35a481ad75534410548a4c79c0d47dd146ea424e6e1dea4879
+- kind: project-relative
+  target: claude
+  value: .claude/skills/caveman-compress
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/caveman-compress/README.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:dd772fc8791ea5bd6041e441f91ff355392d4f30c9f56310be7f4bc6cdaf5126
+- kind: project-relative
+  target: claude
+  value: .claude/skills/caveman-compress/SECURITY.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:ac3432493cfe71368a141f437bf35562eb8f4ce07ae699e5399c0cb665e02da3
+- kind: project-relative
+  target: claude
+  value: .claude/skills/caveman-compress/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:8b0d64c622d8a70411bbd86e736ac23cc0465fca1943a37f081e58e9d3afd210
+- kind: project-relative
+  target: claude
+  value: .claude/skills/caveman-compress/scripts/__init__.py
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:429c3e1c5cc5b9705f28d77f303c728304ae68693913ad3d5ce9b5a44c8ee40f
+- kind: project-relative
+  target: claude
+  value: .claude/skills/caveman-compress/scripts/__main__.py
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279
+- kind: project-relative
+  target: claude
+  value: .claude/skills/caveman-compress/scripts/benchmark.py
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:84a5a94bebcce03c9dc4a70333f120f03e11075bce9298e1e74b95594e142d43
+- kind: project-relative
+  target: claude
+  value: .claude/skills/caveman-compress/scripts/cli.py
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:17edb6b425adc0ea04e35f1e90dfe318ba4232a1b815c5ff7d6cff7d574efea6
+- kind: project-relative
+  target: claude
+  value: .claude/skills/caveman-compress/scripts/compress.py
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:9537671f5b8bf81bfe99078666948a93b5a5f1ae07d2f7bc3f085fe1a6b408c0
+- kind: project-relative
+  target: claude
+  value: .claude/skills/caveman-compress/scripts/detect.py
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:46bb2b3092c2896eec023135495923701716c586b370976f244674342dd9a35e
+- kind: project-relative
+  target: claude
+  value: .claude/skills/caveman-compress/scripts/validate.py
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:8b9e752b70868f6e03b3d7e76de19dd6b4ac92dad50522992738340e9916dc0d
+- kind: project-relative
+  target: claude
+  value: .claude/skills/caveman/.claude-plugin/plugin.json
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:b76999bd244fa59c2b8805b1c2b573458e2d065b58e5904fc8e9e545e3dac7a6
+- kind: project-relative
+  target: claude
+  value: .claude/skills/caveman/bin/install.js
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:572ed924b7a0f7bb23f2783ca0abf6d398204ae98e925d129f420d0bdad2c1b3
+- kind: project-relative
+  target: codex
+  value: .agents/skills/caveman
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/caveman-commit
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/caveman-commit/README.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:9b3157ce8ee8907231ee755766f2d1a8d762486b8d541d09894913043ed37944
+- kind: project-relative
+  target: codex
+  value: .agents/skills/caveman-help
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/caveman-help/README.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:0a35beec7acf6c1c4a28af04b2d88cdcc9e43bf978b2d1941b625ce2bc51c221
+- kind: project-relative
+  target: codex
+  value: .agents/skills/caveman-review
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/caveman-review/README.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:6e61da50505309ab9d1352987eef51ce3c7697b262e889d16521d219330fcbbb
+- kind: project-relative
+  target: codex
+  value: .agents/skills/caveman/README.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:d14dfdf139aba87beb0bffe19a369a1bcdf0ccea69a909f404702fb570fc0585
+mcp_servers:
+- context7
+mcp_configs:
+  context7:
+    name: context7
+    transport: stdio
+    args:
+    - -y
+    - '@upstash/context7-mcp'
+    registry: false
+    command: npx
