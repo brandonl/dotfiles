@@ -16,7 +16,7 @@ usage() {
 Usage: ./install [options] [-- dotbot-args...]
 
 Options:
-  --with-macosx  Apply macOS-specific settings (defaults, login items, iTerm prefs, brew analytics off)
+  --with-macosx  Apply macOS settings, Touch ID sudo, login items, and iTerm prefs
   -h, --help     Show this help
 
 By default, scripts/macosx.sh is skipped. Dotbot options can follow or appear after "--".

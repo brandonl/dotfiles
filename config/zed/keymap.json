@@ -1,0 +1,44 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-]": "pane::DeploySearch",
+      "f3": [
+        "action::Sequence",
+        [
+          "git::Diff",
+          "git_panel::ToggleFocus"
+        ]
+      ],
+      "f1": "project_panel::Toggle",
+      "f2": "agent::ToggleFocus"
+      // "shift shift": "file_finder::Toggle"
+    },
+    "unbind": {
+      "cmd-shift-f": "pane::DeploySearch"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "f1": "project_panel::Toggle",
+      "f2": "agent::Toggle"
+    },
+    "unbind": {
+      "cmd-]": "editor::Indent"
+    }
+  }
+]

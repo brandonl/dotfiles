@@ -2,28 +2,7 @@
 
 set -e
 
-# Ask for administrator password upfront
-sudo --validate
-
-ensure_sudo_touchid() {
-  local sudo_local=/etc/pam.d/sudo_local
-  local pam_line='auth       sufficient     pam_tid.so'
-
-  if [[ -f "$sudo_local" ]] && grep -q 'pam_tid' "$sudo_local"; then
-    return 0
-  fi
-
-  if [[ -f "$sudo_local" ]]; then
-    printf '%s\n' "$pam_line" | sudo tee -a "$sudo_local" >/dev/null
-  else
-    sudo tee "$sudo_local" >/dev/null <<'EOF'
-# sudo_local: local sudo config
-auth       sufficient     pam_tid.so
-EOF
-  fi
-}
-
-ensure_sudo_touchid
+"$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/sudo-touchid.sh"
 
 disable_gui_service() {
   local service="$1"
@@ -52,6 +31,8 @@ for service in "${BUNDLED_APP_SERVICES[@]}"; do
 done
 
 defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write -g AppleIconAppearanceTheme -string ClearLight
+defaults write -g AppleShowScrollBars -string Automatic
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
 defaults write NSGlobalDomain KeyRepeat -int 1
@@ -60,6 +41,7 @@ defaults write com.apple.Finder FXPreferredViewStyle Nlsv
 # Show the ~/Library folder.
 chflags nohidden ~/Library
 defaults write com.apple.dock "show-recents" -bool false
+defaults write com.apple.dock autohide -bool false
 defaults write com.apple.dock minimize-to-application -bool true
 defaults write com.apple.dock show-process-indicators -bool true
 defaults write com.apple.dock tilesize -int 56
@@ -96,6 +78,15 @@ defaults write com.apple.finder _FXSortFoldersFirst -bool true
 # Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 defaults write -g AppleInterfaceStyle -string Dark
+defaults write com.apple.WindowManager AppWindowGroupingBehavior -int 1
+defaults write com.apple.WindowManager AutoHide -bool true
+defaults write com.apple.WindowManager EnableTiledWindowMargins -bool false
+defaults write com.apple.WindowManager EnableTilingByEdgeDrag -bool false
+defaults write com.apple.WindowManager EnableTopTilingByEdgeDrag -bool false
+defaults write com.apple.WindowManager GloballyEnabled -bool false
+defaults write com.apple.WindowManager HideDesktop -bool true
+defaults write com.apple.WindowManager StageManagerHideWidgets -bool true
+defaults write com.apple.WindowManager StandardHideWidgets -bool true
 defaults write -g com.apple.mouse.scaling -int 2
 defaults write com.apple.menuextra.clock ShowAMPM -bool true
 defaults write com.apple.menuextra.clock ShowDate -bool false
@@ -120,12 +111,57 @@ defaults write com.apple.AppleMultitouchMouse MouseVerticalScroll -bool true
 defaults write com.apple.AppleMultitouchMouse UserPreferences -bool true
 defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/dotfiles/config/iterm2"
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
+# Rectangle
+defaults write com.knollsoft.Rectangle alternateDefaultShortcuts -bool false
+defaults write com.knollsoft.Rectangle reflowTodo -dict keyCode -int 45 modifierFlags -int 786432
+defaults write com.knollsoft.Rectangle subsequentExecutionMode -int 0
+defaults write com.knollsoft.Rectangle toggleTodo -dict keyCode -int 11 modifierFlags -int 786432
+defaults write com.knollsoft.Rectangle windowSnapping -int 2
+defaults write com.knollsoft.Rectangle SUEnableAutomaticChecks -bool false
+
+# Hyperkey
+defaults write com.knollsoft.Hyperkey capsLockRemapped -int 2
+defaults write com.knollsoft.Hyperkey executeQuickHyperKey -int 1
+defaults write com.knollsoft.Hyperkey hyperFlags -int 1966080
+defaults write com.knollsoft.Hyperkey keyRemap -int 1
+defaults write com.knollsoft.Hyperkey launchOnLogin -bool true
+defaults write com.knollsoft.Hyperkey SUEnableAutomaticChecks -bool true
+
+# DockDoor
+defaults write com.ethanbills.DockDoor activeAppIndicatorLength -int 37
+defaults write com.ethanbills.DockDoor activeAppIndicatorShift -int 0
+defaults write com.ethanbills.DockDoor enableCmdTabEnhancements -bool true
+defaults write com.ethanbills.DockDoor reopenSettingsAfterRestart -bool false
+defaults write com.ethanbills.DockDoor showActiveAppIndicator -bool true
+defaults write com.ethanbills.DockDoor SUAutomaticallyUpdate -bool true
+defaults write com.ethanbills.DockDoor SUEnableAutomaticChecks -bool true
+defaults write com.ethanbills.DockDoor SUSendProfileInfo -bool false
+
+# Clocker stores preferences inside its sandbox container.
+clocker_preferences="$HOME/Library/Containers/com.abhishek.Clocker/Data/Library/Preferences/com.abhishek.Clocker"
+if [[ -d "$(dirname "$clocker_preferences")" ]]; then
+  defaults write "$clocker_preferences" com.abhishek.analyticsOptOut -bool true
+  defaults write "$clocker_preferences" com.abhishek.menubarCompactMode -int 0
+  defaults write "$clocker_preferences" defaultTheme -int 4
+  defaults write "$clocker_preferences" installHomeIndicatorObject -int 1
+  defaults write "$clocker_preferences" ShowUpcomingEventView -string NO
+  defaults write "$clocker_preferences" startAtLogin -int 1
+else
+  echo "Clocker preferences unavailable until Clocker has launched once."
+fi
+
+# Cotypist
+defaults write app.cotypist.Cotypist AnalyticsManager_analyticsDisabled -bool true
+defaults write app.cotypist.Cotypist ModelRepository_selectedModel -string gemma-4-E2B-i1-Q4_K_M
+defaults write app.cotypist.Cotypist ModelRepository_shouldShowCompletedWordCountInMenuBar -bool false
+defaults write app.cotypist.Cotypist TextFieldContextCapture_pasteboardContextEnabled -bool true
+
 brew analytics off
 
 # Restart applications
-killall Dock > /dev/null 2>&1
-killall Finder > /dev/null 2>&1
-killall iTerm2 > /dev/null 2>&1
+"$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/restart-apps.sh" \
+  Dock Finder SystemUIServer iTerm2
 # killall Safari &> /dev/null
 
 # Install Xcode Command-Line Tools
@@ -163,3 +199,5 @@ ensure_login_item "superwhisper" "/Applications/superwhisper.app"
 ensure_login_item "Clocker" "/Applications/Clocker.app"
 ensure_login_item "Rectangle" "/Applications/Rectangle.app"
 ensure_login_item "SaneSideButtons" "/Applications/SaneSideButtons.app"
+
+open -gj -a Clocker
