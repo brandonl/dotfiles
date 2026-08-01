@@ -159,11 +159,6 @@ defaults write app.cotypist.Cotypist TextFieldContextCapture_pasteboardContextEn
 
 brew analytics off
 
-# Restart applications
-"$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/restart-apps.sh" \
-  Dock Finder SystemUIServer iTerm2
-# killall Safari &> /dev/null
-
 # Install Xcode Command-Line Tools
 if ! xcode-select -p ; then
   	echo -e '\n🔒  Installing xcode cli tools\n'
@@ -201,3 +196,4 @@ ensure_login_item "Rectangle" "/Applications/Rectangle.app"
 ensure_login_item "SaneSideButtons" "/Applications/SaneSideButtons.app"
 
 open -gj -a Clocker
+echo "macOS settings applied. Restart affected applications or log out when convenient."
