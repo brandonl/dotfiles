@@ -9,3 +9,6 @@ Brewfile.lock.json
 
 # APM installed dependencies
 /apm/**/apm_modules/
+
+# Override the global settings.json ignore for portable Zed settings.
+!/config/zed/settings.json
