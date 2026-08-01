@@ -11,3 +11,10 @@ if rg -n 'restart-apps\.sh|killall' "$script"; then
 fi
 
 rg -F 'macOS settings applied.' "$script" >/dev/null
+
+if rg -F 'open -gj -a Clocker' "$script"; then
+  echo "Clocker must not rely on LaunchServices name lookup" >&2
+  exit 1
+fi
+
+rg -F 'open-app-if-installed.sh" "/Applications/Clocker.app"' "$script" >/dev/null

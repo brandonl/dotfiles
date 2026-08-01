@@ -195,5 +195,5 @@ ensure_login_item "Clocker" "/Applications/Clocker.app"
 ensure_login_item "Rectangle" "/Applications/Rectangle.app"
 ensure_login_item "SaneSideButtons" "/Applications/SaneSideButtons.app"
 
-open -gj -a Clocker
+"$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/open-app-if-installed.sh" "/Applications/Clocker.app"
 echo "macOS settings applied. Restart affected applications or log out when convenient."
