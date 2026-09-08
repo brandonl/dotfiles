@@ -7,6 +7,9 @@
 
 [alias]
     l = "!source ~/.githelpers && pretty_git_log"
+    prune-worktrees = "!bash -c 'source \"$HOME/.githelpers\" && prune_merged_worktrees'"
+    clean-branches = "!zsh -ic 'export PATH=/opt/homebrew/bin:$PATH && source ~/.githelpers && gb-old-clean \"$@\"' -"
+    branches-by-age = "!zsh -ic 'export PATH=/opt/homebrew/bin:$PATH && source ~/.githelpers && gb-show-age \"$@\"' -"
     dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
     default-branch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
     fetch-origin = "!git checkout $(git default-branch) && git fetch origin && git pull origin"

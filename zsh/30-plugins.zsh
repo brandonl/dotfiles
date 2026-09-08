@@ -15,6 +15,7 @@ plugins=(
   gh
   git
   git-trim # https://github.com/jasonmccreary/git-trim
+  git-worktree # https://github.com/trthomps/git-worktree-zsh-plugin
   mise # https://mise.jdx.dev/ (node/python/go via idiomatic version files)
   sudo # press Esc twice to prepend sudo
   you-should-use # https://github.com/MichaelAquilina/zsh-you-should-use

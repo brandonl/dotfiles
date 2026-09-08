@@ -7,6 +7,17 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "markdown_preview": {
+    "max_width": 1200.0,
+    "limit_content_width": true
+  },
+  "markdown_preview_font_size": 22.0,
+  "language_models": {
+    "opencode": {
+      "show_go_models": true,
+      "show_zen_models": false
+    }
+  },
   "auto_install_extensions": {
     "catppuccin": true,
     "catppuccin-icons": true,
@@ -27,11 +38,7 @@
   },
   "diff_view_style": "unified",
   "context_servers": {
-    "mcp-server-figma": {
-      "enabled": true,
-      "remote": false,
-      "settings": {}
-    }
+    
   },
   "outline_panel": {
     "dock": "right"
@@ -47,12 +54,28 @@
     "allow_data_collection": "no"
   },
   "agent_servers": {
+    "opencode": {
+      "default_config_options": {
+        "effort": "low",
+        "mode": "build",
+        "model": "opencode/nemotron-3-ultra-free"
+      },
+      "type": "registry"
+    },
+    "claude-acp": {
+      "default_config_options": {
+        "mode": "bypassPermissions",
+        "effort": "high",
+        "model": "opus"
+      },
+      "type": "registry"
+    },
     "codex-acp": {
       "default_config_options": {
         "collaboration_mode": "default",
         "reasoning_effort": "low",
         "mode": "agent-full-access",
-        "model": "gpt-5.6-sol"
+        "model": "gpt-5.6-terra"
       },
       "favorite_config_option_values": {
         "model": [
@@ -92,7 +115,7 @@
     "git_status": true
   },
   "tab_bar": {
-    "show_pinned_tabs_in_separate_row": true,
+    "show_pinned_tabs_in_separate_row": false,
     "show_tab_bar_buttons": true,
     "show": true
   },
@@ -182,9 +205,14 @@
     "dark": "One Dark Pro",
   },
   "file_scan_exclusions": [
-    "**/*.spec.ts",
-    "**/*.spec.tsx",
-    "**/translations/**",
-    "*.html"
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings"
   ]
 }

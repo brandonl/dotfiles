@@ -11,6 +11,7 @@ function gc() { git commit -m "$1"; }
 function gca() { git commit --amend -C HEAD; }
 function gl() { git dag --max-count=35 $*; }
 function gma() { gcm && git pull $@; }
+function gbc() { git clean-branches $@ }
 alias gpl="git pull"
 (( $+commands[lazygit] )) && alias lg=lazygit
 alias gds="git -c delta.side-by-side=true diff" # one-off side-by-side diff

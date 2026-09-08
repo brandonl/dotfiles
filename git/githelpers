@@ -27,7 +27,7 @@ show_git_head() {
 }
 
 pretty_git_log() {
-    git log --graph --pretty="tformat:${FORMAT}" $* |
+    git log --graph --pretty="tformat:${FORMAT}" "$@" |
         # Replace (2 years ago) with (2 years)
         sed -Ee 's/(^[^<]*) ago)/\1)/' |
         # Replace (2 years, 5 months) with (2 years)
@@ -38,3 +38,624 @@ pretty_git_log() {
         less -FXRS
 }
 
+prune_merged_worktrees() {
+    local main_ref=refs/heads/main
+    local current_path cutoff now path branch branch_age status answer index age_days age_label
+    local change_label safety_label merged
+    local -a candidate_paths=()
+    local -a candidate_branches=()
+    local -a candidate_status=()
+    local -a retained_paths=()
+    local -a retained_branches=()
+    local -a retained_ages=()
+    local -a retained_status=()
+
+    git rev-parse --verify --quiet "$main_ref" >/dev/null || {
+        echo "local main branch not found" >&2
+        return 1
+    }
+
+    current_path=$(pwd -P)
+    now=$(date +%s)
+    cutoff=$((now - 4 * 24 * 60 * 60))
+    status=0
+    path=
+    branch=
+
+    while IFS= read -r line || [[ -n "$line" ]]; do
+        case "$line" in
+            worktree\ *)
+                path=${line#worktree }
+                branch=
+                ;;
+            branch\ *)
+                branch=${line#branch }
+                ;;
+            "")
+                [[ -n "$path" ]] || continue
+
+                if branch_age=$(stat -f %m -- "$path" 2>/dev/null); then
+                    age_days=$(( (now - branch_age) / 24 / 60 / 60 ))
+                    if (( age_days < 1 )); then
+                        age_label='<1d'
+                    else
+                        age_label="${age_days}d"
+                    fi
+                elif branch_age=$(stat -c %Y -- "$path" 2>/dev/null); then
+                    age_days=$(( (now - branch_age) / 24 / 60 / 60 ))
+                    if (( age_days < 1 )); then
+                        age_label='<1d'
+                    else
+                        age_label="${age_days}d"
+                    fi
+                else
+                    echo "cannot read worktree age: $path" >&2
+                    status=1
+                    age_label='unknown age'
+                fi
+
+                if [[ -n "$(git -C "$path" status --porcelain --untracked-files=all)" ]]; then
+                    change_label=dirty
+                else
+                    change_label=clean
+                fi
+                merged=false
+                if [[ -n "$branch" ]] &&
+                    git merge-base --is-ancestor "$branch" "$main_ref"; then
+                    merged=true
+                fi
+                safety_label=unsafe
+                if [[ "$merged" == true && "$change_label" == clean &&
+                    "$branch" != "$main_ref" && "$path" != "$current_path" &&
+                    "$current_path" != "$path"/* ]]; then
+                    safety_label=safe
+                fi
+
+                if [[ "$safety_label" == safe && "$age_label" != 'unknown age' &&
+                    "$branch_age" -lt "$cutoff" ]]; then
+                    candidate_paths+=("$path")
+                    candidate_branches+=("$branch")
+                    candidate_status+=("$change_label, $safety_label")
+                else
+                    retained_paths+=("$path")
+                    if [[ -n "$branch" ]]; then
+                        retained_branches+=("$branch")
+                    else
+                        retained_branches+=(detached)
+                    fi
+                    retained_ages+=("$age_label")
+                    retained_status+=("$change_label, $safety_label")
+                fi
+                path=
+                branch=
+                ;;
+        esac
+    done < <(git worktree list --porcelain)
+
+    if ((${#candidate_paths[@]} > 0)); then
+        echo "worktrees to delete:"
+        for index in "${!candidate_paths[@]}"; do
+            printf '  %s (%s, %s)\n' "${candidate_paths[$index]}" \
+                "${candidate_branches[$index]}" "${candidate_status[$index]}"
+        done
+    else
+        echo "no eligible worktrees"
+    fi
+    echo "worktrees retained:"
+    for index in "${!retained_paths[@]}"; do
+        printf '  %s (%s, %s, %s)\n' "${retained_paths[$index]}" \
+            "${retained_branches[$index]}" "${retained_ages[$index]}" \
+            "${retained_status[$index]}"
+    done
+    ((${#candidate_paths[@]} > 0)) || return 0
+
+    printf 'delete these worktrees? [y/N] '
+    IFS= read -r answer || answer=
+    case "$answer" in
+        y|Y|yes|YES)
+            ;;
+        *)
+            echo "aborted"
+            return 0
+            ;;
+    esac
+
+    for index in "${!candidate_paths[@]}"; do
+        echo "removing ${candidate_paths[$index]} (${candidate_branches[$index]})"
+        git worktree remove -- "${candidate_paths[$index]}" || status=1
+    done
+
+    return "$status"
+}
+
+gb-show-age() {
+  emulate -L zsh
+  setopt localoptions pipefail
+
+  local GIT=/opt/homebrew/bin/git
+  local mode=local
+  local limit=
+  local arg
+
+  while (( $# )); do
+    case "$1" in
+      --local)
+        mode=local
+        shift
+        ;;
+
+      --remote)
+        mode=remote
+        shift
+        ;;
+
+      --all)
+        mode=all
+        shift
+        ;;
+
+      -n|--limit)
+        (( $# >= 2 )) || {
+          print -u2 "Missing value for --limit"
+          return 2
+        }
+        limit="$2"
+        shift 2
+        ;;
+
+      -h|--help)
+        cat <<'EOF'
+Usage:
+  gb-show-age [options]
+
+Options:
+  --local       Show local branches only; default
+  --remote      Show remote branches only
+  --all         Show both local and remote branches
+  -n, --limit N Show only the N most recent branches
+  -h, --help    Show this help
+
+Examples:
+  gb-show-age
+  gb-show-age --all
+  gb-show-age --remote
+  gb-show-age --all --limit 20
+
+Indicators:
+  [dirty]  Branch has uncommitted changes in its worktree
+EOF
+        return 0
+        ;;
+
+      *)
+        print -u2 "Unknown option: $1"
+        print -u2 "Run 'gb-show-age --help' for usage."
+        return 2
+        ;;
+    esac
+  done
+
+  $GIT rev-parse --is-inside-work-tree >/dev/null 2>&1 || {
+    print -u2 "Not inside a Git repository."
+    return 1
+  }
+
+  local -A worktree_dirty
+  local path branch line
+
+  # Build worktree map for dirty status
+  while IFS= read -r line || [[ -n "$line" ]]; do
+    if [[ "$line" == worktree\ * ]]; then
+      path=${line#worktree }
+    elif [[ "$line" == branch\ * ]]; then
+      branch=${line#branch refs/heads/}
+      if [[ -n "$path" && -n "$branch" ]]; then
+        if [[ -n "$($GIT -C "$path" status --porcelain 2>/dev/null)" ]]; then
+          worktree_dirty[$branch]=1
+        fi
+      fi
+    fi
+  done < <($GIT worktree list --porcelain)
+
+  local refs output
+  local date ref_short indicator
+
+  if [[ "$mode" == local ]]; then
+    refs=refs/heads/
+  elif [[ "$mode" == remote ]]; then
+    refs=refs/remotes/
+  else
+    # Show local branches first, then remote
+    output=$(
+      $GIT for-each-ref \
+        --sort=-committerdate \
+        --format='%(committerdate:iso8601)	%(refname:short)	%(refname)' \
+        refs/heads/ refs/remotes/
+    )
+    if [[ -n "$limit" ]]; then
+      output=$(print "$output" | head -n "$limit")
+    fi
+
+    while IFS=$'\t' read -r date ref_short ref; do
+      indicator=
+      if [[ "$ref" == refs/heads/* ]]; then
+        branch_name=${ref#refs/heads/}
+        [[ -n "${worktree_dirty[$branch_name]}" ]] && indicator="[dirty]"
+      fi
+      printf '%s  %-45s %s\n' "$date" "$ref_short" "$indicator"
+    done <<< "$output"
+    return 0
+  fi
+
+  output=$(
+    $GIT for-each-ref \
+      --sort=-committerdate \
+      --format='%(committerdate:iso8601)	%(refname:short)	%(refname)' \
+      "$refs"
+  )
+
+  if [[ -n "$limit" ]]; then
+    output=$(print "$output" | head -n "$limit")
+  fi
+
+  while IFS=$'\t' read -r date ref_short ref; do
+    indicator=
+    if [[ "$ref" == refs/heads/* ]]; then
+      branch_name=${ref#refs/heads/}
+      [[ -n "${worktree_dirty[$branch_name]}" ]] && indicator="[dirty]"
+    fi
+    printf '%s  %-45s %s\n' "$date" "$ref_short" "$indicator"
+  done <<< "$output"
+}
+
+gb-old-clean() {
+  emulate -L zsh
+  setopt localoptions pipefail
+
+  zmodload zsh/datetime
+
+  local GIT=/opt/homebrew/bin/git
+  local days=90
+  local remote=origin
+  local base=main
+  local mode=both
+  local dry_run=1
+  local require_merged=1
+  local confirm=1
+  local cutoff
+  local merge_target
+  local arg
+
+  while (( $# )); do
+    case "$1" in
+      -n|--days)
+        (( $# >= 2 )) || {
+          print -u2 "Missing value for --days"
+          return 2
+        }
+        days="$2"
+        shift 2
+        ;;
+
+      -r|--remote)
+        (( $# >= 2 )) || {
+          print -u2 "Missing value for --remote"
+          return 2
+        }
+        remote="$2"
+        shift 2
+        ;;
+
+      -b|--base)
+        (( $# >= 2 )) || {
+          print -u2 "Missing value for --base"
+          return 2
+        }
+        base="$2"
+        shift 2
+        ;;
+
+      --local)
+        mode=local
+        shift
+        ;;
+
+      --remote-only)
+        mode=remote
+        shift
+        ;;
+
+      --both)
+        mode=both
+        shift
+        ;;
+
+      --delete)
+        dry_run=0
+        shift
+        ;;
+
+      -y|--yes)
+        confirm=0
+        shift
+        ;;
+
+      --all)
+        require_merged=0
+        shift
+        ;;
+
+      -h|--help)
+        cat <<'EOF'
+Usage:
+  gb-old-clean [options]
+
+Options:
+  -n, --days N        Branch age threshold; default: 90
+  -r, --remote NAME   Remote name; default: origin
+  -b, --base NAME     Base branch; default: main
+      --local         Inspect local branches only
+      --remote-only   Inspect remote branches only
+      --both          Inspect both; default
+      --delete        Actually delete branches
+  -y, --yes           Do not ask for confirmation
+      --all           Include unmerged branches
+  -h, --help          Show this help
+
+Examples:
+  gb-old-clean
+  gb-old-clean --days 180 --local
+  gb-old-clean --days 90 --remote-only
+  gb-old-clean --days 90 --delete
+  gb-old-clean --days 90 --delete --yes
+  gb-old-clean --days 90 --delete --yes --all
+EOF
+        return 0
+        ;;
+
+      *)
+        print -u2 "Unknown option: $1"
+        print -u2 "Run 'gb-old-clean --help' for usage."
+        return 2
+        ;;
+    esac
+  done
+
+  [[ "$days" == <-> && "$days" -gt 0 ]] || {
+    print -u2 "Days must be a positive integer."
+    return 2
+  }
+
+  (( cutoff = EPOCHSECONDS - days * 86400 ))
+
+  $GIT rev-parse --is-inside-work-tree >/dev/null 2>&1 || {
+    print -u2 "Not inside a Git repository."
+    return 1
+  }
+
+  if [[ "$mode" == remote || "$mode" == both ]]; then
+    $GIT fetch "$remote" --prune || return 1
+  fi
+
+  # Prefer the current remote base branch for merge checks.
+  merge_target="$base"
+
+  if $GIT show-ref --verify --quiet "refs/remotes/$remote/$base"; then
+    merge_target="$remote/$base"
+  fi
+
+  local timestamp date branch subject ref reply type
+  local -a candidates
+  candidates=()
+
+  # Find old local branches.
+  if [[ "$mode" == local || "$mode" == both ]]; then
+    while IFS=$'\t' read -r timestamp date branch subject; do
+      [[ -n "$branch" ]] || continue
+      [[ "$branch" == "$base" ]] && continue
+      (( timestamp < cutoff )) || continue
+
+      if (( require_merged )); then
+        $GIT merge-base --is-ancestor \
+          "$branch" \
+          "$merge_target" 2>/dev/null || continue
+      fi
+
+      candidates+=("local"$'\t'"$date"$'\t'"$branch"$'\t'"$subject")
+    done < <(
+      $GIT for-each-ref \
+        --format='%(committerdate:unix)'$'\t''%(committerdate:short)'$'\t''%(refname:short)'$'\t''%(subject)' \
+        --sort=committerdate \
+        refs/heads/
+    )
+  fi
+
+  # Find old remote branches.
+  if [[ "$mode" == remote || "$mode" == both ]]; then
+    while IFS=$'\t' read -r timestamp date ref subject; do
+      [[ -n "$ref" ]] || continue
+
+      branch="${ref#"$remote"/}"
+
+      [[ "$branch" != "$ref" ]] || continue
+      [[ "$branch" != HEAD ]] || continue
+      [[ "$branch" != "$base" ]] || continue
+      (( timestamp < cutoff )) || continue
+
+      if (( require_merged )); then
+        $GIT merge-base --is-ancestor \
+          "$remote/$branch" \
+          "$remote/$base" 2>/dev/null || continue
+      fi
+
+      candidates+=("remote"$'\t'"$date"$'\t'"$branch"$'\t'"$subject")
+    done < <(
+      $GIT for-each-ref \
+        --format='%(committerdate:unix)'$'\t''%(committerdate:short)'$'\t''%(refname:short)'$'\t''%(subject)' \
+        --sort=committerdate \
+        "refs/remotes/$remote/"
+    )
+  fi
+
+  if (( ! ${#candidates} )); then
+    print "No matching branches found."
+    return 0
+  fi
+
+  print
+  print "Branches with latest commit older than $days days:"
+  print
+
+  printf '%-9s %-12s %-45s %s\n' TYPE DATE BRANCH SUBJECT
+  printf '%-9s %-12s %-45s %s\n' ---- ---- ------ -------
+
+  for arg in "${candidates[@]}"; do
+    IFS=$'\t' read -r type date branch subject <<< "$arg"
+
+    printf '%-9s %-12s %-45s %s\n' \
+      "$type" "$date" "$branch" "$subject"
+  done
+
+  if (( dry_run )); then
+    print
+    print "Preview only. Add --delete to remove these branches."
+    return 0
+  fi
+
+  print
+
+  for arg in "${candidates[@]}"; do
+    IFS=$'\t' read -r type date branch subject <<< "$arg"
+
+    if (( confirm )); then
+      if [[ "$type" == local ]]; then
+        read -q "reply?Delete local branch '$branch'? [y/N] "
+      else
+        read -q "reply?Delete remote branch '$remote/$branch'? [y/N] "
+      fi
+
+      print
+      [[ "$reply" == [yY] ]] || continue
+    fi
+
+    if [[ "$type" == local ]]; then
+      # Safe local deletion; refuses unmerged branches.
+      $GIT branch -d -- "$branch"
+    else
+      # Deletes the branch from Gitea/Forgejo.
+      $GIT push "$remote" --delete -- "$branch"
+    fi
+  done
+}
+
+gb-clean-merged-prs() {
+  # Squash-merged PR branches never show up in `git branch --merged` (the
+  # branch tip isn't an ancestor of base after squash), so this checks PR
+  # state via the Gitea/Forgejo `tea` CLI instead of git ancestry.
+  emulate -L zsh
+  setopt localoptions pipefail
+
+  local GIT=/opt/homebrew/bin/git
+  local remote=origin
+  local base=main
+  local do_delete=0
+  local repo_slug url page out n b
+
+  while (( $# )); do
+    case "$1" in
+      -D) do_delete=1; shift ;;
+      -r|--remote)
+        (( $# >= 2 )) || { print -u2 "Missing value for --remote"; return 2 }
+        remote="$2"; shift 2 ;;
+      -b|--base)
+        (( $# >= 2 )) || { print -u2 "Missing value for --base"; return 2 }
+        base="$2"; shift 2 ;;
+      -h|--help)
+        cat <<'EOF'
+Usage:
+  gb-clean-merged-prs [options]
+
+Lists remote branches whose PR is closed/merged on Gitea/Forgejo.
+Pass -D to actually delete them from the remote.
+
+Options:
+  -D             Delete instead of list (dry run is default)
+  -r, --remote   Remote name; default: origin
+  -b, --base     Base branch to exclude; default: main
+  -h, --help     Show this help
+EOF
+        return 0 ;;
+      *)
+        print -u2 "Unknown option: $1"
+        print -u2 "Run 'gb-clean-merged-prs --help' for usage."
+        return 2 ;;
+    esac
+  done
+
+  $GIT rev-parse --is-inside-work-tree >/dev/null 2>&1 || {
+    print -u2 "Not inside a Git repository."
+    return 1
+  }
+  command -v tea >/dev/null 2>&1 || {
+    print -u2 "tea CLI not found."
+    return 1
+  }
+
+  url=$($GIT remote get-url "$remote") || return 1
+  repo_slug=$(print -r -- "$url" | sed -E 's#\.git$##; s#.*[:/]([^/]+/[^/]+)$#\1#')
+
+  $GIT fetch "$remote" --prune || return 1
+
+  local -a origin_branches
+  origin_branches=("${(@f)$(
+    $GIT for-each-ref --format='%(refname:short)' "refs/remotes/$remote/" |
+      sed "s#^${remote}/##" |
+      grep -v -e "^HEAD\$" -e "^${base}\$"
+  )}")
+
+  if (( ! ${#origin_branches} )); then
+    print "No branches on $remote other than $base."
+    return 0
+  fi
+
+  local -a closed_heads
+  closed_heads=()
+  page=1
+  while true; do
+    out=$(tea pr list --state closed --repo "$repo_slug" \
+      --output json --fields head --page "$page" --limit 50 2>/dev/null)
+    n=$(print -r -- "$out" | python3 -c 'import json,sys; print(len(json.load(sys.stdin)))' 2>/dev/null)
+    [[ -n "$n" && "$n" -gt 0 ]] || break
+    closed_heads+=("${(@f)$(
+      print -r -- "$out" |
+        python3 -c 'import json,sys
+for d in json.load(sys.stdin): print(d["head"])'
+    )}")
+    (( page++ ))
+  done
+
+  local -a to_delete
+  to_delete=()
+  for b in "${origin_branches[@]}"; do
+    (( ${closed_heads[(Ie)$b]} )) && to_delete+=("$b")
+  done
+
+  if (( ! ${#to_delete} )); then
+    print "No closed/merged PR branches to clean on $remote."
+    return 0
+  fi
+
+  print "Closed/merged PR branches on $remote:"
+  for b in "${to_delete[@]}"; do
+    print "  $b"
+  done
+
+  if (( ! do_delete )); then
+    print
+    print "Dry run. Re-run with -D to delete."
+    return 0
+  fi
+
+  print
+  $GIT push "$remote" --delete -- "${to_delete[@]}"
+}

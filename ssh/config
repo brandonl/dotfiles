@@ -1,6 +1,37 @@
 Include /Users/brandon/.colima/ssh_config
 
+Host 10.10.10.1 opnsense
+  HostName 10.10.10.1
+  User root
+  IdentityFile ~/.ssh/id_ed25519_opnsense
+  IdentityAgent none
+  IdentitiesOnly yes
+
+Host 10.10.10.5 jonsbon4
+  HostName 10.10.10.5
+  User root
+
+Host 10.10.20.7 git forgejo
+  HostName 10.10.20.7
+  User operator
+  IdentityFile ~/.ssh/id_ed25519_jonsbon4
+  IdentityAgent none
+  IdentitiesOnly yes
+
+Host 10.10.10.8 g6net g6net-mgmt
+  # vmbr1.10 (tagged mgmt VLAN, switch port 7). The old 10.10.10.6 on
+  # vmbr0 is gone -- that bridge carries the AT&T handoff to OPNsense's
+  # WAN NIC now, so the host holds no address on it.
+  HostName 10.10.10.8
+  User root
+  IdentityFile ~/.ssh/id_ed25519_g6net
+  IdentityAgent none
+  IdentitiesOnly yes
+
 Host *
   AddKeysToAgent yes
   UseKeychain yes
   IdentityFile ~/.ssh/id_ed25519
+
+Host *
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"

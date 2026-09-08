@@ -61,3 +61,6 @@
 [submodule "zsh/plugins/zsh-abbr"]
 	path = zsh/plugins/zsh-abbr
 	url = https://github.com/olets/zsh-abbr.git
+[submodule "zsh/plugins/git-worktree"]
+	path = zsh/plugins/git-worktree
+	url = https://github.com/trthomps/git-worktree-zsh-plugin.git

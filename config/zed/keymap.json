@@ -18,7 +18,7 @@
         ]
       ],
       "f1": "project_panel::Toggle",
-      "f2": "agent::ToggleFocus"
+      "f2": "agent::ToggleFocus",
       // "shift shift": "file_finder::Toggle"
     },
     "unbind": {
@@ -35,10 +35,27 @@
     "context": "Editor",
     "bindings": {
       "f1": "project_panel::Toggle",
-      "f2": "agent::Toggle"
+      "f2": "agent::Toggle",
     },
     "unbind": {
       "cmd-]": "editor::Indent"
+    }
+  },
+  {
+    "unbind": {
+      "f4": "debugger::Start"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "f4": "multi_workspace::ToggleWorkspaceSidebar"
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "alt-cmd-j": "multi_workspace::ToggleWorkspaceSidebar"
     }
   }
 ]

@@ -12,3 +12,11 @@ done
 if [[ -n "${ZSH_PROFILE:-}" ]]; then
   zprof
 fi
+
+# Run after all PATH edits so mise-managed project tools take precedence.
+if (( $+commands[mise] )); then
+  eval "$(mise activate zsh)"
+fi
+export PATH=$PATH:$HOME/.maestro/bin
+export PATH=$PATH:$HOME/.maestro/bin
+export PATH=$PATH:$HOME/.maestro/bin
