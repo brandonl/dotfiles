@@ -79,8 +79,6 @@ project/plugins/project/
 # Python
 settings.json
 
-.vscode/
-.vscode
 yarn.lock
 
 **/spring.rb

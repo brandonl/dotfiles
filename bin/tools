@@ -30,7 +30,7 @@ formula_name() {
 brew_inventory() {
   local line kind spec name desc
   while IFS= read -r line; do
-    [[ "$line" =~ ^(brew|cask|vscode)[[:space:]]+ ]] || continue
+    [[ "$line" =~ ^(brew|cask)[[:space:]]+ ]] || continue
     kind="${BASH_REMATCH[1]}"
     spec="${line#* }"
     spec="${spec%%#*}"
@@ -86,7 +86,6 @@ build_rows() {
   local kind name desc status alias replaces row
 
   while IFS=$'\t' read -r kind name desc; do
-    [[ "$kind" == "vscode" ]] && continue
     status="$(tool_status "$name")"
     alias="$(alias_for_tool "$name" 2>/dev/null || true)"
     replaces=""
