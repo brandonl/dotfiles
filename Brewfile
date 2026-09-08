@@ -82,6 +82,8 @@ cask "dockdoor" # Window peeking utility app
 cask "font-fira-code-nerd-font" # Dev font
 cask "font-fira-mono" # Mono font
 cask "font-hack-nerd-font" # Dev font
+cask "font-jetbrains-mono-nerd-font" # Dev font
+cask "font-monaspice-nerd-font" # Monaspace Nerd Font family
 cask "github" # GitHub desktop app
 cask "google-chrome" # Web browser
 cask "hammerspoon" # macOS automation (Lua)

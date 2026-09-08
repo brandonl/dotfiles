@@ -22,7 +22,8 @@
       // "shift shift": "file_finder::Toggle"
     },
     "unbind": {
-      "cmd-shift-f": "pane::DeploySearch"
+      "cmd-shift-f": "pane::DeploySearch",
+      "cmd-r": "workspace::ToggleRightDock"
     }
   },
   {
@@ -34,6 +35,7 @@
   {
     "context": "Editor",
     "bindings": {
+      "cmd-r": "buffer_search::DeployReplace",
       "f1": "project_panel::Toggle",
       "f2": "agent::Toggle",
     },

@@ -58,10 +58,6 @@
         cp -rf fonts/monaco-nerd-fonts/fonts/* ~/Library/Fonts/,
         "Installing font 'Monaco for Powerline'",
       ]
-    - [
-        cp -rf fonts/Monaspace/*.otf ~/Library/Fonts/,
-        "Installing font 'Monaspace nerdfont'",
-      ]
     - [./scripts/run-macosx-if-enabled.sh]
     - [./scripts/mise-install.sh, "Install mise global runtimes"]
     - [source $HOME/.zshrc]

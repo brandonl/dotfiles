@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+<<<<<<< Updated upstream
   "markdown_preview": {
     "max_width": 1200.0,
     "limit_content_width": true
@@ -17,6 +18,12 @@
       "show_go_models": true,
       "show_zen_models": false
     }
+||||||| Stash base
+=======
+  "markdown_preview_font_size": 22.0,
+  "markdown_preview": {
+    "max_width": 1500.0
+>>>>>>> Stashed changes
   },
   "auto_install_extensions": {
     "catppuccin": true,
@@ -36,7 +43,7 @@
   "toolbar": {
     "agent_review": false
   },
-  "diff_view_style": "unified",
+  "diff_view_style": "split",
   "context_servers": {
     
   },
@@ -72,8 +79,9 @@
     },
     "codex-acp": {
       "default_config_options": {
+        "fast-mode": false,
         "collaboration_mode": "default",
-        "reasoning_effort": "low",
+        "reasoning_effort": "medium",
         "mode": "agent-full-access",
         "model": "gpt-5.6-terra"
       },
@@ -170,8 +178,13 @@
   },
   "show_whitespaces": "selection",
   "git": {
+    "blame": {
+      "show_avatar": false
+    },
     "inline_blame": {
-      "enabled": false
+      "show_commit_summary": true,
+      "location": "inline",
+      "enabled": true
     }
   },
   "preview_tabs": {
@@ -203,6 +216,7 @@
     "mode": "system",
     "light": "One Light",
     "dark": "One Dark Pro",
+<<<<<<< Updated upstream
   },
   "file_scan_exclusions": [
     "**/.git",
@@ -215,4 +229,15 @@
     "**/.classpath",
     "**/.settings"
   ]
+||||||| Stash base
+  },
+  "file_scan_exclusions": [
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/translations/**",
+    "*.html"
+  ]
+=======
+  }
+>>>>>>> Stashed changes
 }
