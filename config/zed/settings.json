@@ -64,7 +64,7 @@
     "claude-acp": {
       "default_config_options": {
         "mode": "bypassPermissions",
-        "effort": "high",
+        "effort": "low",
         "model": "opus"
       },
       "type": "registry"
@@ -73,9 +73,9 @@
       "default_config_options": {
         "fast-mode": false,
         "collaboration_mode": "default",
-        "reasoning_effort": "xhigh",
+        "reasoning_effort": "medium",
         "mode": "agent-full-access",
-        "model": "gpt-5.6-sol"
+        "model": "gpt-5.6-terra"
       },
       "favorite_config_option_values": {
         "model": [
