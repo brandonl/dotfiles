@@ -41,7 +41,7 @@ plugins+=(zsh-syntax-highlighting) # load last
 
 source $ZSH/oh-my-zsh.sh
 
-(( $+commands[starship] )) && eval "$(starship init zsh)"
+[[ -o interactive ]] && [[ -t 1 ]] && (( $+commands[starship] )) && eval "$(starship init zsh)"
 
 # Atuin (deferred = load after OMZ so startup stays fast):
 #   • Saves each command to its SQLite DB (preexec/precmd)

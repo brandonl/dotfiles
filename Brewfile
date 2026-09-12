@@ -52,7 +52,7 @@ brew 'mas' # Mac App Store CLI
 brew 'mise' # Runtime version manager
 brew 'mole' # CLI tunnel manager
 brew 'onnx' # ONNX runtime tools
-brew 'anomalyco/tap/opencode' # OpenCode CLI
+brew 'opencode' # OpenCode CLI
 brew 'openjdk' # Java runtime
 brew 'parquet-cli' # Parquet file CLI
 brew 'pgcli' # Postgres shell
@@ -116,7 +116,6 @@ cask 'session-manager-plugin' # Plugin for AWS CLI to start and end sessions tha
 cask 'superwhisper' # Voice dictation
 cask 'vscodium' # Code editor
 cask 'zed' # Code editor
-tap 'anomalyco/tap' # OpenCode CLI tap
 tap 'buo/cask-upgrade' # Cask upgrade tap
 tap 'charmbracelet/tap' # Charm CLI tap
 tap 'domt4/autoupdate' # Brew autoupdate tap

@@ -15,7 +15,7 @@ trust_taps() {
       homebrew/*) ;; # official taps are always trusted
       *) brew trust --tap "$tap" ;;
     esac
-  done < <(sed -nE 's/^[[:space:]]*tap[[:space:]]+"([^"]+)".*/\1/p' "$file")
+  done < <(sed -nE "s/^[[:space:]]*tap[[:space:]]+['\"]([^'\"]+)['\"].*/\\1/p" "$file")
 }
 
 trust_taps "$dotfiles/Brewfile"
