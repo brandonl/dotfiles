@@ -5,6 +5,12 @@ set -euo pipefail
 dotfiles="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
+# Homebrew uses this name for private GitHub release metadata. Reuse the
+# caller's GitHub CLI token without persisting a duplicate secret.
+if [[ -z "${HOMEBREW_GITHUB_API_TOKEN:-}" && -n "${GH_TOKEN:-}" ]]; then
+  export HOMEBREW_GITHUB_API_TOKEN="$GH_TOKEN"
+fi
+
 # Homebrew >=6 refuses to load formulae/casks/commands from non-official taps
 # unless they are trusted. Trust every tap declared in our Brewfiles first.
 trust_taps() {

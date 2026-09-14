@@ -4,6 +4,7 @@
 node = "24.9.0"
 python = "3.10.10"
 go = "1.23.1"
+maestro = "cli-2.10.0"
 ruby = "3.4"
 tuist = "4.195.17"
 usage = "latest"

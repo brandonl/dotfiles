@@ -9,6 +9,12 @@ trap 'rm -rf "$test_root"' EXIT
 fake_bin="$test_root/bin"
 mkdir -p "$fake_bin"
 
+cat >"$fake_bin/brew" <<EOF
+#!/usr/bin/env bash
+[[ "\$1" == "--prefix" ]]
+printf '%s\n' "$test_root"
+EOF
+
 cat >"$fake_bin/apm" <<'EOF'
 #!/usr/bin/env bash
 exit 0
@@ -28,14 +34,9 @@ printf '%q ' "$@" >>"$CODEX_MCP_LOG"
 printf '\n' >>"$CODEX_MCP_LOG"
 EOF
 
-chmod +x "$fake_bin/apm" "$fake_bin/codex"
+chmod +x "$fake_bin/apm" "$fake_bin/brew" "$fake_bin/codex"
 
-while IFS= read -r manifest; do
-  if yq '.targets[]' "$manifest" | rg -Fx 'codex' >/dev/null; then
-    echo "APM must not target Codex directly: $manifest" >&2
-    exit 1
-  fi
-done < <(find "$repo_root/apm" -name apm.yml -type f | sort)
+yq '.targets[]' "$repo_root/apm/global/apm.yml" | rg -Fx 'codex' >/dev/null
 
 export PATH="$fake_bin:$PATH"
 export HOME="$test_root/home"
@@ -50,3 +51,10 @@ fi
 
 CODEX_MCP_LIST_RESULT=valid "$repo_root/scripts/apm-install.sh" >/dev/null
 rg -Fx 'mcp add context7 -- npx -y @upstash/context7-mcp ' "$CODEX_MCP_LOG" >/dev/null
+cmp "$repo_root/apm/global/apm.yml" "$HOME/.apm/apm.yml"
+cmp \
+  "$repo_root/apm/global/packages/personal-instructions/.apm/instructions/personal.instructions.md" \
+  "$HOME/.apm/packages/personal-instructions/.apm/instructions/personal.instructions.md"
+cmp \
+  "$repo_root/apm/global/packages/personal-instructions/.apm/instructions/personal.instructions.md" \
+  "$HOME/.apm/apm_modules/_local/personal-instructions/.apm/instructions/personal.instructions.md"

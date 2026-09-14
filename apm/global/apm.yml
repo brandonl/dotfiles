@@ -2,90 +2,10 @@ name: dotfiles-global
 version: 1.0.0
 targets:
   - claude
+  - codex
   - agent-skills
 dependencies:
   apm:
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      targets: [claude, agent-skills]
-      skills:
-        - caveman-compress
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/cavecrew
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/caveman
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/caveman-commit
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/caveman-discover
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/caveman-evidence-review
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/caveman-explore
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/caveman-help
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/caveman-learn
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/caveman-manage
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/caveman-optimize
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/caveman-review
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/caveman-setup
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/caveman-stats
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/investigate-first
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/lean-build
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/migration
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/safe-refactor
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/surgical-patch
-      targets: [claude, agent-skills]
-    - git: juliusbrussee/caveman
-      ref: 17f9f2ec2377b0bfe16b52ee03a462e7f0a02bc8
-      path: skills/verify-and-stop
-      targets: [claude, agent-skills]
     - git: pproenca/dot-skills
       path: skills/.experimental/clean-architecture
       targets: [claude, agent-skills]
@@ -112,22 +32,6 @@ dependencies:
       targets: [claude, agent-skills]
     - git: alibaba/open-code-review
       path: skills/open-code-review
-      targets: [claude, agent-skills]
-    - git: PeonPing/peon-ping
-      ref: v2.35.1
-      path: skills/peon-ping-config
-      targets: [claude, agent-skills]
-    - git: PeonPing/peon-ping
-      ref: v2.35.1
-      path: skills/peon-ping-log
-      targets: [claude, agent-skills]
-    - git: PeonPing/peon-ping
-      ref: v2.35.1
-      path: skills/peon-ping-toggle
-      targets: [claude, agent-skills]
-    - git: PeonPing/peon-ping
-      ref: v2.35.1
-      path: skills/peon-ping-use
       targets: [claude, agent-skills]
   mcp:
     - name: context7

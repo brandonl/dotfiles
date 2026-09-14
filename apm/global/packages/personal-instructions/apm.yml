@@ -1,0 +1,6 @@
+name: personal-instructions
+version: 1.0.0
+targets:
+  - claude
+  - codex
+includes: auto

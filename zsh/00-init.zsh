@@ -14,6 +14,7 @@ export GOPATH="$HOME/workspace/go"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 export ZSH="$HOME/.zsh/omz"
 export ZSH_COMPDUMP=$HOME/.cache/.zcompdump-$HOST
+zstyle ':omz:update' mode disabled
 
 # Skip noisy commands in zsh history (Atuin has matching filters in config.toml).
 zshaddhistory() {

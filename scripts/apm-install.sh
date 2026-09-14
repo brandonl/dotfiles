@@ -45,22 +45,35 @@ if (( $# )); then
   exit 2
 fi
 
-if ! command -v apm >/dev/null 2>&1; then
-  curl -fsSL https://aka.ms/apm-unix | sh
-  hash -r
+if ! command -v brew >/dev/null 2>&1; then
+  echo "[x] Homebrew is required to install APM" >&2
+  exit 1
+fi
+
+apm_bin="$(brew --prefix)/bin/apm"
+if [[ ! -x "$apm_bin" ]]; then
+  echo "[x] Homebrew APM is missing; run: brew bundle --file $dotfiles/Brewfile" >&2
+  exit 1
 fi
 
 mkdir -p "$HOME/.apm"
 install -m 600 "$dotfiles/apm/global/apm.yml" "$HOME/.apm/apm.yml"
 install -m 600 "$dotfiles/apm/global/apm.lock.yaml" "$HOME/.apm/apm.lock.yaml"
+mkdir -p "$HOME/.apm/packages"
+rsync -a --delete "$dotfiles/apm/global/packages/" "$HOME/.apm/packages/"
 
 if (( update )); then
-  apm lock --global --update
+  "$apm_bin" lock --global --update
   install -m 600 "$HOME/.apm/apm.lock.yaml" "$dotfiles/apm/global/apm.lock.yaml"
-  apm install --global --frozen
+  "$apm_bin" install --global --frozen
 else
-  apm install --global --frozen
+  "$apm_bin" install --global --frozen
 fi
 
-apm compile --global
+# APM 0.30 records global local dependencies but does not retain them under
+# apm_modules, where global compilation reads instructions from.
+mkdir -p "$HOME/.apm/apm_modules/_local"
+rsync -a --delete "$dotfiles/apm/global/packages/" "$HOME/.apm/apm_modules/_local/"
+
+"$apm_bin" compile --global
 sync_codex_context7
