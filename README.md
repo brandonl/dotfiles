@@ -16,7 +16,7 @@ Re-run `./install` after pulling changes. Dotbot relinks files in place.
 
 - Installs and upgrades Homebrew packages from `Brewfile` (`brew bundle install --upgrade`)
 - Initializes git submodules (Oh My Zsh, plugins, dotbot)
-- Installs global Claude/Codex configuration from `apm/global/apm.yml`
+- Installs Homebrew APM and global Claude/Codex configuration from `apm/global/apm.yml`
 - Symlinks dotfiles into `$HOME` (`~/.zshrc`, `~/.config/*`, `~/.ssh/*`, git config, etc.)
 - Installs fonts into `~/Library/Fonts`
 - Sources updated shell config
@@ -25,6 +25,11 @@ Re-run `./install` after pulling changes. Dotbot relinks files in place.
 
 Public, machine-wide Claude and Codex dependencies live in
 `apm/global/apm.yml`. `./install` installs the committed lockfile exactly.
+APM is installed and upgraded through Homebrew; `scripts/apm-install.sh` uses
+the Homebrew binary directly so an older standalone binary cannot shadow it.
+Shared global instructions live in the tracked local packages under
+`apm/global/packages/`; APM compiles them into `~/.codex/AGENTS.md` and
+`~/.claude/CLAUDE.md`.
 APM installs skills under `~/.agents/skills/` for Codex/Cursor and
 `~/.claude/skills/` for Claude Code. Claude does not discover the shared
 `.agents` path, so both targets are intentional and do not double-load a skill
@@ -101,3 +106,12 @@ Node, Python, Go, and [Tuist](https://tuist.dev/en/docs/guides/install-tuist) ar
 ## Shell history (Atuin)
 
 After `./install`, run `atuin import auto` once if you want old `~/.zsh_history` in the database.
+
+## Validation
+
+Verify Dotbot links against an isolated temporary home without running package,
+APM, mise, or macOS setup:
+
+```bash
+./tests/clean-install.sh
+```

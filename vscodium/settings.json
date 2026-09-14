@@ -1,0 +1,98 @@
+{
+  "workbench.colorTheme": "One Dark Pro",
+  "security.workspace.trust.untrustedFiles": "open",
+  "explorer.confirmDelete": false,
+  "files.autoSave": "afterDelay",
+  "explorer.confirmDragAndDrop": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.wordWrap": "on",
+  "[java]": {
+    "editor.defaultFormatter": "mwpb.java-prettier-formatter"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.startupEditor": "none",
+  "docker.extension.enableComposeLanguageServer": false,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "editor.scrollBeyondLastLine": false,
+  "editor.fontSize": 16,
+  "editor.lineHeight": 1.5,
+  "editor.formatOnSave": true,
+  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.tree.indent": 20,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.limit.enabled": true,
+  "workbench.activityBar.location": "top",
+  "git.blame.editorDecoration.enabled": false,
+  "editor.indentSize": 8,
+  "editor.fontFamily": "Monaco, 'Courier New', monospace, Jet Brains Mono",
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "chat.tools.terminal.autoApprove": {
+    "yarn install": true,
+    "yarn add -D jest ts-jest @types/jest @testing-library/react-native @testing-library/jest-native @types/testing-library__react-native": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "yarn add": true,
+    "npx": true,
+    "pkill": true,
+    "yarn start": true,
+    ".specify/scripts/bash/create-new-feature.sh": true,
+    ".specify/scripts/bash/setup-plan.sh": true,
+    ".specify/scripts/bash/check-prerequisites.sh": true,
+    "brew": true,
+    "supabase": true,
+    "yarn test": true,
+    "yarn tsc": true,
+    "yarn list": true,
+    "curl": true,
+    "yarn jest": true,
+    "psql": true,
+    "\"": true,
+    "git branch": true,
+    ".specify/scripts/bash/update-agent-context.sh": true,
+    "spec)\"": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "database-client.autoSync": true,
+  "workbench.preferredDarkColorTheme": "One Dark Pro",
+  "editor.formatOnPaste": true,
+  "workbench.fontAliasing": "auto",
+  "gitlens.codeLens.enabled": false,
+  "gitlens.heatmap.fadeLines": false,
+  "gitlens.heatmap.toggleMode": "window",
+  "editor.find.globalFindClipboard": true,
+  "workbench.experimental.fontSize": 15,
+  "workbench.sideBar.experimental.fontSize": 15,
+  "chat.editor.fontSize": 16,
+  "chat.fontSize": 16,
+  "debug.console.fontSize": 15,
+  "scm.inputFontSize": 15,
+  "terminal.integrated.fontLigatures.enabled": true,
+  "terminal.integrated.fontSize": 15,
+  "workbench.sideBar.location": "right"
+}

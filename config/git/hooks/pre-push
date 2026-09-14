@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+zero=0000000000000000000000000000000000000000
+input="$(cat)"
+
+while read -r _ local_sha _ remote_sha; do
+  [[ -n "${local_sha:-}" ]] || continue
+  [[ "$local_sha" == "$zero" ]] && continue
+
+  if [[ "$remote_sha" == "$zero" ]]; then
+    log_opts="$local_sha --not --remotes"
+  else
+    log_opts="$remote_sha..$local_sha"
+  fi
+
+  if conflicts="$(git grep -n -I -E '^(<<<<<<< |>>>>>>> )' "$local_sha" -- .)"; then
+    printf '%s\n' "$conflicts" >&2
+    printf 'Push blocked: merge conflict markers found.\n' >&2
+    exit 1
+  else
+    status=$?
+    (( status == 1 )) || exit "$status"
+  fi
+
+  gitleaks git --redact --log-opts="$log_opts" .
+done <<<"$input"
+
+repo_hook="$(git rev-parse --absolute-git-dir)/hooks/pre-push"
+if [[ -x "$repo_hook" ]]; then
+  printf '%s\n' "$input" | "$repo_hook" "$@"
+fi

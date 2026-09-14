@@ -1,0 +1,4 @@
+// This configuration file allows permanent VSCodium command line arguments.
+{
+	"enable-crash-reporter": false
+}

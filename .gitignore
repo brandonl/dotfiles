@@ -12,3 +12,6 @@ Brewfile.lock.json
 
 # Override the global settings.json ignore for portable Zed settings.
 !/config/zed/settings.json
+
+# Override the global settings.json ignore for portable VSCodium settings.
+!/vscodium/settings.json

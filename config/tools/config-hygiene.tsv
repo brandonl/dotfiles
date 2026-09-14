@@ -1,0 +1,25 @@
+# Config name	Owner type	Owner
+acli	local	work authentication and state
+agents	local	generated agent state
+codeburn	local	device identity and certificates
+configstore	local	generated application state
+crush	local	generated agent state
+gcloud	local	work authentication and state
+github-copilot	local	generated application state
+kargo	local	work state
+ktl	local	work configuration and state
+litellm_config.yaml	local	work configuration
+mole	local	generated cleanup state
+raycast	local	generated application state
+vercel-plugin	local	generated application state
+cmux	app	/Applications/cmux.app
+devin	command	devin
+fish	command	fish
+ghostty	app	/Applications/Ghostty.app
+goose	command	goose
+graphite	command	gt
+jgit	command	jgit
+neubird	command	neubird
+pip	command	pip
+thefuck	command	thefuck
+yarn	command	yarn

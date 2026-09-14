@@ -35,6 +35,9 @@
     ~/.zlogin:
     ~/.zshrc:
     ~/.vimrc:
+    ~/.vscode-oss/argv.json: vscodium/argv.json
+    ~/Library/Application Support/VSCodium/User/settings.json: vscodium/settings.json
+    ~/Library/Application Support/VSCodium/User/keybindings.json: vscodium/keybindings.json
     ~/:
       prefix: "."
       glob: true
@@ -60,4 +63,5 @@
       ]
     - [./scripts/run-macosx-if-enabled.sh]
     - [./scripts/mise-install.sh, "Install mise global runtimes"]
+    - [./scripts/vscodium-install.sh, "Install VSCodium extensions"]
     - [source $HOME/.zshrc]

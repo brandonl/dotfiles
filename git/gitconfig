@@ -111,6 +111,7 @@
 [core]
     editor = vim
     excludesfile = ~/.gitignore
+    hooksPath = ~/.config/git/hooks
     pager = delta
 	fsmonitor = false
     untrackedCache = true

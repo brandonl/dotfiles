@@ -56,11 +56,14 @@ dotfile_links() {
     "$HOME/.gitconfig:$dotfiles/git/gitconfig"
     "$HOME/.githelpers:$dotfiles/git/githelpers"
     "$HOME/.gitignore:$dotfiles/git/gitignore"
+    "$HOME/.config/git/hooks/pre-push:$dotfiles/config/git/hooks/pre-push"
     "$HOME/.config/starship.toml:$dotfiles/config/starship.toml"
     "$HOME/.config/atuin/config.toml:$dotfiles/config/atuin/config.toml"
     "$HOME/.config/mise/config.toml:$dotfiles/config/mise/config.toml"
-    "$HOME/.config/bat/config:$dotfiles/config/bat/config"
     "$HOME/.config/zsh/abbreviations:$dotfiles/config/zsh/abbreviations"
+    "$HOME/.vscode-oss/argv.json:$dotfiles/vscodium/argv.json"
+    "$HOME/Library/Application Support/VSCodium/User/settings.json:$dotfiles/vscodium/settings.json"
+    "$HOME/Library/Application Support/VSCodium/User/keybindings.json:$dotfiles/vscodium/keybindings.json"
   )
 
   for pair in "${links[@]}"; do
@@ -78,6 +81,21 @@ dotfile_links() {
       return 1
     fi
   done
+}
+
+broken_config_links() {
+  local link status=0
+
+  while IFS= read -r link; do
+    printf 'broken symlink: %s -> %s\n' "$link" "$(readlink "$link")" >&2
+    status=1
+  done < <(
+    find "$HOME" -maxdepth 1 -type l ! -exec test -e {} \; -print
+    [[ ! -d "$HOME/.config" ]] ||
+      find "$HOME/.config" -type l ! -exec test -e {} \; -print
+  )
+
+  return "$status"
 }
 
 zsh_syntax() {
@@ -99,6 +117,11 @@ script_syntax() {
     [[ -f "$file" ]] || continue
     bash -n "$file" || return 1
   done
+
+  for file in "$dotfiles"/config/git/hooks/*; do
+    [[ -f "$file" ]] || continue
+    bash -n "$file" || return 1
+  done
 }
 
 compaudit_clean() {
@@ -112,18 +135,77 @@ compaudit_clean() {
   fi
 }
 
+config_hygiene() {
+  local config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+  local registry="$dotfiles/config/tools/config-hygiene.tsv"
+  local entry name record owner_type owner
+  local status=0
+
+  [[ -d "$config_home" ]] || return 0
+
+  while IFS= read -r -d '' entry; do
+    name="${entry##*/}"
+    [[ "$name" == ".DS_Store" ]] && continue
+    [[ -e "$dotfiles/config/$name" ]] && continue
+
+    record="$(awk -F '\t' -v name="$name" '$1 == name { print; exit }' "$registry")"
+    if [[ -z "$record" ]]; then
+      printf 'unclassified config: %s\n' "$entry" >&2
+      status=1
+      continue
+    fi
+
+    IFS=$'\t' read -r _ owner_type owner <<<"$record"
+    case "$owner_type" in
+      local)
+        ;;
+      command)
+        if ! have "$owner"; then
+          printf 'config without installed command: %s (%s)\n' "$entry" "$owner" >&2
+          status=1
+        fi
+        ;;
+      app)
+        if [[ ! -d "$owner" ]]; then
+          printf 'config without installed app: %s (%s)\n' "$entry" "$owner" >&2
+          status=1
+        fi
+        ;;
+      *)
+        printf 'invalid config owner type: %s (%s)\n' "$name" "$owner_type" >&2
+        status=1
+        ;;
+    esac
+  done < <(find "$config_home" -mindepth 1 -maxdepth 1 -print0)
+
+  return "$status"
+}
+
+finish() {
+  if (( failures )); then
+    printf '\n%d check(s) failed\n' "$failures" >&2
+    exit 1
+  fi
+
+  printf '\nall checks passed\n'
+}
+
+if [[ "${1:-}" == "--config-hygiene" ]]; then
+  check "broken config links" broken_config_links
+  check "config hygiene" config_hygiene
+  finish
+  exit 0
+fi
+
 check "brew bundle" brew_bundle_check
 check "submodules" submodules_clean
 check "dotfile links" dotfile_links
+check "broken config links" broken_config_links
 check "zsh syntax" zsh_syntax
 check "script syntax" script_syntax
 check "mise" have mise
 check "atuin" have atuin
 check "compaudit" compaudit_clean
+check "config hygiene" config_hygiene
 
-if (( failures )); then
-  printf '\n%d check(s) failed\n' "$failures" >&2
-  exit 1
-fi
-
-printf '\nall checks passed\n'
+finish
