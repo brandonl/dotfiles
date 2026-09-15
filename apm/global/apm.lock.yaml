@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-09-14T19:22:11.455707+00:00'
+generated_at: '2026-09-14T22:16:55.753719+00:00'
 apm_version: 0.30.0
 dependencies:
 - repo_url: affaan-m/everything-claude-code
@@ -202,630 +202,345 @@ dependencies:
   target_subset:
   - agent-skills
   - claude
-- repo_url: pproenca/dot-skills
-  name: clean-architecture
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: react-dev
   host: github.com
-  resolved_commit: cf93c57cac89d6fc3e4194686000411567f5caf3
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
   version: unknown
-  virtual_path: skills/.experimental/clean-architecture
+  virtual_path: skills/engineering/community/react-dev
   is_virtual: true
   package_type: claude_skill
-  deployed_files:
-  - .agents/skills/clean-architecture
-  - .agents/skills/clean-architecture/SKILL.md
-  - .agents/skills/clean-architecture/assets/templates/_template.md
-  - .agents/skills/clean-architecture/metadata.json
-  - .agents/skills/clean-architecture/references/_sections.md
-  - .agents/skills/clean-architecture/references/adapt-anti-corruption-layer.md
-  - .agents/skills/clean-architecture/references/adapt-controller-thin.md
-  - .agents/skills/clean-architecture/references/adapt-gateway-abstraction.md
-  - .agents/skills/clean-architecture/references/adapt-mapper-translation.md
-  - .agents/skills/clean-architecture/references/adapt-presenter-formats.md
-  - .agents/skills/clean-architecture/references/bound-boundary-cost-awareness.md
-  - .agents/skills/clean-architecture/references/bound-defer-decisions.md
-  - .agents/skills/clean-architecture/references/bound-humble-object.md
-  - .agents/skills/clean-architecture/references/bound-main-component.md
-  - .agents/skills/clean-architecture/references/bound-partial-boundaries.md
-  - .agents/skills/clean-architecture/references/bound-service-internal-architecture.md
-  - .agents/skills/clean-architecture/references/comp-common-closure.md
-  - .agents/skills/clean-architecture/references/comp-common-reuse.md
-  - .agents/skills/clean-architecture/references/comp-reuse-release-equivalence.md
-  - .agents/skills/clean-architecture/references/comp-screaming-architecture.md
-  - .agents/skills/clean-architecture/references/comp-stable-dependencies.md
-  - .agents/skills/clean-architecture/references/dep-acyclic-dependencies.md
-  - .agents/skills/clean-architecture/references/dep-data-crossing-boundaries.md
-  - .agents/skills/clean-architecture/references/dep-interface-ownership.md
-  - .agents/skills/clean-architecture/references/dep-inward-only.md
-  - .agents/skills/clean-architecture/references/dep-no-framework-imports.md
-  - .agents/skills/clean-architecture/references/dep-stable-abstractions.md
-  - .agents/skills/clean-architecture/references/entity-encapsulate-invariants.md
-  - .agents/skills/clean-architecture/references/entity-no-persistence-awareness.md
-  - .agents/skills/clean-architecture/references/entity-pure-business-rules.md
-  - .agents/skills/clean-architecture/references/entity-rich-not-anemic.md
-  - .agents/skills/clean-architecture/references/entity-value-objects.md
-  - .agents/skills/clean-architecture/references/frame-di-container-edge.md
-  - .agents/skills/clean-architecture/references/frame-domain-purity.md
-  - .agents/skills/clean-architecture/references/frame-logging-abstraction.md
-  - .agents/skills/clean-architecture/references/frame-orm-in-infrastructure.md
-  - .agents/skills/clean-architecture/references/frame-web-in-infrastructure.md
-  - .agents/skills/clean-architecture/references/test-boundary-verification.md
-  - .agents/skills/clean-architecture/references/test-layer-isolation.md
-  - .agents/skills/clean-architecture/references/test-testable-design.md
-  - .agents/skills/clean-architecture/references/test-tests-are-architecture.md
-  - .agents/skills/clean-architecture/references/usecase-explicit-dependencies.md
-  - .agents/skills/clean-architecture/references/usecase-input-output-ports.md
-  - .agents/skills/clean-architecture/references/usecase-no-presentation-logic.md
-  - .agents/skills/clean-architecture/references/usecase-orchestrates-not-implements.md
-  - .agents/skills/clean-architecture/references/usecase-single-responsibility.md
-  - .agents/skills/clean-architecture/references/usecase-transaction-boundary.md
-  - .claude/skills/clean-architecture
-  - .claude/skills/clean-architecture/SKILL.md
-  - .claude/skills/clean-architecture/assets/templates/_template.md
-  - .claude/skills/clean-architecture/metadata.json
-  - .claude/skills/clean-architecture/references/_sections.md
-  - .claude/skills/clean-architecture/references/adapt-anti-corruption-layer.md
-  - .claude/skills/clean-architecture/references/adapt-controller-thin.md
-  - .claude/skills/clean-architecture/references/adapt-gateway-abstraction.md
-  - .claude/skills/clean-architecture/references/adapt-mapper-translation.md
-  - .claude/skills/clean-architecture/references/adapt-presenter-formats.md
-  - .claude/skills/clean-architecture/references/bound-boundary-cost-awareness.md
-  - .claude/skills/clean-architecture/references/bound-defer-decisions.md
-  - .claude/skills/clean-architecture/references/bound-humble-object.md
-  - .claude/skills/clean-architecture/references/bound-main-component.md
-  - .claude/skills/clean-architecture/references/bound-partial-boundaries.md
-  - .claude/skills/clean-architecture/references/bound-service-internal-architecture.md
-  - .claude/skills/clean-architecture/references/comp-common-closure.md
-  - .claude/skills/clean-architecture/references/comp-common-reuse.md
-  - .claude/skills/clean-architecture/references/comp-reuse-release-equivalence.md
-  - .claude/skills/clean-architecture/references/comp-screaming-architecture.md
-  - .claude/skills/clean-architecture/references/comp-stable-dependencies.md
-  - .claude/skills/clean-architecture/references/dep-acyclic-dependencies.md
-  - .claude/skills/clean-architecture/references/dep-data-crossing-boundaries.md
-  - .claude/skills/clean-architecture/references/dep-interface-ownership.md
-  - .claude/skills/clean-architecture/references/dep-inward-only.md
-  - .claude/skills/clean-architecture/references/dep-no-framework-imports.md
-  - .claude/skills/clean-architecture/references/dep-stable-abstractions.md
-  - .claude/skills/clean-architecture/references/entity-encapsulate-invariants.md
-  - .claude/skills/clean-architecture/references/entity-no-persistence-awareness.md
-  - .claude/skills/clean-architecture/references/entity-pure-business-rules.md
-  - .claude/skills/clean-architecture/references/entity-rich-not-anemic.md
-  - .claude/skills/clean-architecture/references/entity-value-objects.md
-  - .claude/skills/clean-architecture/references/frame-di-container-edge.md
-  - .claude/skills/clean-architecture/references/frame-domain-purity.md
-  - .claude/skills/clean-architecture/references/frame-logging-abstraction.md
-  - .claude/skills/clean-architecture/references/frame-orm-in-infrastructure.md
-  - .claude/skills/clean-architecture/references/frame-web-in-infrastructure.md
-  - .claude/skills/clean-architecture/references/test-boundary-verification.md
-  - .claude/skills/clean-architecture/references/test-layer-isolation.md
-  - .claude/skills/clean-architecture/references/test-testable-design.md
-  - .claude/skills/clean-architecture/references/test-tests-are-architecture.md
-  - .claude/skills/clean-architecture/references/usecase-explicit-dependencies.md
-  - .claude/skills/clean-architecture/references/usecase-input-output-ports.md
-  - .claude/skills/clean-architecture/references/usecase-no-presentation-logic.md
-  - .claude/skills/clean-architecture/references/usecase-orchestrates-not-implements.md
-  - .claude/skills/clean-architecture/references/usecase-single-responsibility.md
-  - .claude/skills/clean-architecture/references/usecase-transaction-boundary.md
-  deployed_file_hashes:
-    .agents/skills/clean-architecture/SKILL.md: sha256:788c4865e240234da7fec77464af254366285706dd274f18bffd03fd5f19c3dc
-    .agents/skills/clean-architecture/assets/templates/_template.md: sha256:8d5fa3034320f9130295d13049855580323625fab0c3815b56c6c9f4e4cb0019
-    .agents/skills/clean-architecture/metadata.json: sha256:96cf48694b7b2f0398f2d42e173a76fd9d1adbd011bbf8948f54462d5f168ed9
-    .agents/skills/clean-architecture/references/_sections.md: sha256:5b3248c0f3233cf6faed8cd776f60ddbf08b02e622583fa244d141a268a3e518
-    .agents/skills/clean-architecture/references/adapt-anti-corruption-layer.md: sha256:8cc38e717a36e0c75ba41884b0d8a94c9a3c8bac2833c24dfce143da6772061f
-    .agents/skills/clean-architecture/references/adapt-controller-thin.md: sha256:d413a111ba6faf9661ac1b8683ef80a35b92d921f9f235797e282d682686e7bc
-    .agents/skills/clean-architecture/references/adapt-gateway-abstraction.md: sha256:a1da93769b70757e779c518460e531a5cae40dcbcc478960ca0acf827d71065d
-    .agents/skills/clean-architecture/references/adapt-mapper-translation.md: sha256:728d464f4fae37c419a2298aae8f9cd4d5d281952988cb5e62fb9ca1fc1ffb3a
-    .agents/skills/clean-architecture/references/adapt-presenter-formats.md: sha256:2e2bd8629039ce903df6c52ae2b91409805fdff7fdd80b83e8cb26e38ac4a6e9
-    .agents/skills/clean-architecture/references/bound-boundary-cost-awareness.md: sha256:30da9f130d6cf29d9d192b5d2e75d8fd91ba23a08eb641c452d98fd190f808a6
-    .agents/skills/clean-architecture/references/bound-defer-decisions.md: sha256:5fe6e43d2e84c02341f7ec001e1e4f77e8283761d097d5a103d15b8f74e97b03
-    .agents/skills/clean-architecture/references/bound-humble-object.md: sha256:3e05be07658ea568c0af7c0d58c9d31ed8932eca3c2ee56acc3292db16f9933c
-    .agents/skills/clean-architecture/references/bound-main-component.md: sha256:e33c447b31f1f45fa9ee3eb16c72bbbf5468869e1cb18826423fc1e1994dad28
-    .agents/skills/clean-architecture/references/bound-partial-boundaries.md: sha256:73de3b714f10942949c51d69ce7eb794e2474f2282c1076bb674a505b2ec3fa8
-    .agents/skills/clean-architecture/references/bound-service-internal-architecture.md: sha256:3ef47870f5e388542e0ccaff1862f09ce01e839d1394d1ad9757697ce2116e53
-    .agents/skills/clean-architecture/references/comp-common-closure.md: sha256:47f10338b1800a3a0c6f75e8bbab5c23ce8b49f4b2d6f3844909ecfe3e6f976c
-    .agents/skills/clean-architecture/references/comp-common-reuse.md: sha256:8177db382c08d5a838083417d945897a9e4d6c31f9e65871b8c950e07e9bff41
-    .agents/skills/clean-architecture/references/comp-reuse-release-equivalence.md: sha256:b2fbc9d42bd5b00a816e48c604166667c94f26ef8d0b5cf781907c40ba4f5ed8
-    .agents/skills/clean-architecture/references/comp-screaming-architecture.md: sha256:cc224fc8e93a54d962411661843b3977770826e62d168aa55d03cb7cfd8841cc
-    .agents/skills/clean-architecture/references/comp-stable-dependencies.md: sha256:ce8457b61ed21e45b98649d2a688c76914ecc7a22809f240594fc00f0391f41f
-    .agents/skills/clean-architecture/references/dep-acyclic-dependencies.md: sha256:ef0a2752db04542a2927ad4aff3ea2a606a5907fcba56223867bcad7abd4cbf5
-    .agents/skills/clean-architecture/references/dep-data-crossing-boundaries.md: sha256:5866c9c0f698d4f807a8602165fcaa2d0696f2a7b031c4dc1116308b641c9beb
-    .agents/skills/clean-architecture/references/dep-interface-ownership.md: sha256:262f3943a7afbc2ca279daefe0078440df28a60e899a5e5b1afb6b995f1a5354
-    .agents/skills/clean-architecture/references/dep-inward-only.md: sha256:f7c28c5d06988ac8103107c643864bbf8fbdb4710379cc04099970ca7be1a54f
-    .agents/skills/clean-architecture/references/dep-no-framework-imports.md: sha256:f4a55a57f80bad5e1e71554bf46a24521c88da7678e550e03b7c1f8c58c43147
-    .agents/skills/clean-architecture/references/dep-stable-abstractions.md: sha256:27646abb9cb9950bf76eaf916a4c8f4fceb410d1a84a6a7f1c82a406115b2d23
-    .agents/skills/clean-architecture/references/entity-encapsulate-invariants.md: sha256:52a1b049fec5be7d443c81bbbeda93b66b2ec6ff5df7d744c699f291c17b0136
-    .agents/skills/clean-architecture/references/entity-no-persistence-awareness.md: sha256:81578c5fbcdc193c270ff2db4907d483db3b330545afe33d4a323013d80a34d8
-    .agents/skills/clean-architecture/references/entity-pure-business-rules.md: sha256:7bae61562de181dd6255a08b2675274bcd56d42c37c501b1a4861e91c8f126a1
-    .agents/skills/clean-architecture/references/entity-rich-not-anemic.md: sha256:68b7dac4b4805b172959ba74c41262cc143de03897edf6de0e351e242e0fd428
-    .agents/skills/clean-architecture/references/entity-value-objects.md: sha256:b5b6f40d8f9522d1f1e9583a26e91723a9e9a9e95aeb527e7f54c69689ace98e
-    .agents/skills/clean-architecture/references/frame-di-container-edge.md: sha256:08c090f69d6d8906af2740dda6569e25b901b73a04ec6f8af759db66b652764d
-    .agents/skills/clean-architecture/references/frame-domain-purity.md: sha256:13c65323f9e3b83aeddd65cc18c6cda2a93e09db7d3367c4d0df5677a7300890
-    .agents/skills/clean-architecture/references/frame-logging-abstraction.md: sha256:74b195cdceed76523bf068c42b118357a740efa9a9e8b2f048908cb55f80b2b2
-    .agents/skills/clean-architecture/references/frame-orm-in-infrastructure.md: sha256:556a01b8f77ecf16d63078039a66f868ca9f853d19f59330dec140e5bf0e58ac
-    .agents/skills/clean-architecture/references/frame-web-in-infrastructure.md: sha256:fbaad0ba714af6f7f474d3d7c56c934750f7ccf705c5840fda6ea040a72591cb
-    .agents/skills/clean-architecture/references/test-boundary-verification.md: sha256:026f6dccd79d298c094389d2b9f5e40cdcc4e45f5fdc004dc93e9a657e508fc6
-    .agents/skills/clean-architecture/references/test-layer-isolation.md: sha256:839afc4af4c07303e109c2e405cebdf0cd6fddbeb8f455f3dc61425df342147f
-    .agents/skills/clean-architecture/references/test-testable-design.md: sha256:e499ac3f3b326897eea77d421c6fef796aef9c07c92eacbb36f53f2a5e543fa0
-    .agents/skills/clean-architecture/references/test-tests-are-architecture.md: sha256:0bd217345ea3a72e8afa888722999a240ad0753b5c6a607492cb36856fade62c
-    .agents/skills/clean-architecture/references/usecase-explicit-dependencies.md: sha256:a68541633ce0b55a57de8a16c4798c0d009f1cf2c2736eaf09b067d85fda9ec5
-    .agents/skills/clean-architecture/references/usecase-input-output-ports.md: sha256:a30a9b7cf0114ebda72d08a6b1ea098b5d1b8a855f9eae1e7a9b473cd4a6d51e
-    .agents/skills/clean-architecture/references/usecase-no-presentation-logic.md: sha256:1338d84dca96b5875065d5d56b42b7a2dc34ae668c619a500fd6b6c667b0adbd
-    .agents/skills/clean-architecture/references/usecase-orchestrates-not-implements.md: sha256:266f8f35575f75e17b5818cf5035624a470db8f13d4a7c7d9ceb349201ba2624
-    .agents/skills/clean-architecture/references/usecase-single-responsibility.md: sha256:ef30f33bf8f6a6e79a60dea899703a26cd9a9d971ce00545ae0e32c122df0df8
-    .agents/skills/clean-architecture/references/usecase-transaction-boundary.md: sha256:59a9e60e169362e4cfb66e356f9208784d43fb78923f291e0d7b2101ae0f633f
-    .claude/skills/clean-architecture/SKILL.md: sha256:788c4865e240234da7fec77464af254366285706dd274f18bffd03fd5f19c3dc
-    .claude/skills/clean-architecture/assets/templates/_template.md: sha256:8d5fa3034320f9130295d13049855580323625fab0c3815b56c6c9f4e4cb0019
-    .claude/skills/clean-architecture/metadata.json: sha256:96cf48694b7b2f0398f2d42e173a76fd9d1adbd011bbf8948f54462d5f168ed9
-    .claude/skills/clean-architecture/references/_sections.md: sha256:5b3248c0f3233cf6faed8cd776f60ddbf08b02e622583fa244d141a268a3e518
-    .claude/skills/clean-architecture/references/adapt-anti-corruption-layer.md: sha256:8cc38e717a36e0c75ba41884b0d8a94c9a3c8bac2833c24dfce143da6772061f
-    .claude/skills/clean-architecture/references/adapt-controller-thin.md: sha256:d413a111ba6faf9661ac1b8683ef80a35b92d921f9f235797e282d682686e7bc
-    .claude/skills/clean-architecture/references/adapt-gateway-abstraction.md: sha256:a1da93769b70757e779c518460e531a5cae40dcbcc478960ca0acf827d71065d
-    .claude/skills/clean-architecture/references/adapt-mapper-translation.md: sha256:728d464f4fae37c419a2298aae8f9cd4d5d281952988cb5e62fb9ca1fc1ffb3a
-    .claude/skills/clean-architecture/references/adapt-presenter-formats.md: sha256:2e2bd8629039ce903df6c52ae2b91409805fdff7fdd80b83e8cb26e38ac4a6e9
-    .claude/skills/clean-architecture/references/bound-boundary-cost-awareness.md: sha256:30da9f130d6cf29d9d192b5d2e75d8fd91ba23a08eb641c452d98fd190f808a6
-    .claude/skills/clean-architecture/references/bound-defer-decisions.md: sha256:5fe6e43d2e84c02341f7ec001e1e4f77e8283761d097d5a103d15b8f74e97b03
-    .claude/skills/clean-architecture/references/bound-humble-object.md: sha256:3e05be07658ea568c0af7c0d58c9d31ed8932eca3c2ee56acc3292db16f9933c
-    .claude/skills/clean-architecture/references/bound-main-component.md: sha256:e33c447b31f1f45fa9ee3eb16c72bbbf5468869e1cb18826423fc1e1994dad28
-    .claude/skills/clean-architecture/references/bound-partial-boundaries.md: sha256:73de3b714f10942949c51d69ce7eb794e2474f2282c1076bb674a505b2ec3fa8
-    .claude/skills/clean-architecture/references/bound-service-internal-architecture.md: sha256:3ef47870f5e388542e0ccaff1862f09ce01e839d1394d1ad9757697ce2116e53
-    .claude/skills/clean-architecture/references/comp-common-closure.md: sha256:47f10338b1800a3a0c6f75e8bbab5c23ce8b49f4b2d6f3844909ecfe3e6f976c
-    .claude/skills/clean-architecture/references/comp-common-reuse.md: sha256:8177db382c08d5a838083417d945897a9e4d6c31f9e65871b8c950e07e9bff41
-    .claude/skills/clean-architecture/references/comp-reuse-release-equivalence.md: sha256:b2fbc9d42bd5b00a816e48c604166667c94f26ef8d0b5cf781907c40ba4f5ed8
-    .claude/skills/clean-architecture/references/comp-screaming-architecture.md: sha256:cc224fc8e93a54d962411661843b3977770826e62d168aa55d03cb7cfd8841cc
-    .claude/skills/clean-architecture/references/comp-stable-dependencies.md: sha256:ce8457b61ed21e45b98649d2a688c76914ecc7a22809f240594fc00f0391f41f
-    .claude/skills/clean-architecture/references/dep-acyclic-dependencies.md: sha256:ef0a2752db04542a2927ad4aff3ea2a606a5907fcba56223867bcad7abd4cbf5
-    .claude/skills/clean-architecture/references/dep-data-crossing-boundaries.md: sha256:5866c9c0f698d4f807a8602165fcaa2d0696f2a7b031c4dc1116308b641c9beb
-    .claude/skills/clean-architecture/references/dep-interface-ownership.md: sha256:262f3943a7afbc2ca279daefe0078440df28a60e899a5e5b1afb6b995f1a5354
-    .claude/skills/clean-architecture/references/dep-inward-only.md: sha256:f7c28c5d06988ac8103107c643864bbf8fbdb4710379cc04099970ca7be1a54f
-    .claude/skills/clean-architecture/references/dep-no-framework-imports.md: sha256:f4a55a57f80bad5e1e71554bf46a24521c88da7678e550e03b7c1f8c58c43147
-    .claude/skills/clean-architecture/references/dep-stable-abstractions.md: sha256:27646abb9cb9950bf76eaf916a4c8f4fceb410d1a84a6a7f1c82a406115b2d23
-    .claude/skills/clean-architecture/references/entity-encapsulate-invariants.md: sha256:52a1b049fec5be7d443c81bbbeda93b66b2ec6ff5df7d744c699f291c17b0136
-    .claude/skills/clean-architecture/references/entity-no-persistence-awareness.md: sha256:81578c5fbcdc193c270ff2db4907d483db3b330545afe33d4a323013d80a34d8
-    .claude/skills/clean-architecture/references/entity-pure-business-rules.md: sha256:7bae61562de181dd6255a08b2675274bcd56d42c37c501b1a4861e91c8f126a1
-    .claude/skills/clean-architecture/references/entity-rich-not-anemic.md: sha256:68b7dac4b4805b172959ba74c41262cc143de03897edf6de0e351e242e0fd428
-    .claude/skills/clean-architecture/references/entity-value-objects.md: sha256:b5b6f40d8f9522d1f1e9583a26e91723a9e9a9e95aeb527e7f54c69689ace98e
-    .claude/skills/clean-architecture/references/frame-di-container-edge.md: sha256:08c090f69d6d8906af2740dda6569e25b901b73a04ec6f8af759db66b652764d
-    .claude/skills/clean-architecture/references/frame-domain-purity.md: sha256:13c65323f9e3b83aeddd65cc18c6cda2a93e09db7d3367c4d0df5677a7300890
-    .claude/skills/clean-architecture/references/frame-logging-abstraction.md: sha256:74b195cdceed76523bf068c42b118357a740efa9a9e8b2f048908cb55f80b2b2
-    .claude/skills/clean-architecture/references/frame-orm-in-infrastructure.md: sha256:556a01b8f77ecf16d63078039a66f868ca9f853d19f59330dec140e5bf0e58ac
-    .claude/skills/clean-architecture/references/frame-web-in-infrastructure.md: sha256:fbaad0ba714af6f7f474d3d7c56c934750f7ccf705c5840fda6ea040a72591cb
-    .claude/skills/clean-architecture/references/test-boundary-verification.md: sha256:026f6dccd79d298c094389d2b9f5e40cdcc4e45f5fdc004dc93e9a657e508fc6
-    .claude/skills/clean-architecture/references/test-layer-isolation.md: sha256:839afc4af4c07303e109c2e405cebdf0cd6fddbeb8f455f3dc61425df342147f
-    .claude/skills/clean-architecture/references/test-testable-design.md: sha256:e499ac3f3b326897eea77d421c6fef796aef9c07c92eacbb36f53f2a5e543fa0
-    .claude/skills/clean-architecture/references/test-tests-are-architecture.md: sha256:0bd217345ea3a72e8afa888722999a240ad0753b5c6a607492cb36856fade62c
-    .claude/skills/clean-architecture/references/usecase-explicit-dependencies.md: sha256:a68541633ce0b55a57de8a16c4798c0d009f1cf2c2736eaf09b067d85fda9ec5
-    .claude/skills/clean-architecture/references/usecase-input-output-ports.md: sha256:a30a9b7cf0114ebda72d08a6b1ea098b5d1b8a855f9eae1e7a9b473cd4a6d51e
-    .claude/skills/clean-architecture/references/usecase-no-presentation-logic.md: sha256:1338d84dca96b5875065d5d56b42b7a2dc34ae668c619a500fd6b6c667b0adbd
-    .claude/skills/clean-architecture/references/usecase-orchestrates-not-implements.md: sha256:266f8f35575f75e17b5818cf5035624a470db8f13d4a7c7d9ceb349201ba2624
-    .claude/skills/clean-architecture/references/usecase-single-responsibility.md: sha256:ef30f33bf8f6a6e79a60dea899703a26cd9a9d971ce00545ae0e32c122df0df8
-    .claude/skills/clean-architecture/references/usecase-transaction-boundary.md: sha256:59a9e60e169362e4cfb66e356f9208784d43fb78923f291e0d7b2101ae0f633f
-  content_hash: sha256:808f2bb0d6a900ef6d8d40b7de64ffa6ec85754a82b6592096926625649d8e55
+  content_hash: sha256:cb59f5bc09a951ae2da3efe72dffbd615a4176b918c8f45e76e653732464f124
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: react-router-framework-mode
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/community/react-router-framework-mode
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:a49db6c287be785d07d346281c839e8db9ca357dff3ea91b5ad85dc76581853e
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: supabase-postgres-best-practices
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/community/supabase-postgres-best-practices
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:a3bc14f7ae46528626f882e4d461a273f3735f8a87ca401c9f604d01bf34678c
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: use-modern-go
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/community/use-modern-go
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:1392f8eff71c2033d92ea81e95d5c6f19d7e0396b352e69f2b7dce4413c8ab42
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: commit
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/commit
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:d3996dd85384d1478fd6689b396512d6bc4a5bbc87ff0d75935af45aea6e05f8
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: commit-emoji
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/commit-emoji
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:c56996b180256200511c1e4c7fbcf40d7f5f187bcb74b8ebb91d737a07e492da
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: datadog-services
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/datadog-services
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:c3d9174e5f560b1a5733d2ed6094f5bca3bf512a9d62976f77ea94e53d1c9c2c
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: go-check
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/go-check
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:a9e096290e9a75cc183a9fa706e076e52ac01e167566b9f053f22a0eb9e144c2
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: go-docs
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/go-docs
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:4d9ee20d45a703a0a52acf3595ed532b858c41c027ba912d105aa06bcd65b6b3
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: go-service-clients-openapi
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/go-service-clients-openapi
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:836b1a3fb9901b19e6fd3de0f43dc8ac9eaa1e8a819dfe6d59728490e16ca608
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: go-service-migration
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/go-service-migration
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:72e29bcfa7b067fd1c60f684e19f17b56d5f09186eaa2869c6f319f5fe1f01ab
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: go-style-guide
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/go-style-guide
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:8b190f5dc3812058d981a248fb6226017b57a877c5f59a24c24be8cd2f08a7bf
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: jira-craft-ticket
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/jira-craft-ticket
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:984d7d2fc2172757aba9baf673e409e6af46b13c5d4ceedde76ad1a987f9d85b
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: jira-dashboard
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/jira-dashboard
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:7806d7a3d9e2ae9cad418c4944b7356140176dafc8db14d557ab4cfdd24ec6ca
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: jira-new-ticket-from-work
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/jira-new-ticket-from-work
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:aecddf2ae3d51f6315659fe708395802b865c2ff122d2182b9957e483a58fdb7
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: jira-transition-ticket
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/jira-transition-ticket
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:7a165fa110d67d49fd5097e8094058ef40e6883bd3116e0b974656372e29d379
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: jira-work-ticket
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/jira-work-ticket
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:00fba47b5a9cced6d8ffa2381ead04f8742b0e8c59decdc8a5536274d9a09eff
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: node-testing
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/node-testing
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:b16a1b9a58ccb8f04d8bcbd97d2c6a4dc24361c014bbdd19a9e191ccc3e4eb92
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: pr-pro
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/pr-pro
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:533bd9e5797854a45d43358b3906042f236e296d03b45a891084cc378056e7db
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: react-component
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/react-component
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:1682151b4ec15354874b838845beaccf3fe63ff6214045990c57ad57209440f1
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: react-config
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/react-config
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:ddf2368a644d70cacea77b45a47a484900cf0130ee758a6d6264f4247a90bf0b
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: react-context
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/react-context
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:41a7775ca4ca1bdc53319623e4204a1b49215ae5f3187bcdb5fe64ae52349ce6
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: react-routing
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/react-routing
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:9816866c94d8c79f596f24233fc281ae5e770ba65970934a6e6299671d83ff74
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: react-standards
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/react-standards
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:be885259c8779e53e4be7a3cc5382693942bb0b7575e9b429aa5de304b0752a6
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: react-testing
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/react-testing
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:b475b21a6db30c922d1d0df8f201c1d3f1b94fd5b6c17a630440320e994ebbb7
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: rewardstyle/engx
+  materialization_repo_url: rewardStyle/engx
+  name: react-translations
+  host: github.com
+  resolved_commit: 07de87454858b00d17326245fc9dcfc56771601c
+  version: unknown
+  virtual_path: skills/engineering/ltk/react-translations
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:1f5839c8cb90ce1a6791d06d01762fb976034e3e5da2cf04b79f9cbeab653830
   target_subset:
   - agent-skills
   - claude
 deployments:
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: null
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/SKILL.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:788c4865e240234da7fec77464af254366285706dd274f18bffd03fd5f19c3dc
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/assets/templates/_template.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:8d5fa3034320f9130295d13049855580323625fab0c3815b56c6c9f4e4cb0019
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/metadata.json
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:96cf48694b7b2f0398f2d42e173a76fd9d1adbd011bbf8948f54462d5f168ed9
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/_sections.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:5b3248c0f3233cf6faed8cd776f60ddbf08b02e622583fa244d141a268a3e518
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/adapt-anti-corruption-layer.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:8cc38e717a36e0c75ba41884b0d8a94c9a3c8bac2833c24dfce143da6772061f
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/adapt-controller-thin.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:d413a111ba6faf9661ac1b8683ef80a35b92d921f9f235797e282d682686e7bc
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/adapt-gateway-abstraction.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:a1da93769b70757e779c518460e531a5cae40dcbcc478960ca0acf827d71065d
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/adapt-mapper-translation.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:728d464f4fae37c419a2298aae8f9cd4d5d281952988cb5e62fb9ca1fc1ffb3a
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/adapt-presenter-formats.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:2e2bd8629039ce903df6c52ae2b91409805fdff7fdd80b83e8cb26e38ac4a6e9
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/bound-boundary-cost-awareness.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:30da9f130d6cf29d9d192b5d2e75d8fd91ba23a08eb641c452d98fd190f808a6
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/bound-defer-decisions.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:5fe6e43d2e84c02341f7ec001e1e4f77e8283761d097d5a103d15b8f74e97b03
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/bound-humble-object.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:3e05be07658ea568c0af7c0d58c9d31ed8932eca3c2ee56acc3292db16f9933c
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/bound-main-component.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:e33c447b31f1f45fa9ee3eb16c72bbbf5468869e1cb18826423fc1e1994dad28
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/bound-partial-boundaries.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:73de3b714f10942949c51d69ce7eb794e2474f2282c1076bb674a505b2ec3fa8
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/bound-service-internal-architecture.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:3ef47870f5e388542e0ccaff1862f09ce01e839d1394d1ad9757697ce2116e53
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/comp-common-closure.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:47f10338b1800a3a0c6f75e8bbab5c23ce8b49f4b2d6f3844909ecfe3e6f976c
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/comp-common-reuse.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:8177db382c08d5a838083417d945897a9e4d6c31f9e65871b8c950e07e9bff41
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/comp-reuse-release-equivalence.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:b2fbc9d42bd5b00a816e48c604166667c94f26ef8d0b5cf781907c40ba4f5ed8
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/comp-screaming-architecture.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:cc224fc8e93a54d962411661843b3977770826e62d168aa55d03cb7cfd8841cc
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/comp-stable-dependencies.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:ce8457b61ed21e45b98649d2a688c76914ecc7a22809f240594fc00f0391f41f
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/dep-acyclic-dependencies.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:ef0a2752db04542a2927ad4aff3ea2a606a5907fcba56223867bcad7abd4cbf5
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/dep-data-crossing-boundaries.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:5866c9c0f698d4f807a8602165fcaa2d0696f2a7b031c4dc1116308b641c9beb
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/dep-interface-ownership.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:262f3943a7afbc2ca279daefe0078440df28a60e899a5e5b1afb6b995f1a5354
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/dep-inward-only.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:f7c28c5d06988ac8103107c643864bbf8fbdb4710379cc04099970ca7be1a54f
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/dep-no-framework-imports.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:f4a55a57f80bad5e1e71554bf46a24521c88da7678e550e03b7c1f8c58c43147
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/dep-stable-abstractions.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:27646abb9cb9950bf76eaf916a4c8f4fceb410d1a84a6a7f1c82a406115b2d23
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/entity-encapsulate-invariants.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:52a1b049fec5be7d443c81bbbeda93b66b2ec6ff5df7d744c699f291c17b0136
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/entity-no-persistence-awareness.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:81578c5fbcdc193c270ff2db4907d483db3b330545afe33d4a323013d80a34d8
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/entity-pure-business-rules.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:7bae61562de181dd6255a08b2675274bcd56d42c37c501b1a4861e91c8f126a1
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/entity-rich-not-anemic.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:68b7dac4b4805b172959ba74c41262cc143de03897edf6de0e351e242e0fd428
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/entity-value-objects.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:b5b6f40d8f9522d1f1e9583a26e91723a9e9a9e95aeb527e7f54c69689ace98e
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/frame-di-container-edge.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:08c090f69d6d8906af2740dda6569e25b901b73a04ec6f8af759db66b652764d
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/frame-domain-purity.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:13c65323f9e3b83aeddd65cc18c6cda2a93e09db7d3367c4d0df5677a7300890
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/frame-logging-abstraction.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:74b195cdceed76523bf068c42b118357a740efa9a9e8b2f048908cb55f80b2b2
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/frame-orm-in-infrastructure.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:556a01b8f77ecf16d63078039a66f868ca9f853d19f59330dec140e5bf0e58ac
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/frame-web-in-infrastructure.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:fbaad0ba714af6f7f474d3d7c56c934750f7ccf705c5840fda6ea040a72591cb
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/test-boundary-verification.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:026f6dccd79d298c094389d2b9f5e40cdcc4e45f5fdc004dc93e9a657e508fc6
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/test-layer-isolation.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:839afc4af4c07303e109c2e405cebdf0cd6fddbeb8f455f3dc61425df342147f
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/test-testable-design.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:e499ac3f3b326897eea77d421c6fef796aef9c07c92eacbb36f53f2a5e543fa0
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/test-tests-are-architecture.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:0bd217345ea3a72e8afa888722999a240ad0753b5c6a607492cb36856fade62c
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/usecase-explicit-dependencies.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:a68541633ce0b55a57de8a16c4798c0d009f1cf2c2736eaf09b067d85fda9ec5
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/usecase-input-output-ports.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:a30a9b7cf0114ebda72d08a6b1ea098b5d1b8a855f9eae1e7a9b473cd4a6d51e
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/usecase-no-presentation-logic.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:1338d84dca96b5875065d5d56b42b7a2dc34ae668c619a500fd6b6c667b0adbd
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/usecase-orchestrates-not-implements.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:266f8f35575f75e17b5818cf5035624a470db8f13d4a7c7d9ceb349201ba2624
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/usecase-single-responsibility.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:ef30f33bf8f6a6e79a60dea899703a26cd9a9d971ce00545ae0e32c122df0df8
-- kind: project-relative
-  target: claude
-  value: .claude/skills/clean-architecture/references/usecase-transaction-boundary.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:59a9e60e169362e4cfb66e356f9208784d43fb78923f291e0d7b2101ae0f633f
 - kind: project-relative
   target: claude
   value: .claude/skills/diagnosing-bugs
@@ -1060,429 +775,6 @@ deployments:
   - mattpocock/skills/skills/engineering/tdd
   active_owner: mattpocock/skills/skills/engineering/tdd
   content_hash: sha256:859f9e592c188fda4fc7277dd180e4ce9c7a2e13f6efe1f6f29eccc9d28c106a
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: null
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/SKILL.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:788c4865e240234da7fec77464af254366285706dd274f18bffd03fd5f19c3dc
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/assets/templates/_template.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:8d5fa3034320f9130295d13049855580323625fab0c3815b56c6c9f4e4cb0019
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/metadata.json
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:96cf48694b7b2f0398f2d42e173a76fd9d1adbd011bbf8948f54462d5f168ed9
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/_sections.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:5b3248c0f3233cf6faed8cd776f60ddbf08b02e622583fa244d141a268a3e518
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/adapt-anti-corruption-layer.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:8cc38e717a36e0c75ba41884b0d8a94c9a3c8bac2833c24dfce143da6772061f
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/adapt-controller-thin.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:d413a111ba6faf9661ac1b8683ef80a35b92d921f9f235797e282d682686e7bc
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/adapt-gateway-abstraction.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:a1da93769b70757e779c518460e531a5cae40dcbcc478960ca0acf827d71065d
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/adapt-mapper-translation.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:728d464f4fae37c419a2298aae8f9cd4d5d281952988cb5e62fb9ca1fc1ffb3a
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/adapt-presenter-formats.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:2e2bd8629039ce903df6c52ae2b91409805fdff7fdd80b83e8cb26e38ac4a6e9
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/bound-boundary-cost-awareness.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:30da9f130d6cf29d9d192b5d2e75d8fd91ba23a08eb641c452d98fd190f808a6
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/bound-defer-decisions.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:5fe6e43d2e84c02341f7ec001e1e4f77e8283761d097d5a103d15b8f74e97b03
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/bound-humble-object.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:3e05be07658ea568c0af7c0d58c9d31ed8932eca3c2ee56acc3292db16f9933c
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/bound-main-component.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:e33c447b31f1f45fa9ee3eb16c72bbbf5468869e1cb18826423fc1e1994dad28
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/bound-partial-boundaries.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:73de3b714f10942949c51d69ce7eb794e2474f2282c1076bb674a505b2ec3fa8
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/bound-service-internal-architecture.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:3ef47870f5e388542e0ccaff1862f09ce01e839d1394d1ad9757697ce2116e53
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/comp-common-closure.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:47f10338b1800a3a0c6f75e8bbab5c23ce8b49f4b2d6f3844909ecfe3e6f976c
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/comp-common-reuse.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:8177db382c08d5a838083417d945897a9e4d6c31f9e65871b8c950e07e9bff41
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/comp-reuse-release-equivalence.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:b2fbc9d42bd5b00a816e48c604166667c94f26ef8d0b5cf781907c40ba4f5ed8
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/comp-screaming-architecture.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:cc224fc8e93a54d962411661843b3977770826e62d168aa55d03cb7cfd8841cc
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/comp-stable-dependencies.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:ce8457b61ed21e45b98649d2a688c76914ecc7a22809f240594fc00f0391f41f
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/dep-acyclic-dependencies.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:ef0a2752db04542a2927ad4aff3ea2a606a5907fcba56223867bcad7abd4cbf5
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/dep-data-crossing-boundaries.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:5866c9c0f698d4f807a8602165fcaa2d0696f2a7b031c4dc1116308b641c9beb
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/dep-interface-ownership.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:262f3943a7afbc2ca279daefe0078440df28a60e899a5e5b1afb6b995f1a5354
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/dep-inward-only.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:f7c28c5d06988ac8103107c643864bbf8fbdb4710379cc04099970ca7be1a54f
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/dep-no-framework-imports.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:f4a55a57f80bad5e1e71554bf46a24521c88da7678e550e03b7c1f8c58c43147
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/dep-stable-abstractions.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:27646abb9cb9950bf76eaf916a4c8f4fceb410d1a84a6a7f1c82a406115b2d23
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/entity-encapsulate-invariants.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:52a1b049fec5be7d443c81bbbeda93b66b2ec6ff5df7d744c699f291c17b0136
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/entity-no-persistence-awareness.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:81578c5fbcdc193c270ff2db4907d483db3b330545afe33d4a323013d80a34d8
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/entity-pure-business-rules.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:7bae61562de181dd6255a08b2675274bcd56d42c37c501b1a4861e91c8f126a1
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/entity-rich-not-anemic.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:68b7dac4b4805b172959ba74c41262cc143de03897edf6de0e351e242e0fd428
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/entity-value-objects.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:b5b6f40d8f9522d1f1e9583a26e91723a9e9a9e95aeb527e7f54c69689ace98e
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/frame-di-container-edge.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:08c090f69d6d8906af2740dda6569e25b901b73a04ec6f8af759db66b652764d
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/frame-domain-purity.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:13c65323f9e3b83aeddd65cc18c6cda2a93e09db7d3367c4d0df5677a7300890
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/frame-logging-abstraction.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:74b195cdceed76523bf068c42b118357a740efa9a9e8b2f048908cb55f80b2b2
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/frame-orm-in-infrastructure.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:556a01b8f77ecf16d63078039a66f868ca9f853d19f59330dec140e5bf0e58ac
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/frame-web-in-infrastructure.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:fbaad0ba714af6f7f474d3d7c56c934750f7ccf705c5840fda6ea040a72591cb
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/test-boundary-verification.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:026f6dccd79d298c094389d2b9f5e40cdcc4e45f5fdc004dc93e9a657e508fc6
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/test-layer-isolation.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:839afc4af4c07303e109c2e405cebdf0cd6fddbeb8f455f3dc61425df342147f
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/test-testable-design.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:e499ac3f3b326897eea77d421c6fef796aef9c07c92eacbb36f53f2a5e543fa0
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/test-tests-are-architecture.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:0bd217345ea3a72e8afa888722999a240ad0753b5c6a607492cb36856fade62c
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/usecase-explicit-dependencies.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:a68541633ce0b55a57de8a16c4798c0d009f1cf2c2736eaf09b067d85fda9ec5
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/usecase-input-output-ports.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:a30a9b7cf0114ebda72d08a6b1ea098b5d1b8a855f9eae1e7a9b473cd4a6d51e
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/usecase-no-presentation-logic.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:1338d84dca96b5875065d5d56b42b7a2dc34ae668c619a500fd6b6c667b0adbd
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/usecase-orchestrates-not-implements.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:266f8f35575f75e17b5818cf5035624a470db8f13d4a7c7d9ceb349201ba2624
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/usecase-single-responsibility.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:ef30f33bf8f6a6e79a60dea899703a26cd9a9d971ce00545ae0e32c122df0df8
-- kind: project-relative
-  target: codex
-  value: .agents/skills/clean-architecture/references/usecase-transaction-boundary.md
-  runtime: null
-  scope: project
-  owners:
-  - pproenca/dot-skills/skills/.experimental/clean-architecture
-  active_owner: pproenca/dot-skills/skills/.experimental/clean-architecture
-  content_hash: sha256:59a9e60e169362e4cfb66e356f9208784d43fb78923f291e0d7b2101ae0f633f
 - kind: project-relative
   target: codex
   value: .agents/skills/diagnosing-bugs

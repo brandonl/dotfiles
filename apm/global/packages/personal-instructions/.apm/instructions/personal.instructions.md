@@ -9,7 +9,8 @@ description: Personal agent execution and response rules
 - Read and trace affected behavior before editing.
 - Make surgical changes. Preserve unrelated work and existing conventions.
 - Fix root causes at narrowest shared layer.
-- Bug fixes require a reproducing test first. Verify behavior before declaring completion.
+- When behavior is broken, failing, or unexpectedly slow, diagnose the root cause before editing.
+- Bug fixes require a reproducing test first. Confirm it fails for the reported reason, apply the narrowest shared fix, then run the reproducing test and focused validation before declaring completion.
 - Report failures, skipped work, and incomplete validation explicitly.
 
 # Agent tools
