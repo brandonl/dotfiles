@@ -2,12 +2,17 @@
 
 set -euo pipefail
 
-repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+source_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 test_root="$(mktemp -d)"
 trap 'rm -rf "$test_root"' EXIT
 
+repo_root="$test_root/repo"
 fake_bin="$test_root/bin"
-mkdir -p "$fake_bin"
+mkdir -p "$fake_bin" "$repo_root/scripts" "$repo_root/apm/global"
+cp "$source_root/scripts/apm-install.sh" "$repo_root/scripts/apm-install.sh"
+cp "$source_root/apm/global/apm.yml" "$repo_root/apm/global/apm.yml"
+cp "$source_root/apm/global/apm.lock.yaml" "$repo_root/apm/global/apm.lock.yaml"
+cp -R "$source_root/apm/global/packages" "$repo_root/apm/global/packages"
 
 cat >"$fake_bin/brew" <<EOF
 #!/usr/bin/env bash
@@ -58,3 +63,17 @@ cmp \
 cmp \
   "$repo_root/apm/global/packages/personal-instructions/.apm/instructions/personal.instructions.md" \
   "$HOME/.apm/apm_modules/_local/personal-instructions/.apm/instructions/personal.instructions.md"
+
+cat >"$repo_root/apm/global/apm.local.yml" <<'EOF'
+dependencies:
+  apm:
+    - git: example/work-only
+      targets: [agent-skills]
+EOF
+cp "$repo_root/apm/global/apm.lock.yaml" "$repo_root/apm/global/apm.local.lock.yaml"
+
+CODEX_MCP_LIST_RESULT=valid "$repo_root/scripts/apm-install.sh" >/dev/null
+yq eval-all 'select(fileIndex == 0) *+ select(fileIndex == 1)' \
+  "$repo_root/apm/global/apm.yml" \
+  "$repo_root/apm/global/apm.local.yml" >"$test_root/expected-apm.yml"
+cmp "$test_root/expected-apm.yml" "$HOME/.apm/apm.yml"

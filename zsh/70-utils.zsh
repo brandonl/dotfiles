@@ -56,8 +56,8 @@ function gwd() {
 
 # ── AWS ────────────────────────────────────────────────
 # fzf-pick an SSO profile, refresh the SSO token only if expired, then export
-# temp creds into the shell. All profiles share the `ltk` sso-session, so one
-# login covers every profile. Replaces awsume + fzf for this config.
+# temp creds into the shell. Reuses the configured SSO session so one login
+# covers every profile. Replaces awsume + fzf for this config.
 function awsx() {
   local profile
   profile="${1:-$(aws configure list-profiles | fzf --prompt='aws> ' \

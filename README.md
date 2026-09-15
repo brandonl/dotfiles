@@ -25,6 +25,10 @@ Re-run `./install` after pulling changes. Dotbot relinks files in place.
 
 Public, machine-wide Claude and Codex dependencies live in
 `apm/global/apm.yml`. `./install` installs the committed lockfile exactly.
+Machine- or work-specific dependencies belong in ignored
+`apm/global/apm.local.yml`. When present, installation merges it with the
+public manifest and uses ignored `apm/global/apm.local.lock.yaml` for the
+combined dependency graph.
 APM is installed and upgraded through Homebrew; `scripts/apm-install.sh` uses
 the Homebrew binary directly so an older standalone binary cannot shadow it.
 Shared global instructions live in the tracked local packages under
@@ -68,6 +72,9 @@ To update a dependency:
 ./scripts/apm-install.sh --update
 git diff -- apm/global/apm.yml apm/global/apm.lock.yaml
 ```
+
+For local dependencies, edit `apm/global/apm.local.yml` and run the same update
+command. Its combined lockfile remains local and ignored.
 
 Work-specific agent configuration stays local to the work machine and is not
 managed by this repo.

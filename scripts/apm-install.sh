@@ -2,6 +2,10 @@
 set -euo pipefail
 
 dotfiles="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+public_manifest="$dotfiles/apm/global/apm.yml"
+public_lock="$dotfiles/apm/global/apm.lock.yaml"
+local_manifest="$dotfiles/apm/global/apm.local.yml"
+local_lock="$dotfiles/apm/global/apm.local.lock.yaml"
 update=0
 
 sync_codex_context7() {
@@ -57,18 +61,29 @@ if [[ ! -x "$apm_bin" ]]; then
 fi
 
 mkdir -p "$HOME/.apm"
-install -m 600 "$dotfiles/apm/global/apm.yml" "$HOME/.apm/apm.yml"
-install -m 600 "$dotfiles/apm/global/apm.lock.yaml" "$HOME/.apm/apm.lock.yaml"
+if [[ -f "$local_manifest" ]]; then
+  yq eval-all 'select(fileIndex == 0) *+ select(fileIndex == 1)' \
+    "$public_manifest" "$local_manifest" >"$HOME/.apm/apm.yml"
+  chmod 600 "$HOME/.apm/apm.yml"
+  lock="$local_lock"
+else
+  install -m 600 "$public_manifest" "$HOME/.apm/apm.yml"
+  lock="$public_lock"
+fi
+
 mkdir -p "$HOME/.apm/packages"
 rsync -a --delete "$dotfiles/apm/global/packages/" "$HOME/.apm/packages/"
 
-if (( update )); then
-  "$apm_bin" lock --global --update
-  install -m 600 "$HOME/.apm/apm.lock.yaml" "$dotfiles/apm/global/apm.lock.yaml"
-  "$apm_bin" install --global --frozen
+if (( update )) || [[ ! -f "$lock" ]]; then
+  lock_args=(--global)
+  (( update )) && lock_args+=(--update)
+  "$apm_bin" lock "${lock_args[@]}"
+  install -m 600 "$HOME/.apm/apm.lock.yaml" "$lock"
 else
-  "$apm_bin" install --global --frozen
+  install -m 600 "$lock" "$HOME/.apm/apm.lock.yaml"
 fi
+
+"$apm_bin" install --global --frozen
 
 # APM 0.30 records global local dependencies but does not retain them under
 # apm_modules, where global compilation reads instructions from.

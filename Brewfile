@@ -44,7 +44,6 @@ brew 'hyperfine' # CLI benchmarking
 brew 'jless' # JSON/YAML pager
 brew 'jq' # JSON processor
 brew 'keychain' # SSH/GPG agent helper
-brew 'rewardstyle/tap/ktl' # LTK developer tooling CLI
 brew 'lazydocker' # Docker TUI
 brew 'lima' # Linux VM runtime
 brew 'lnav' # Log file navigator
@@ -119,7 +118,6 @@ cask 'vscodium' # Code editor
 cask 'zed' # Code editor
 tap 'buo/cask-upgrade' # Cask upgrade tap
 tap 'domt4/autoupdate' # Brew autoupdate tap
-tap 'rewardstyle/tap' # LTK developer tooling
 tap 'supabase/tap' # Supabase CLI tap
 tap 'xcodesorg/made' # Xcode manager tap
 mas '1Password for Safari', id: 1_569_813_296
