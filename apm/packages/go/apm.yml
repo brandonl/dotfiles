@@ -1,4 +1,4 @@
-name: template-go
+name: dotfiles-go
 version: 1.0.0
 targets:
   - agent-skills

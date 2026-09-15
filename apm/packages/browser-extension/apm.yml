@@ -1,0 +1,19 @@
+name: dotfiles-browser-extension
+version: 1.0.0
+targets:
+  - claude
+  - agent-skills
+dependencies:
+  apm:
+    - git: brandonl/dotfiles
+      path: apm/packages/react-typescript
+    - git: sickn33/antigravity-awesome-skills
+      path: skills/browser-extension-builder
+      targets: [agent-skills]
+    - git: mindrally/skills
+      path: chrome-extension-development
+      targets: [agent-skills]
+    - git: pproenca/dot-skills
+      path: skills/.experimental/chrome-extension-ui
+      targets: [agent-skills]
+  mcp: []

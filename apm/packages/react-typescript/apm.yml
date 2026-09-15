@@ -1,4 +1,4 @@
-name: template-react-typescript
+name: dotfiles-react-typescript
 version: 1.0.0
 targets:
   - claude
@@ -47,5 +47,4 @@ dependencies:
     - git: millionco/react-doctor
       path: skills/react-doctor
       targets: [agent-skills]
-  mcp:
-    - microsoft/playwright-mcp
+  mcp: []

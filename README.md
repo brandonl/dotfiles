@@ -36,8 +36,30 @@ APM installs skills under `~/.agents/skills/` for Codex/Cursor and
 within one client.
 Codex MCPs are installed with the Codex CLI, not APM, so APM never rewrites
 `~/.codex/config.toml`.
-Project starter manifests live in `apm/templates/`; they intentionally omit
-lockfiles so each consuming project resolves and commits its own.
+Reusable project dependency packages live under `apm/packages/`. A consuming
+project references the package from its own `apm.yml`, resolves the transitive
+dependencies, and commits its own lockfile. For example:
+
+```yaml
+dependencies:
+  apm:
+    - git: brandonl/dotfiles
+      path: apm/packages/react-typescript
+  mcp:
+    - microsoft/playwright-mcp
+```
+
+Available packages:
+
+- `apm/packages/go`
+- `apm/packages/postgres`
+- `apm/packages/react-typescript`
+- `apm/packages/browser-extension` (includes `react-typescript`)
+
+The packages intentionally omit lockfiles. Project MCP dependencies remain in
+the consuming manifest so their trust boundary is explicit. Browser-extension
+projects should declare both `io.github.ChromeDevTools/chrome-devtools-mcp` and
+`microsoft/playwright-mcp` there.
 
 To update a dependency:
 

@@ -1,4 +1,4 @@
-name: template-postgres
+name: dotfiles-postgres
 version: 1.0.0
 targets:
   - agent-skills
