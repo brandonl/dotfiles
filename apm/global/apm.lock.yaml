@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-09-15T15:52:03.701269+00:00'
+generated_at: '2026-10-01T16:25:27.705346+00:00'
 apm_version: 0.30.0
 dependencies:
 - repo_url: affaan-m/everything-claude-code
@@ -39,6 +39,18 @@ dependencies:
     .agents/skills/open-code-review/SKILL.md: sha256:6e5010ef9b9b3dc84a4a6c729634e1f10e962d53c1738e2e124d483a87e3bb79
     .claude/skills/open-code-review/SKILL.md: sha256:6e5010ef9b9b3dc84a4a6c729634e1f10e962d53c1738e2e124d483a87e3bb79
   content_hash: sha256:995cf0e228accf99ba227fae2332e1e21c6d78d9f7ce2fa0c1371d04abeff7a4
+  target_subset:
+  - agent-skills
+  - claude
+- repo_url: ayghri/i-have-adhd
+  name: i-have-adhd
+  host: github.com
+  resolved_commit: 839872f9d1cd634fed642b4589ce7226199cc15f
+  version: unknown
+  virtual_path: skills/i-have-adhd
+  is_virtual: true
+  package_type: claude_skill
+  content_hash: sha256:27e3b1d7339b6898419c6df77e1339bbd8362e5926e86bb991417c60af390b81
   target_subset:
   - agent-skills
   - claude

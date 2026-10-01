@@ -12,6 +12,7 @@ description: Personal agent execution and response rules
 - When behavior is broken, failing, or unexpectedly slow, diagnose the root cause before editing.
 - Bug fixes require a reproducing test first. Confirm it fails for the reported reason, apply the narrowest shared fix, then run the reproducing test and focused validation before declaring completion.
 - Report failures, skipped work, and incomplete validation explicitly.
+- Don't ask for commit plan approval, if user says commit that is implicit acceptance of proposed commit.
 
 # Agent tools
 
@@ -20,3 +21,9 @@ description: Personal agent execution and response rules
 - Use `ast-grep` when a search or rewrite depends on code structure rather than text. Use `ast-grep outline <path>` as a compact first pass before reading large candidate files. It is syntax-only; it does not resolve types, references, or call graphs.
 - Run `actionlint` for GitHub Actions workflows, `shellcheck` for shell correctness, and `shfmt -d` for shell formatting checks.
 - Prefer `rg` or `ast-grep` when they answer the question directly. Serena and Graphify add indexing and tool-call overhead.
+
+## Always-on i-have-adhd behavior
+
+- At session start, load and follow the globally installed `i-have-adhd` skill on every turn. Applies to the primary agent and all delegated agents, including agents spawned later.
+- Keep it active across turns and topic changes until the user says `stop adhd mode` or `normal mode`.
+- Follow the skill's exceptions and defer to higher-priority instructions and the user's requested format.
