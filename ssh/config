@@ -10,11 +10,29 @@ Host 10.10.10.1 opnsense
 Host 10.10.10.5 jonsbon4
   HostName 10.10.10.5
   User root
+  IdentityFile ~/.ssh/id_ed25519_jonsbon4
+  IdentityAgent none
+  IdentitiesOnly yes
+
+Host 10.10.20.5 apps
+  HostName 10.10.20.5
+  User root
+  IdentityFile ~/.ssh/id_ed25519_jonsbon4
+  IdentityAgent none
+  IdentitiesOnly yes
+
+Host 10.10.20.6 pbs
+  HostName 10.10.20.6
+  User root
+  IdentityFile ~/.ssh/id_ed25519_jonsbon4
+  IdentityAgent none
+  IdentitiesOnly yes
 
 Host 10.10.20.7 git forgejo
   HostName 10.10.20.7
   User operator
   IdentityFile ~/.ssh/id_ed25519_jonsbon4
+  IdentityFile ~/.ssh/id_ed25519
   IdentityAgent none
   IdentitiesOnly yes
 
@@ -31,6 +49,8 @@ Host 10.10.10.8 g6net g6net-mgmt
 Host *
   AddKeysToAgent yes
   UseKeychain yes
+
+Host * !apps !10.10.20.5 !jonsbon4 !10.10.10.5 !pbs !10.10.20.6 !g6net !g6net-mgmt !10.10.10.8 !forgejo !git !10.10.20.7
   IdentityFile ~/.ssh/id_ed25519
 
 Host *

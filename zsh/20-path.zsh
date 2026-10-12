@@ -8,6 +8,6 @@ typeset -U path PATH
 [[ -d "/opt/homebrew/bin" ]] && path=("/opt/homebrew/bin" $path)
 [[ -d "/opt/homebrew/sbin" ]] && path=("/opt/homebrew/sbin" $path)
 
-[[ -n "$GOPATH" && -d "$GOPATH/bin" ]] && path+=("$GOPATH/bin")
+[[ -d "$HOME/go/bin" ]] && path+=("$HOME/go/bin")
 
 export PATH

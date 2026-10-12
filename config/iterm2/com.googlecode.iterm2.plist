@@ -1231,6 +1231,15 @@
 			<integer>25</integer>
 			<key>Screen</key>
 			<integer>-1</integer>
+			<key>Semantic History</key>
+			<dict>
+				<key>action</key>
+				<string>best editor</string>
+				<key>editor</key>
+				<string>dev.zed.zed</string>
+				<key>text</key>
+				<string></string>
+			</dict>
 			<key>Scrollback Lines</key>
 			<integer>10000</integer>
 			<key>Selected Text Color</key>

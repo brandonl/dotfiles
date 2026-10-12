@@ -96,7 +96,6 @@
 
 [rebase]
     autosquash = true
-    autostash = true
     updateRefs = true
 
 [column]
@@ -153,3 +152,9 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://code.home.lan"]
+	helper = 
+	helper = !tea login helper
+[credential "http://10.10.20.7:3000"]
+	helper = 
+	helper = !tea login helper

@@ -38,6 +38,7 @@
     ~/.vscode-oss/argv.json: vscodium/argv.json
     ~/Library/Application Support/VSCodium/User/settings.json: vscodium/settings.json
     ~/Library/Application Support/VSCodium/User/keybindings.json: vscodium/keybindings.json
+    ~/.hammerspoon/init.lua: config/hammerspoon/init.lua
     ~/:
       prefix: "."
       glob: true

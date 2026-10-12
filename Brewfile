@@ -8,6 +8,7 @@ brew 'atuin' # Shell history sync/search
 brew 'awscli' # AWS CLI (native SSO; see awsx in zsh/70-utils.zsh)
 brew 'bat' # Better cat
 brew 'btop' # Resource monitor (better htop)
+brew 'can1357/tap/omp' # Oh My Pi coding agent
 brew 'cfn-lint' # CloudFormation linting
 brew 'cocoapods' # iOS dependency manager
 brew 'codeburn' # Codebase analysis CLI
@@ -39,6 +40,7 @@ brew 'golangci-lint' # Go lint runner
 brew 'gum' # Glamorous shell script prompts
 brew 'harfbuzz' # Text shaping library
 brew 'hdf5' # Scientific data format
+brew 'herdr' # Agent-aware terminal multiplexer
 brew 'hermes-agent' # Hermes AI agent CLI
 brew 'hyperfine' # CLI benchmarking
 brew 'jless' # JSON/YAML pager
@@ -117,6 +119,7 @@ cask 'unsloth' # Local AI model studio
 cask 'vscodium' # Code editor
 cask 'zed' # Code editor
 tap 'buo/cask-upgrade' # Cask upgrade tap
+tap 'can1357/tap' # Oh My Pi
 tap 'domt4/autoupdate' # Brew autoupdate tap
 tap 'supabase/tap' # Supabase CLI tap
 tap 'xcodesorg/made' # Xcode manager tap

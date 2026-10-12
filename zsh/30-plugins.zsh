@@ -14,9 +14,13 @@ plugins=(
   extract # archive extraction helper
   gh
   git
+  git-auto-fetch # Fetches all remotes in bg for current repo, every GIT_AUTO_FETCH_INTERVAL=60 seconds by default.
   git-trim # https://github.com/jasonmccreary/git-trim
   git-worktree # https://github.com/trthomps/git-worktree-zsh-plugin
+  golang
+  history
   mise # https://mise.jdx.dev/ (node/python/go via idiomatic version files)
+  systemadmin # prgrep, ...
   sudo # press Esc twice to prepend sudo
   you-should-use # https://github.com/MichaelAquilina/zsh-you-should-use
   zsh-abbr # https://github.com/olets/zsh-abbr

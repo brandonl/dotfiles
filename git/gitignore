@@ -88,3 +88,4 @@ requests.local.http
 
 # Local dump output
 dump/
+.local/

@@ -10,7 +10,7 @@ export VISUAL="$EDITOR"
 
 export DOCKER_COMPOSE_RANDOM_SERVICE_PORT=0
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
-export GOPATH="$HOME/workspace/go"
+unset GOPATH GOBIN
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 export ZSH="$HOME/.zsh/omz"
 export ZSH_COMPDUMP=$HOME/.cache/.zcompdump-$HOST

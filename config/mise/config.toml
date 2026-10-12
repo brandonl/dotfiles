@@ -28,3 +28,4 @@ usage = "latest"
 [settings]
 idiomatic_version_file_enable_tools = ["node", "python", "go"]
 idiomatic_version_file_disable_files = ["go:go.mod"]
+go.set_gobin = false
