@@ -15,7 +15,7 @@ while read -r _ local_sha _ remote_sha; do
     log_opts="$remote_sha..$local_sha"
   fi
 
-  if conflicts="$(git grep -n -I -E '^(<<<<<<< |>>>>>>> )' "$local_sha" -- .)"; then
+  if conflicts="$(git -c submodule.recurse=false grep -n -I -E '^(<<<<<<< |>>>>>>> )' "$local_sha" -- .)"; then
     printf '%s\n' "$conflicts" >&2
     printf 'Push blocked: merge conflict markers found.\n' >&2
     exit 1

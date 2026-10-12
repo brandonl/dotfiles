@@ -124,7 +124,8 @@ defaults write com.knollsoft.Rectangle SUEnableAutomaticChecks -bool false
 defaults write com.knollsoft.Hyperkey capsLockRemapped -int 2
 defaults write com.knollsoft.Hyperkey executeQuickHyperKey -int 1
 defaults write com.knollsoft.Hyperkey hyperFlags -int 1966080
-defaults write com.knollsoft.Hyperkey keyRemap -int 1
+# Karabiner owns Caps Lock's tap/hold mapping.
+defaults write com.knollsoft.Hyperkey keyRemap -int 0
 defaults write com.knollsoft.Hyperkey launchOnLogin -bool true
 defaults write com.knollsoft.Hyperkey SUEnableAutomaticChecks -bool true
 

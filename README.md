@@ -132,6 +132,10 @@ Without the flag, install prints a warning and skips those changes.
 
 Node, Python, Go, and [Tuist](https://tuist.dev/en/docs/guides/install-tuist) are managed with [mise](https://mise.jdx.dev/). Global defaults live in `config/mise/config.toml` (symlinked to `~/.config/mise/config.toml`). Project repos can keep `.nvmrc`, `.python-version`, and `.go-version` unchanged; iOS repos can pin Tuist in `.mise.toml` or `mise.toml`.
 
+## Neovim (LazyVim)
+
+`config/nvim` is linked as a directory so `lazy-lock.json` stays trackable. First `nvim` launch bootstraps LazyVim and its plugins. The terminal owns TUI font and size; iTerm uses Monaco Nerd Font at 16 pt to match Zed's terminal size. LazyVim uses One Dark Pro colors and language extras for Ansible, Docker, Go, JSON, Markdown, Python, Terraform, TOML, and YAML.
+
 ## Shell history (Atuin)
 
 After `./install`, run `atuin import auto` once if you want old `~/.zsh_history` in the database.

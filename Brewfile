@@ -52,6 +52,7 @@ brew 'lnav' # Log file navigator
 brew 'mas' # Mac App Store CLI
 brew 'mise' # Runtime version manager
 brew 'mole' # CLI tunnel manager
+brew 'neovim' # Terminal editor
 brew 'onnx' # ONNX runtime tools
 brew 'opencode' # OpenCode CLI
 brew 'openjdk' # Java runtime
@@ -108,12 +109,14 @@ cask 'meetingbar' # Calendar menu bar
 cask 'ngrok' # Local tunnel
 cask 'obsidian' # Notes app
 cask 'opencode-desktop' # OpenCode desktop app
+cask 'paseo' # Self-hosted daemon for AI coding agents
 cask 'postgres-app' # Postgres desktop app
 cask 'proxyman' # HTTP debugging proxy
 cask 'raycast' # Launcher
 cask 'rectangle' # Window manager
 cask 'sanesidebuttons' # Mouse button fix
 cask 'session-manager-plugin' # Plugin for AWS CLI to start and end sessions that connect to managed instances
+cask 'stablyai/orca/orca'
 cask 'superwhisper' # Voice dictation
 cask 'unsloth' # Local AI model studio
 cask 'zed' # Code editor

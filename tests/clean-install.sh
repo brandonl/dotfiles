@@ -21,6 +21,7 @@ HOME="$fake_home" "$repo_root/dotbot/bin/dotbot" \
 
 expected_links=(
   ".zshrc"
+  ".config/nvim"
   ".config/mise/config.toml"
   ".config/zed/settings.json"
 )

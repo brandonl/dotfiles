@@ -40,9 +40,11 @@
       prefix: "."
       glob: true
       path: git/*
+    ~/.config/nvim: config/nvim
     ~/.config/:
       glob: true
       path: config/**
+      exclude: [config/nvim/**]
     ~/.ssh/:
       glob: true
       path: ssh/*

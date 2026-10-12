@@ -3,7 +3,28 @@
         {
             "name": "Default profile",
             "selected": true,
-            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" },
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Caps Lock tap sends F12; hold sends Caps Lock",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to_if_alone": [{ "key_code": "f12" }],
+                                "to_if_held_down": [{ "key_code": "caps_lock" }],
+                                "parameters": {
+                                    "basic.to_if_held_down_threshold_milliseconds": 250
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
         }
     ]
 }
