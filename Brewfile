@@ -116,7 +116,6 @@ cask 'sanesidebuttons' # Mouse button fix
 cask 'session-manager-plugin' # Plugin for AWS CLI to start and end sessions that connect to managed instances
 cask 'superwhisper' # Voice dictation
 cask 'unsloth' # Local AI model studio
-cask 'vscodium' # Code editor
 cask 'zed' # Code editor
 tap 'buo/cask-upgrade' # Cask upgrade tap
 tap 'can1357/tap' # Oh My Pi

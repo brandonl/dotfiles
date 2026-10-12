@@ -6,8 +6,11 @@ configstore	local	generated application state
 crush	local	generated agent state
 gcloud	local	work authentication and state
 github-copilot	local	generated application state
+gh	local	work authentication and state
+herdr	command	herdr
 kargo	local	work state
 ktl	local	work configuration and state
+lnav	command	lnav
 litellm_config.yaml	local	work configuration
 mole	local	generated cleanup state
 raycast	local	generated application state
@@ -18,7 +21,8 @@ fish	command	fish
 ghostty	app	/Applications/Ghostty.app
 goose	command	goose
 graphite	command	gt
-jgit	command	jgit
+superwhisper	app	/Applications/Superwhisper.app
+jgit	local	preserved JGit config; command unavailable
 neubird	command	neubird
 pip	command	pip
 thefuck	command	thefuck

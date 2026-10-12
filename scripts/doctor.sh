@@ -61,9 +61,6 @@ dotfile_links() {
     "$HOME/.config/atuin/config.toml:$dotfiles/config/atuin/config.toml"
     "$HOME/.config/mise/config.toml:$dotfiles/config/mise/config.toml"
     "$HOME/.config/zsh/abbreviations:$dotfiles/config/zsh/abbreviations"
-    "$HOME/.vscode-oss/argv.json:$dotfiles/vscodium/argv.json"
-    "$HOME/Library/Application Support/VSCodium/User/settings.json:$dotfiles/vscodium/settings.json"
-    "$HOME/Library/Application Support/VSCodium/User/keybindings.json:$dotfiles/vscodium/keybindings.json"
   )
 
   for pair in "${links[@]}"; do

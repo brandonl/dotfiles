@@ -23,9 +23,6 @@ expected_links=(
   ".zshrc"
   ".config/mise/config.toml"
   ".config/zed/settings.json"
-  ".vscode-oss/argv.json"
-  "Library/Application Support/VSCodium/User/settings.json"
-  "Library/Application Support/VSCodium/User/keybindings.json"
 )
 
 for link in "${expected_links[@]}"; do
