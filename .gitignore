@@ -16,3 +16,5 @@ Brewfile.lock.json
 
 # Override the global settings.json ignore for portable Zed settings.
 !/config/zed/settings.json
+# Orca portable preferences; profile data remains machine-local.
+!/config/orca/settings.json

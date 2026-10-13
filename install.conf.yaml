@@ -35,6 +35,7 @@
     ~/.zlogin:
     ~/.zshrc:
     ~/.vimrc:
+    ~/.orca/keybindings.json: config/orca/keybindings.json
     ~/.hammerspoon/init.lua: config/hammerspoon/init.lua
     ~/:
       prefix: "."
@@ -63,4 +64,5 @@
       ]
     - [./scripts/run-macosx-if-enabled.sh]
     - [./scripts/mise-install.sh, "Install mise global runtimes"]
+    - [mise exec -- python ./scripts/orca-config-sync.py apply, "Apply shared Orca preferences"]
     - [source $HOME/.zshrc]

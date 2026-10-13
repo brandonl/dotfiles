@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "keybindings": {},
+  "platforms": {
+    "darwin": {
+      "app.settings": [
+        "Mod+Comma"
+      ]
+    },
+    "linux": {},
+    "win32": {}
+  }
+}

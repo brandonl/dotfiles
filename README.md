@@ -18,8 +18,38 @@ Re-run `./install` after pulling changes. Dotbot relinks files in place.
 - Initializes git submodules (Oh My Zsh, plugins, dotbot)
 - Installs Homebrew APM and global Claude/Codex configuration from `apm/global/apm.yml`
 - Symlinks dotfiles into `$HOME` (`~/.zshrc`, `~/.config/*`, `~/.ssh/*`, git config, etc.)
+- Links Orca's portable keybindings to `~/.orca/keybindings.json`
 - Installs fonts into `~/Library/Fonts`
 - Sources updated shell config
+
+## Orca configuration
+
+`config/orca/keybindings.json` links to Orca's supported
+`~/.orca/keybindings.json`. `config/orca/settings.json` holds portable app
+preferences. `./install` merges those preferences into Orca's local profile
+after each install. A filtered allowlist shares user preferences; credentials,
+publishing grants, work-specific prompts, machine paths, and repo/workspace
+records stay local.
+
+After changing Orca settings, capture them into this repo:
+
+```bash
+mise exec -- python ./scripts/orca-config-sync.py capture
+```
+
+Orca must be closed before preferences can be applied. If `./install` finds it
+open, quit Orca and run:
+
+```bash
+mise exec -- python ./scripts/orca-config-sync.py apply
+```
+
+On a new Mac, launch Orca once, quit, then run `./install`.
+
+Orca has no native standalone settings overlay yet, so the helper merges only
+the allowlisted preferences into Orca's profile state
+([upstream request](https://github.com/stablyai/orca/issues/21767)). It leaves
+machine-specific and account state intact.
 
 ## Agent configuration
 
