@@ -706,6 +706,8 @@
 	<true/>
 	<key>EnableDivisionView</key>
 	<true/>
+	<key>FocusFollowsMouse</key>
+	<true/>
 	<key>GlobalKeyMap</key>
 	<dict>
 		<key>0x19-0x60000</key>
@@ -1154,7 +1156,7 @@
 			<key>Description</key>
 			<string>Default</string>
 			<key>Disable Window Resizing</key>
-			<true/>
+			<false/>
 			<key>Flashing Bell</key>
 			<false/>
 			<key>Foreground Color</key>
@@ -1231,15 +1233,6 @@
 			<integer>25</integer>
 			<key>Screen</key>
 			<integer>-1</integer>
-			<key>Semantic History</key>
-			<dict>
-				<key>action</key>
-				<string>best editor</string>
-				<key>editor</key>
-				<string>dev.zed.zed</string>
-				<key>text</key>
-				<string></string>
-			</dict>
 			<key>Scrollback Lines</key>
 			<integer>10000</integer>
 			<key>Selected Text Color</key>
@@ -1267,6 +1260,15 @@
 				<real>0.73586553335189819</real>
 				<key>Red Component</key>
 				<real>0.57319694757461548</real>
+			</dict>
+			<key>Semantic History</key>
+			<dict>
+				<key>action</key>
+				<string>best editor</string>
+				<key>editor</key>
+				<string>dev.zed.zed</string>
+				<key>text</key>
+				<string></string>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
