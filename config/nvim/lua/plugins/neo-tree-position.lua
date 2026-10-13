@@ -5,6 +5,13 @@ return {
       window = {
         position = "right",
       },
+      filesystem = {
+        window = {
+          mappings = {
+            ["<LeftMouse>"] = "open",
+          },
+        },
+      },
     },
   },
 }
