@@ -13,6 +13,7 @@ cp "$source_root/scripts/apm-install.sh" "$repo_root/scripts/apm-install.sh"
 cp "$source_root/apm/global/apm.yml" "$repo_root/apm/global/apm.yml"
 cp "$source_root/apm/global/apm.lock.yaml" "$repo_root/apm/global/apm.lock.yaml"
 cp -R "$source_root/apm/global/packages" "$repo_root/apm/global/packages"
+cp -R "$source_root/apm/global/overrides" "$repo_root/apm/global/overrides"
 
 cat >"$fake_bin/brew" <<EOF
 #!/usr/bin/env bash
@@ -47,6 +48,17 @@ export PATH="$fake_bin:$PATH"
 export HOME="$test_root/home"
 export CODEX_MCP_LOG="$test_root/codex-mcp.log"
 
+for skills_dir in "$HOME/.agents/skills" "$HOME/.claude/skills"; do
+  for skill in better-writing humanize-writing remove-dumb-comments dumbify dumb-it-down; do
+    mkdir -p "$skills_dir/$skill"
+    printf '%s\n' 'upstream instructions' >"$skills_dir/$skill/SKILL.md"
+  done
+  mkdir -p "$skills_dir/better-writing/agents"
+  printf '%s\n' 'interface:' '  display_name: Better Writing' \
+    'policy:' '  allow_implicit_invocation: true' \
+    >"$skills_dir/better-writing/agents/openai.yaml"
+done
+
 if CODEX_MCP_LIST_RESULT=invalid "$repo_root/scripts/apm-install.sh" >/dev/null 2>&1; then
   echo "invalid Codex config unexpectedly accepted" >&2
   exit 1
@@ -56,6 +68,14 @@ fi
 
 CODEX_MCP_LIST_RESULT=valid "$repo_root/scripts/apm-install.sh" >/dev/null
 rg -Fx 'mcp add context7 -- npx -y @upstash/context7-mcp ' "$CODEX_MCP_LOG" >/dev/null
+for skills_dir in "$HOME/.agents/skills" "$HOME/.claude/skills"; do
+  for skill in better-writing humanize-writing remove-dumb-comments dumbify dumb-it-down; do
+    [[ "$(yq '.policy.allow_implicit_invocation' "$skills_dir/$skill/agents/openai.yaml")" == false ]]
+    [[ "$(<"$skills_dir/$skill/SKILL.md")" == 'upstream instructions' ]]
+  done
+  [[ "$(yq '.interface.display_name' "$skills_dir/better-writing/agents/openai.yaml")" == 'Better Writing' ]]
+  [[ ! -e "$skills_dir/open-code-review" ]]
+done
 cmp "$repo_root/apm/global/apm.yml" "$HOME/.apm/apm.yml"
 cmp \
   "$repo_root/apm/global/packages/personal-instructions/.apm/instructions/personal.instructions.md" \
@@ -73,6 +93,8 @@ EOF
 cp "$repo_root/apm/global/apm.lock.yaml" "$repo_root/apm/global/apm.local.lock.yaml"
 
 CODEX_MCP_LIST_RESULT=valid "$repo_root/scripts/apm-install.sh" >/dev/null
+[[ "$(yq '.policy.allow_implicit_invocation' "$HOME/.agents/skills/better-writing/agents/openai.yaml")" == false ]]
+[[ "$(yq '.interface.display_name' "$HOME/.agents/skills/better-writing/agents/openai.yaml")" == 'Better Writing' ]]
 yq eval-all 'select(fileIndex == 0) *+ select(fileIndex == 1)' \
   "$repo_root/apm/global/apm.yml" \
   "$repo_root/apm/global/apm.local.yml" >"$test_root/expected-apm.yml"

@@ -6,33 +6,38 @@ targets:
   - agent-skills
 dependencies:
   apm:
+    - path: ~/dotfiles/apm/global/plugins/personal
     - git: affaan-m/everything-claude-code
       path: skills/hexagonal-architecture
-      targets: [claude, agent-skills]
     - git: mattpocock/skills
-      path: skills/engineering/diagnosing-bugs
-      targets: [claude, agent-skills]
-    - git: mattpocock/skills
-      path: skills/productivity/grill-me
-      targets: [claude, agent-skills]
-    - git: mattpocock/skills
-      path: skills/engineering/grill-with-docs
-      targets: [claude, agent-skills]
-    - git: mattpocock/skills
-      path: skills/productivity/handoff
-      targets: [claude, agent-skills]
-    - git: mattpocock/skills
-      path: skills/engineering/improve-codebase-architecture
-      targets: [claude, agent-skills]
-    - git: mattpocock/skills
-      path: skills/engineering/tdd
-      targets: [claude, agent-skills]
+      skills:
+        - diagnosing-bugs
+        - grill-me
+        - grilling
+        - grill-with-docs
+        - handoff
+        - improve-codebase-architecture
+        - tdd
+        - research
+        - writing-for-agents
     - git: alibaba/open-code-review
       path: skills/open-code-review
-      targets: [claude, agent-skills]
     - git: ayghri/i-have-adhd
       path: skills/i-have-adhd
-      targets: [agent-skills]
+    - git: dreambigou/eli5
+      path: skills/eli5
+    - git: lukeberrypi/skills
+      path: skills/remove-dumb-comments
+    - git: artemnovitckii/content-skills
+      path: dumbify
+    - git: breadoncee/dumb-it-down
+    - git: othmanadi/planning-with-files
+      path: skills/planning-with-files
+    - git: stablyai/orca
+      skills:
+        - computer-use
+        - orca-cli
+        - orchestration
   mcp:
     - name: context7
       registry: false

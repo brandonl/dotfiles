@@ -1,0 +1,4 @@
+name: personal
+version: 1.0.0
+targets: [claude, agent-skills]
+dependencies: {}

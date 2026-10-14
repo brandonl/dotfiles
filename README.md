@@ -68,6 +68,21 @@ APM installs skills under `~/.agents/skills/` for Codex/Cursor and
 `~/.claude/skills/` for Claude Code. Claude does not discover the shared
 `.agents` path, so both targets are intentional and do not double-load a skill
 within one client.
+Portable personal skills live in the tracked `apm/global/plugins/personal/`
+plugin. Machine- or work-specific personal skills live in the ignored
+`apm/global/plugins/personal.local/` plugin, alongside `apm.local.yml`.
+The public manifest references the tracked plugin, and `apm.local.yml`
+references the local plugin. APM installs both from `~/dotfiles` with the
+locked dependencies. Each plugin needs a `plugin.json` and
+`skills/<name>/SKILL.md`.
+Codex metadata overrides live under `apm/global/overrides/<skill>/agents/openai.yaml`.
+The installer merges them after every APM install, preserving upstream UI metadata.
+The five writing/comment skills use `policy.allow_implicit_invocation: false`
+for explicit invocation only in Codex.
+ELI5 uses the same Codex policy, plus the Claude Code
+`skillOverrides.eli5: user-invocable-only` setting from
+`apm/global/claude-skill-overrides.json`. Invoke it as `$eli5` in Codex or
+`/eli5` in Claude Code.
 Codex MCPs are installed with the Codex CLI, not APM, so APM never rewrites
 `~/.codex/config.toml`.
 Reusable project dependency packages live under `apm/packages/`. A consuming
