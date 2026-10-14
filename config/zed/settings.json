@@ -36,7 +36,15 @@
   },
   "diff_view_style": "split",
   "context_servers": {
-    
+    "iterm": {
+      "enabled": true,
+      "remote": false,
+      "command": "npx",
+      "args": [
+        "-y",
+        "iterm-mcp"
+      ]
+    }
   },
   "outline_panel": {
     "dock": "right"
@@ -169,6 +177,7 @@
   },
   "show_whitespaces": "selection",
   "git": {
+    "diff_base": "default_branch",
     "blame": {
       "show_avatar": false
     },

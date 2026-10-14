@@ -5,6 +5,21 @@
     "darwin": {
       "app.settings": [
         "Mod+Comma"
+      ],
+      "fileExplorer.delete": [
+        "Mod+Backspace"
+      ],
+      "worktree.quickOpen": [
+        "Mod+N"
+      ],
+      "workspace.create": [
+        "Mod+Shift+N"
+      ],
+      "sidebar.search.toggle": [
+        "Mod+BracketRight"
+      ],
+      "editor.replace": [
+        "Mod+R"
       ]
     },
     "linux": {},
