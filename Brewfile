@@ -66,6 +66,7 @@ brew 'qemu' # Machine emulator
 brew 'redis' # Redis server/CLI
 brew 'ripgrep' # Fast text search
 brew 'ripgrep-all' # Search PDFs, documents, and archives
+brew 'rtk' # Condense Codex command output through the native hook
 brew 'sd' # Intuitive sed replacement
 brew 'shfmt' # Shell parser and formatter
 brew 'starship' # Shell prompt

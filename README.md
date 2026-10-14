@@ -17,6 +17,7 @@ Re-run `./install` after pulling changes. Dotbot relinks files in place.
 - Installs and upgrades Homebrew packages from `Brewfile` (`brew bundle install --upgrade`)
 - Initializes git submodules (Oh My Zsh, plugins, dotbot)
 - Installs Homebrew APM and global Claude/Codex configuration from `apm/global/apm.yml`
+- Merges portable Codex preferences and installs RTK's native Codex hook
 - Symlinks dotfiles into `$HOME` (`~/.zshrc`, `~/.config/*`, `~/.ssh/*`, git config, etc.)
 - Links Orca's portable keybindings to `~/.orca/keybindings.json`
 - Installs fonts into `~/Library/Fonts`
@@ -85,6 +86,13 @@ ELI5 uses the same Codex policy, plus the Claude Code
 `/eli5` in Claude Code.
 Codex MCPs are installed with the Codex CLI, not APM, so APM never rewrites
 `~/.codex/config.toml`.
+`config/codex/preferences.toml` holds shared Codex preferences. The installer
+merges them into `~/.codex/config.toml` with a pinned `tomlkit` script run by
+`uv`. It runs `rtk init -g --codex` if the native hook is missing. Restart Codex
+after installation, then review and trust the hook with `/hooks`. Credentials,
+sessions, project trust, hook trust records,
+marketplaces, plugin state, and machine-specific MCP commands stay local.
+RTK creates `~/.codex/RTK.md`; APM owns `~/.codex/AGENTS.md`.
 Reusable project dependency packages live under `apm/packages/`. A consuming
 project references the package from its own `apm.yml`, resolves the transitive
 dependencies, and commits its own lockfile. For example:

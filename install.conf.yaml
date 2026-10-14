@@ -21,6 +21,10 @@
     - [git submodule sync --recursive]
     - [git submodule update --init --recursive]
     - [
+        uv run --script ./scripts/codex-config-sync.py,
+        "Apply shared Codex preferences and the RTK hook",
+      ]
+    - [
         ./scripts/apm-install.sh,
         "Install and sync global agent configuration via APM",
       ]
