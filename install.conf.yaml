@@ -18,10 +18,6 @@
         ./scripts/brew-bundle-install.sh,
         "Install and upgrade Homebrew packages from Brewfile",
       ]
-    - [
-        ./scripts/brew-autoupdate.sh,
-        "Enable brew autoupdate (weekly upgrade/cleanup)",
-      ]
     - [git submodule sync --recursive]
     - [git submodule update --init --recursive]
     - [

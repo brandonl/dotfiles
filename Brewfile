@@ -90,7 +90,6 @@ cask 'claude' # Claude desktop app
 cask 'claude-code@latest' # Claude Code CLI
 cask 'clocker' # Menu bar time zones
 cask 'cotypist' # System-wide AI autocomplete
-cask 'dockdoor' # Window peeking utility app
 cask 'expo-orbit' # Expo development client
 cask 'font-fira-code-nerd-font' # Dev font
 cask 'font-fira-mono' # Mono font
@@ -98,31 +97,25 @@ cask 'font-hack-nerd-font' # Dev font
 cask 'font-jetbrains-mono-nerd-font' # Dev font
 cask 'font-monaspice-nerd-font' # Monaspace Nerd Font family
 cask 'font-monaspace' # Monaspace font
-cask 'github' # GitHub desktop app
 cask 'hammerspoon' # macOS automation (Lua)
-cask 'hyperkey' # Convert your caps lock key or any of your modifier keys to the hyper key
 cask 'insta360-link-controller' # Webcam controller
 cask 'iterm2' # Terminal emulator
 cask 'karabiner-elements' # Keyboard remapping
-cask 'linearmouse' # Customise mouse behavior
 cask 'meetingbar' # Calendar menu bar
 cask 'ngrok' # Local tunnel
 cask 'obsidian' # Notes app
 cask 'opencode-desktop' # OpenCode desktop app
-cask 'paseo' # Self-hosted daemon for AI coding agents
 cask 'postgres-app' # Postgres desktop app
 cask 'proxyman' # HTTP debugging proxy
 cask 'raycast' # Launcher
-cask 'rectangle' # Window manager
-cask 'sanesidebuttons' # Mouse button fix
 cask 'session-manager-plugin' # Plugin for AWS CLI to start and end sessions that connect to managed instances
 cask 'stablyai/orca/orca'
 cask 'superwhisper' # Voice dictation
 cask 'unsloth' # Local AI model studio
+cask 'vorssaint' # Saneside buttons, hyperkey, dockdoor, brew update, ++
 cask 'zed' # Code editor
 tap 'buo/cask-upgrade' # Cask upgrade tap
 tap 'can1357/tap' # Oh My Pi
-tap 'domt4/autoupdate' # Brew autoupdate tap
 tap 'supabase/tap' # Supabase CLI tap
 tap 'xcodesorg/made' # Xcode manager tap
 mas '1Password for Safari', id: 1_569_813_296
