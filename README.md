@@ -52,6 +52,19 @@ the allowlisted preferences into Orca's profile state
 ([upstream request](https://github.com/stablyai/orca/issues/21767)). It leaves
 machine-specific and account state intact.
 
+## Vorssaint configuration
+
+[Vorssaint Settings.plist](config/vorssaint/Vorssaint%20Settings.plist) is a
+native settings backup for manual transfer between Macs. In Vorssaint, use
+**Settings → Advanced → Export settings…** to update it, then commit the file.
+On another Mac, pull the change and use **Settings → Advanced → Import
+settings…**. Import replaces Vorssaint's settings and relaunches the app.
+
+The tracked backup omits audio device identifiers, device names, and fan curves.
+Review future exports before replacing it; Vorssaint's exporter includes those
+machine-specific values. Clipboard history, Scratchpad notes, Shelf items,
+and system permissions are excluded by the app.
+
 ## Agent configuration
 
 Public, machine-wide Claude and Codex dependencies live in
